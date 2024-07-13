@@ -44,6 +44,10 @@ public class GameLoad : MonoBehaviour
 			prefs.SetFloat("SensitivitySett", 25f);
 			prefs.SetInt("startingValues", 1);
 		}
+		
+		WeaponSounds.hideArms = prefs.GetInt("hideArms") == 1;
+		WeaponSounds.leftArm = prefs.GetInt("leftArm") == 1;
+
 		StartCoroutine(LoadWeapons());
 	}
 

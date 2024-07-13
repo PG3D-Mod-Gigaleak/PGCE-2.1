@@ -51,10 +51,8 @@ public sealed class AppsMenu : MonoBehaviour
 
 	private void Start()
 	{
-		WeaponSounds.hideArms = prefs.GetInt("hideArms") == 1;
 		WeaponManager.WeaponCatNullCheck();
 		SetRandomLevels();
-		//StartCoroutine(loadLevel());
 	}
 
 	private void LoadLoading()

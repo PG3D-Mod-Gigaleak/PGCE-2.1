@@ -3875,6 +3875,16 @@ public sealed class Player_move_c : MonoBehaviour
 						WeaponSounds.onHideArms();
 					}
 				}
+				if (Input.GetKeyDown(KeyCode.L))
+				{
+					WeaponSounds.leftArm = !WeaponSounds.leftArm;
+					prefs.SetInt("leftArm", WeaponSounds.leftArm ? 1 : 0);
+
+					if (WeaponSounds.onLeftArm != null)
+					{
+						WeaponSounds.onLeftArm();
+					}
+				}
 				if (Input.GetMouseButtonDown(1))
 				{
 					ZoomPress();

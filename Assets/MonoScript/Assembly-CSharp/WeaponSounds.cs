@@ -170,7 +170,9 @@ public class WeaponSounds : MonoBehaviour
 	
 	public int bulletIndex;
 
-	public static bool hideArms;
+	public static bool hideArms, leftArm;
+
+	private bool isMine;
 
 	private static List<string> ArmSuffixes = new List<string>()
 	{
@@ -218,7 +220,24 @@ public class WeaponSounds : MonoBehaviour
 		}
 	}
 
-	public static Action onHideArms;
+	private void LeftArmCheck()
+	{
+		if (leftArm && transform.localScale.x > 0f || !leftArm && transform.localScale.x < 0f)
+		{
+			transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+			if (leftArm)
+			{
+				transform.localPosition = new Vector3(gunPosition.x - (gunPosition.x * 1.6f), gunPosition.y, gunPosition.z);
+			}
+			else
+			{
+				transform.localPosition = gunPosition;
+			}
+		}
+	}
+
+	public static Action onHideArms, onLeftArm;
 
 	private void Start()
 	{
@@ -228,8 +247,13 @@ public class WeaponSounds : MonoBehaviour
 
 			if (view != null && view.isMine)
 			{
+				isMine = true;
+
 				onHideArms += HideArmCheck;
 				HideArmCheck();
+
+				onLeftArm += LeftArmCheck;
+				LeftArmCheck();
 			}
 		}
 
@@ -241,7 +265,11 @@ public class WeaponSounds : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		onHideArms -= HideArmCheck;
+		if (isMine)
+		{
+			onHideArms -= HideArmCheck;
+			onLeftArm -= LeftArmCheck;
+		}
 	}
 
 	public void EmptyState()
