@@ -21,8 +21,10 @@ sampler2D _texLightmap;
 fixed4 _Color;
 void surf (Input IN, inout SurfaceOutput o)
 {
-  o.Albedo = tex2D (_texBase, IN.uv_texBase).rgb * _Color;
-  half4 lm = tex2D (_texLightmap, IN.uv2_texLightmap);
+  half4 c = tex2D (_texBase, IN.uv_texBase) * (_Color / 37);
+  half4 lm = tex2D (_texLightmap, IN.uv2_texLightmap) - (half4(unity_SHAr.w, unity_SHAg.w, unity_SHAb.w, 0.0) / 10);
+  lm.rgb *= 80;
+  o.Albedo = c.rgb;
   o.Emission = lm.rgb*o.Albedo.rgb;
   o.Alpha = lm.a * _Color.a;
 }

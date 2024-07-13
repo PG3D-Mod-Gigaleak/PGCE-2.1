@@ -3865,6 +3865,16 @@ public sealed class Player_move_c : MonoBehaviour
 						ChangeWeaponFull(CategoryType.Heavy);
 					}
 				}
+				if (Input.GetKeyDown(KeyCode.H))
+				{
+					WeaponSounds.hideArms = !WeaponSounds.hideArms;
+					prefs.SetInt("hideArms", WeaponSounds.hideArms ? 1 : 0);
+
+					if (WeaponSounds.onHideArms != null)
+					{
+						WeaponSounds.onHideArms();
+					}
+				}
 				if (Input.GetMouseButtonDown(1))
 				{
 					ZoomPress();

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponSounds : MonoBehaviour
@@ -168,12 +170,78 @@ public class WeaponSounds : MonoBehaviour
 	
 	public int bulletIndex;
 
+	public static bool hideArms;
+
+	private static List<string> ArmSuffixes = new List<string>()
+	{
+		"FPS_PLAYER_Arm",
+		"player",
+		"Arm_",
+		"Arms_Mesh",
+		"Arms_mesh",
+		"hand_"
+	};
+
+	private static bool Suffixed(string name)
+	{
+		foreach (string suffix in ArmSuffixes)
+		{
+			if (name.StartsWith(suffix))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private void HideArmCheck()
+	{
+		foreach (Renderer renderer in GetComponentsInChildren<Renderer>())
+		{
+			if (renderer is MeshRenderer)
+			{
+				MeshFilter filter = renderer.GetComponent<MeshFilter>();
+
+				if (filter != null && filter.sharedMesh != null && Suffixed(filter.sharedMesh.name))
+				{
+					renderer.enabled = !hideArms;
+				}
+			}
+			else if (renderer is SkinnedMeshRenderer meshRenderer)
+			{
+				if (meshRenderer.sharedMesh != null && Suffixed(meshRenderer.sharedMesh.name))
+				{
+					meshRenderer.enabled = !hideArms;
+				}
+			}
+		}
+	}
+
+	public static Action onHideArms;
+
 	private void Start()
 	{
+		if (transform.root.name.StartsWith("Player"))
+		{
+			PhotonView view = PhotonView.Get(transform.root);
+
+			if (view != null && view.isMine)
+			{
+				onHideArms += HideArmCheck;
+				HideArmCheck();
+			}
+		}
+
 		if (animationObject != null && animationObject.GetComponent<Animation>()["Shoot"] != null)
 		{
 			animLength = animationObject.GetComponent<Animation>()["Shoot"].length;
 		}
+	}
+
+	private void OnDestroy()
+	{
+		onHideArms -= HideArmCheck;
 	}
 
 	public void EmptyState()

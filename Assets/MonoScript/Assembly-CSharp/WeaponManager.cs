@@ -528,11 +528,6 @@ public sealed class WeaponManager : MonoBehaviour
 		
 		_playerWeapons.Add(weapon);
 		playerWeapons.Sort(new WeaponsComparer());
-
-		foreach (object obj in _playerWeapons)
-		{
-			Debug.LogError(((Weapon)obj).weaponPrefab.name);
-		}
 	}
 
 	public void Reset()
