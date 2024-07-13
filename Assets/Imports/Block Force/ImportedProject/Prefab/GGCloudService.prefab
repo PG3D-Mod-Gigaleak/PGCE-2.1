@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1841438196447985}
+  m_IsPrefabParent: 1
+--- !u!1 &1841438196447985
+GameObject:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - component: {fileID: 4852927874913847}
+  - component: {fileID: 114199847894801346}
+  - component: {fileID: 114382707852198313}
+  - component: {fileID: 114457092391921105}
+  - component: {fileID: 114454403630882055}
+  - component: {fileID: 114067312456691911}
+  - component: {fileID: 114345398937534292}
+  - component: {fileID: 114573262052665977}
+  - component: {fileID: 114992934736071448}
+  m_Layer: 0
+  m_Name: GGCloudService
+  m_TagString: GGCloudService
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4852927874913847
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841438196447985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28.509945, y: 2.330645, z: -7.7466154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114199847894801346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841438196447985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea993c2ec312b2babe2acd10c09b4c14, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  mApiKey: 18adf9d36f4aa3ca0aa57db7ca9cd422316d6e2a7888e7f0abdb3943e4390679
+  mSecretKey: 01f4bccc30171634fd7af3d185c0b1bee06aadf02ba5a63a19b9ec6387a1a63e
+  mUserName:
+  mEmailId:
+  mSessionId:
+  mGroupName:
+  mDBName: PLAYER
+  mCollectionName:
+  mNewMessageCollectionName: NewMessageColletionName
+  mNewFriendInfoCollectionName: NewFriendInfoCollectionName
+  mUserDataCollectionName: UserDataCollection
+  mPublicNotice: PublicNotice
+--- !u!114 &114382707852198313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841438196447985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd2ff64694ee868e1f47c2777d97e5f, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!114 &114457092391921105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841438196447985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489a3265d83d4397bbdc125172bf951d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  mAllFriendNameList: []
+  mAllFriendRoleNameList: []
+  mFriendInfoList: []
+  mIsFriendInfoListReady: 0
+  mOfficalMessageList: []
+  mFriendRequestList: []
+  mExpLeaderBoardInfoList: []
+  mTotalKillNumLeaderBoardInfoList: []
+  mExpThreshold: 1
+  mSeasonScoreBoardInfoList: []
+  mSeasonScoreThreshold: -0.10000000149011612
+  mGetTopPrize: 0
+  mHadSendFriendRequestRoleName: []
+  mUserNamePassword:
+    UserName:
+    Password:
+  bHuntingModeOpen: 1
+  bADPromotionOpen: 0
+  mNewUserName:
+  mLoginException:
+--- !u!114 &114454403630882055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841438196447985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4aee03752635e217bcd5312c3b00c4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!114 &114067312456691911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841438196447985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c91850880b8e7adfd3d8942271efa6, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!114 &114345398937534292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841438196447985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90542bb4f7d56e031fc731cfe92f7c5f, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!114 &114573262052665977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841438196447985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaeaa6674de6db0c50f60c9f74f1cf92, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  goChatPrefab: {fileID: 1970986849920614, guid: 90325f878dd49ea40a0b35c41686c713, type: 2}
+--- !u!114 &114992934736071448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841438196447985}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8555eb8b69a493246629a28f8f22ff, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:

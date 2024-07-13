@@ -1,0 +1,449 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1501649177493656}
+  m_IsPrefabParent: 1
+--- !u!1 &1501649177493656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4109838723694336}
+  - component: {fileID: 114508043617348922}
+  m_Layer: 0
+  m_Name: TimeSurvivalConfig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4109838723694336
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501649177493656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.13663244, y: 0.61865115, z: 0.2834965}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114508043617348922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501649177493656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99449fe65f2ada4c832e5ed1f767b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maps:
+    mapSettings:
+    - MyName: default
+      myEnemies:
+      - 1
+      - 15
+      - 14
+      - 2
+      - 3
+      - 9
+      - 11
+      - 12
+      - 14
+      - 16
+      enemies:
+      - name: Zombie_Default
+        prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+          type: 2}
+        skin: {fileID: 2800000, guid: 3160c506fe6d3f248bb46fe47c6db90f, type: 3}
+      - name: Crawler_Default
+        prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+          type: 2}
+        skin: {fileID: 2800000, guid: f40592a9b2750af4791b48f9a8fe2be9, type: 3}
+      - name: Raven_Default
+        prefab: {fileID: 1708163454137135, guid: edaa77e4a24d7a045814801a3bb1a77a,
+          type: 2}
+        skin: {fileID: 2800000, guid: abc1285574aeccb498cfa2a9b29a0753, type: 3}
+      - name: Zombie_Mutant
+        prefab: {fileID: 1548786736643830, guid: 0558349170070b3419546580f0c9bc16,
+          type: 2}
+        skin: {fileID: 2800000, guid: 304506ffa1a592f4594cab720665b5ff, type: 3}
+      - name: Stalker
+        prefab: {fileID: 1324027655793698, guid: ffc85a90a5b11414cb56c0326fb5813a,
+          type: 2}
+        skin: {fileID: 2800000, guid: d9fc2072694f44a4097e0ca3d900855b, type: 3}
+      - name: Slime_Default
+        prefab: {fileID: 1453222124711526, guid: 9c070775079ae614e88165a2cee0342d,
+          type: 2}
+        skin: {fileID: 2800000, guid: eb187f7f762735040ae7e06b404b0ec3, type: 3}
+      - name: Spider_Default
+        prefab: {fileID: 1603652184724008, guid: 33197ef0285c87142a33537a92ad5520,
+          type: 2}
+        skin: {fileID: 2800000, guid: d7dafe93d91449443b4d55fe6ce0ffcc, type: 3}
+      - name: Skeleton_Head
+        prefab: {fileID: 1873817636696242, guid: d6d6d94eb9ac5194f94383d697cd6731,
+          type: 2}
+        skin: {fileID: 2800000, guid: f00fad37cc47cbb4a9dcb4a3c9dd311b, type: 3}
+      - name: Headless_Zombie
+        prefab: {fileID: 1346653557578468, guid: c7eaf209a1475704689db6841acad0cb,
+          type: 2}
+        skin: {fileID: 2800000, guid: 51ee6b6a22475684db0dbe40bffeac55, type: 3}
+      - name: Mutant_Stalker
+        prefab: {fileID: 1591070594792302, guid: f6f44f890ee738846a817b37185b96cf,
+          type: 2}
+        skin: {fileID: 2800000, guid: 107f1e85030d204439429462a6a988ee, type: 3}
+      myPath: enemyskins/coop/
+      MaxTime: 300
+      ZombieSpawnMultiplier: 1
+      bossSpawns:
+      - bossName: 3
+        timeSpawn: 30
+      - bossName: 5
+        timeSpawn: 55
+      - bossName: 6
+        timeSpawn: 75
+      - bossName: 9
+        timeSpawn: 90
+      MaxZombies: 15
+      difficulty: 0
+    - MyName: COMZ_Arena
+      myEnemies:
+      - 27
+      - 27
+      - 27
+      - 27
+      - 28
+      - 28
+      - 28
+      - 28
+      - 28
+      - 28
+      enemies: []
+      myPath: enemyskins/coop/comzarena/
+      MaxTime: 300
+      ZombieSpawnMultiplier: 1
+      bossSpawns: []
+      MaxZombies: 15
+      difficulty: 2
+    - MyName: Castle
+      myEnemies:
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 20
+      - 2
+      - 6
+      - 7
+      - 26
+      enemies:
+      - name: Demon
+        prefab: {fileID: 1363545656046908, guid: 93afa04ba1071ae428ceca14c7ac8bf0,
+          type: 2}
+        skin: {fileID: 2800000, guid: 6afdb62de2f5f5848889a6dae89b8a19, type: 3}
+      - name: Magma_Demon
+        prefab: {fileID: 1388263283326229, guid: 03cbc4b74dbaa0742b330f01dfe8c507,
+          type: 2}
+        skin: {fileID: 2800000, guid: 13540b3ea10c23a48a2756672ecc0357, type: 3}
+      - name: Lava_Spider
+        prefab: {fileID: 1557431264984787, guid: f04a3117e7d91034585ae8ff342c559d,
+          type: 2}
+        skin: {fileID: 2800000, guid: 6f95bcaa95603ce4fa4643c36b769ec2, type: 3}
+      - name: Magma_Slime
+        prefab: {fileID: 1698694913763371, guid: 0504b4a1b69fb5e418f182c2ef7f4693,
+          type: 2}
+        skin: {fileID: 2800000, guid: 5b164e1990444aa4281deef5f87d07e6, type: 3}
+      - name: Wraith
+        prefab: {fileID: 1248854469358833, guid: 730937cf9822bcb42b779a03f214a5f3,
+          type: 2}
+        skin: {fileID: 2800000, guid: fbe1af2ffe9475340acd30a29a8d7111, type: 3}
+      - name: Mutant_Stalker
+        prefab: {fileID: 1892313947797212, guid: 48518cf99c24d014a95a65ea1b9a395c,
+          type: 2}
+        skin: {fileID: 2800000, guid: 6ec50ff54a8b75b43a47b19b9c9d4ae5, type: 3}
+      - name: Demon_Crawler
+        prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+          type: 2}
+        skin: {fileID: 2800000, guid: f975542486376f149b88bd91eea551eb, type: 3}
+      - name: Giant_Demon
+        prefab: {fileID: 1979565685465406, guid: f22169d5680758147aaca9040ad85b25,
+          type: 2}
+        skin: {fileID: 2800000, guid: 5188bcf4741a922408afc20ad5b61216, type: 3}
+      - name: Small_Magma_Demon
+        prefab: {fileID: 1851863228908615, guid: 55ae3174f9effc04a9da6e291d6efe74,
+          type: 2}
+        skin: {fileID: 2800000, guid: b016bb388d26ab04594ae4158fdcc748, type: 3}
+      - name: Slow_Zombie_Pigman
+        prefab: {fileID: 1009372361998872, guid: 776be4c8b3571d248aa81da2893bc636,
+          type: 2}
+        skin: {fileID: 2800000, guid: aeb9f51cd31fcac408fbfab9a98cec4b, type: 3}
+      myPath: enemyskins/coopcastle/
+      MaxTime: 500
+      ZombieSpawnMultiplier: 3.5
+      bossSpawns:
+      - bossName: 11
+        timeSpawn: 25
+      - bossName: 11
+        timeSpawn: 45
+      - bossName: 11
+        timeSpawn: 60
+      - bossName: 11
+        timeSpawn: 75
+      - bossName: 11
+        timeSpawn: 90
+      - bossName: 11
+        timeSpawn: 95
+      - bossName: 11
+        timeSpawn: 99
+      MaxZombies: 50
+      difficulty: 1
+    - MyName: Arena
+      myEnemies:
+      - 1
+      - 2
+      - 26
+      - 6
+      - 7
+      - 24
+      - 23
+      - 17
+      - 10
+      - 29
+      enemies:
+      - name: Zombie_Pigman
+        prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+          type: 2}
+        skin: {fileID: 2800000, guid: b30175fe6b15b6b42b6d4db06495cede, type: 3}
+      - name: Skeleton_Crawler
+        prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+          type: 2}
+        skin: {fileID: 2800000, guid: efb4817b066b63546aa96de33d112fb0, type: 3}
+      - name: Big_Troll
+        prefab: {fileID: 1979565685465406, guid: f22169d5680758147aaca9040ad85b25,
+          type: 2}
+        skin: {fileID: 2800000, guid: 3f34fd3b21badf9418a3e7da9270b571, type: 3}
+      - name: Small_Troll
+        prefab: {fileID: 1851863228908615, guid: 55ae3174f9effc04a9da6e291d6efe74,
+          type: 2}
+        skin: {fileID: 2800000, guid: 6b988fc9c368b2445a6f7eb6b0c9e2c5, type: 3}
+      - name: Slow_Zombie_Pigman
+        prefab: {fileID: 1009372361998872, guid: 776be4c8b3571d248aa81da2893bc636,
+          type: 2}
+        skin: {fileID: 2800000, guid: b49db005d4c3e1541a105cefd54bde65, type: 3}
+      - name: Moldy_Slime
+        prefab: {fileID: 1698694913763371, guid: 0504b4a1b69fb5e418f182c2ef7f4693,
+          type: 2}
+        skin: {fileID: 2800000, guid: 2c9f6d9f56d50fb448533dca40d70858, type: 3}
+      - name: Blue_Spider
+        prefab: {fileID: 1557431264984787, guid: f04a3117e7d91034585ae8ff342c559d,
+          type: 2}
+        skin: {fileID: 2800000, guid: dc2e8221d9d160e4899d4d2da9140994, type: 3}
+      - name: Diamond_Monster
+        prefab: {fileID: 1371900867478340, guid: 63052414e22a86f4daf2e83770ce334d,
+          type: 2}
+        skin: {fileID: 2800000, guid: 8fd02b393df5fdf4e945261d34f9a2fb, type: 3}
+      - name: Diamond_Stalker
+        prefab: {fileID: 1324027655793698, guid: ffc85a90a5b11414cb56c0326fb5813a,
+          type: 2}
+        skin: {fileID: 2800000, guid: 7ba9531c604a6e84fa3dfe2997b2f747, type: 3}
+      - name: MachineGamer728
+        prefab: {fileID: 1783489050388950, guid: 08f248c1a7ce63b49941efad3b1e0789,
+          type: 2}
+        skin: {fileID: 2800000, guid: 5507015e05f7103479bb44f0137608c5, type: 3}
+      myPath: enemyskins/cooparena/
+      MaxTime: 750
+      ZombieSpawnMultiplier: 6
+      bossSpawns:
+      - bossName: 1
+        timeSpawn: 10
+      - bossName: 2
+        timeSpawn: 20
+      - bossName: 3
+        timeSpawn: 30
+      - bossName: 4
+        timeSpawn: 40
+      - bossName: 5
+        timeSpawn: 50
+      - bossName: 6
+        timeSpawn: 60
+      - bossName: 7
+        timeSpawn: 70
+      - bossName: 8
+        timeSpawn: 80
+      - bossName: 9
+        timeSpawn: 90
+      - bossName: 10
+        timeSpawn: 95
+      - bossName: 12
+        timeSpawn: 97
+      MaxZombies: 90
+      difficulty: 2
+    - MyName: Hospital
+      myEnemies:
+      - 1
+      - 2
+      - 16
+      - 30
+      - 31
+      - 32
+      - 33
+      - 34
+      - 35
+      - 36
+      enemies:
+      - name: Zombie_Patient
+        prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+          type: 2}
+        skin: {fileID: 2800000, guid: 5e06a333a49d089478fb5cb4e51b54fe, type: 3}
+      - name: Surgeon_Crawler
+        prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+          type: 2}
+        skin: {fileID: 2800000, guid: 083ede9197c74ca41bbb1d6e173c1d03, type: 3}
+      - name: Mutant_Stalker
+        prefab: {fileID: 1591070594792302, guid: f6f44f890ee738846a817b37185b96cf,
+          type: 2}
+        skin: {fileID: 2800000, guid: 3f570857cedf64d409e37c38fbef05e5, type: 3}
+      - name: Two_Headed_Stalker
+        prefab: {fileID: 1820874073568346, guid: e507106a3a09e0847be6f341d8f8419a,
+          type: 2}
+        skin: {fileID: 2800000, guid: 539748786fccb4f4bb1373afb5497a9e, type: 3}
+      - name: Giant_Spider
+        prefab: {fileID: 1478006113094598, guid: 41ead54d14035f449bd86538a1182177,
+          type: 2}
+        skin: {fileID: 2800000, guid: 00fb89177f7d91141aec0ed7c7ddc6c5, type: 3}
+      - name: Moldy_Zombie_Mutant
+        prefab: {fileID: 1970258722094856, guid: 034f4c42cde53b8468bae91ea223b2cf,
+          type: 2}
+        skin: {fileID: 2800000, guid: 7a251f0c7f1e8544db7e4da6be5e7c55, type: 3}
+      - name: Tiny_Zombie
+        prefab: {fileID: 1880346974867334, guid: 8462beabe72c52f4f9cb5767fb0b6437,
+          type: 2}
+        skin: {fileID: 2800000, guid: 96d34f108cd20324ab6fd540a5cfa217, type: 3}
+      - name: Scalpel_Surgeon
+        prefab: {fileID: 1341024148875270, guid: e95a06ec215963b40b0b88b4d4720bd1,
+          type: 2}
+        skin: {fileID: 2800000, guid: 84507b4a16d7f6d4b845543ed1a43ef6, type: 3}
+      - name: Deadly_Mutant_Stalker
+        prefab: {fileID: 1874713314927538, guid: ca64ea3f693585240965fafda593b639,
+          type: 2}
+        skin: {fileID: 2800000, guid: 1535420842c9e7149a1e30365bee5768, type: 3}
+      - name: Reaper_Zombie
+        prefab: {fileID: 1255232104473244, guid: 95bd3056102ac1843a4138f77aed3b72,
+          type: 2}
+        skin: {fileID: 2800000, guid: 85a2dd99c29314f42aca0ddce812af43, type: 3}
+      myPath: enemyskins/coophospital/
+      MaxTime: 400
+      ZombieSpawnMultiplier: 7
+      bossSpawns:
+      - bossName: 14
+        timeSpawn: 35
+      - bossName: 13
+        timeSpawn: 65
+      - bossName: 13
+        timeSpawn: 85
+      MaxZombies: 60
+      difficulty: 3
+    - MyName: Abandoned_Pool
+      myEnemies:
+      - 39
+      - 39
+      - 39
+      - 38
+      - 40
+      - 41
+      - 42
+      - 43
+      - 44
+      - 44
+      enemies:
+      - name: Zombie_Miner
+        prefab: {fileID: 1653976379527134, guid: 46ba09faa8e3c7043b6a5b1ebaae7f01,
+          type: 2}
+        skin: {fileID: 2800000, guid: c4ddabbd63a54604c8883b0ed818662e, type: 3}
+      - name: Zombie_Miner
+        prefab: {fileID: 1653976379527134, guid: 46ba09faa8e3c7043b6a5b1ebaae7f01,
+          type: 2}
+        skin: {fileID: 2800000, guid: c4ddabbd63a54604c8883b0ed818662e, type: 3}
+      - name: Zombie_Miner
+        prefab: {fileID: 1653976379527134, guid: 46ba09faa8e3c7043b6a5b1ebaae7f01,
+          type: 2}
+        skin: {fileID: 2800000, guid: c4ddabbd63a54604c8883b0ed818662e, type: 3}
+      - name: Zombie_Hunter
+        prefab: {fileID: 1185962865110468, guid: a66848b71018fa1419eeca2c88421579,
+          type: 2}
+        skin: {fileID: 2800000, guid: e853e851b4c806d4f8363f1707243546, type: 3}
+      - name: Mossy_Zombie
+        prefab: {fileID: 1862013062753752, guid: 8196258fb151d4f49ac18a790e6f5592,
+          type: 2}
+        skin: {fileID: 2800000, guid: 88acde0bfa67a9744b17aef677a6622a, type: 3}
+      - name: Rambo_Zombie
+        prefab: {fileID: 1917864392739676, guid: 42c2be103c9bd934fbb1f12dc043b68c,
+          type: 2}
+        skin: {fileID: 2800000, guid: 73c2bdd3d773a0744a6db7abc54f5975, type: 3}
+      - name: Zombified_Hero
+        prefab: {fileID: 1519160334109322, guid: d0b32709af13b8b4795f035b0b8caf43,
+          type: 2}
+        skin: {fileID: 2800000, guid: 0262c0432620b99458698039a91d2ad4, type: 3}
+      - name: Mangled_Zombie
+        prefab: {fileID: 1586729568254682, guid: 33e6a0c1a54bf5d4b8cef5e2cbc36a16,
+          type: 2}
+        skin: {fileID: 2800000, guid: eaff0de6a49d1d7428c21bc7444c23c3, type: 3}
+      - name: Crazed_Zombie_Mutant
+        prefab: {fileID: 1922297824403594, guid: 27e34398e1a1f8342a54cd992ea4ccc5,
+          type: 2}
+        skin: {fileID: 2800000, guid: 8030198df2a36744295ee866cb750a69, type: 3}
+      - name: Crazed_Zombie_Mutant
+        prefab: {fileID: 1922297824403594, guid: 27e34398e1a1f8342a54cd992ea4ccc5,
+          type: 2}
+        skin: {fileID: 2800000, guid: 8030198df2a36744295ee866cb750a69, type: 3}
+      myPath: enemyskins/coopabandonedpool/
+      MaxTime: 500
+      ZombieSpawnMultiplier: 12
+      bossSpawns:
+      - bossName: 14
+        timeSpawn: 35
+      - bossName: 13
+        timeSpawn: 65
+      - bossName: 13
+        timeSpawn: 85
+      MaxZombies: 125
+      difficulty: 6
+    - MyName: carpark
+      myEnemies:
+      - 47
+      enemies:
+      - name: Whiteface
+        prefab: {fileID: 1115111193166136, guid: f6e938fba0e954fa283c9c8e8e4b7c26,
+          type: 2}
+        skin: {fileID: 2800000, guid: 44fd80e7be140499ca4482dab3ae8eac, type: 3}
+      myPath: enemyskins/coopabandonedpool/
+      MaxTime: 500
+      ZombieSpawnMultiplier: 12
+      bossSpawns:
+      - bossName: 14
+        timeSpawn: 46
+      MaxZombies: 1
+      difficulty: 6
+  coopMaps:
+  - Winter
+  - Utopia
+  - Sky_Islands
+  - Dust
+  - Bridge
+  - Assault
+  - Farm

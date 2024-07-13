@@ -1,0 +1,878 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1171093872966566}
+  m_IsPrefabParent: 1
+--- !u!1 &1171093872966566
+GameObject:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - component: {fileID: 4006024547885874}
+  - component: {fileID: 114437061068369727}
+  m_Layer: 0
+  m_Name: ImageFontKillInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4006024547885874
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171093872966566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114437061068369727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171093872966566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f7db9a480b403690a4a83220213122, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  material: {fileID: 2100000, guid: 3610ce4f064dc0845a7b5946788db5fb, type: 2}
+  mSprites:
+  - name: KillInfo_AK47
+    x: 441
+    y: 179
+    width: 64
+    height: 23
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 13
+    paddingBottom: 7
+  - name: KillInfo_Assault
+    x: 452
+    y: 203
+    width: 59
+    height: 25
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 2
+    paddingTop: 11
+    paddingBottom: 7
+  - name: KillInfo_AUG
+    x: 192
+    y: 23
+    width: 64
+    height: 27
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 10
+    paddingBottom: 6
+  - name: KillInfo_AWP
+    x: 429
+    y: 133
+    width: 64
+    height: 18
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 13
+    paddingBottom: 12
+  - name: KillInfo_BallisticKnife
+    x: 65
+    y: 74
+    width: 61
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 1
+    paddingRight: 2
+    paddingTop: 7
+    paddingBottom: 6
+  - name: KillInfo_BurstRG2
+    x: 192
+    y: 2
+    width: 64
+    height: 20
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 11
+    paddingBottom: 12
+  - name: KillInfo_CandyHammer
+    x: 127
+    y: 221
+    width: 64
+    height: 35
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 5
+    paddingBottom: 3
+  - name: KillInfo_CandyRifle
+    x: 192
+    y: 51
+    width: 64
+    height: 27
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 9
+    paddingBottom: 7
+  - name: KillInfo_ChristmasSniper
+    x: 127
+    y: 117
+    width: 64
+    height: 33
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 1
+    paddingBottom: 9
+  - name: KillInfo_DeathHunter
+    x: 312
+    y: 178
+    width: 63
+    height: 24
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 1
+    paddingRight: 0
+    paddingTop: 10
+    paddingBottom: 9
+  - name: KillInfo_DesertEagle
+    x: 65
+    y: 219
+    width: 61
+    height: 37
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 3
+    paddingTop: 5
+    paddingBottom: 1
+  - name: KillInfo_Digger
+    x: 370
+    y: 131
+    width: 58
+    height: 20
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 4
+    paddingTop: 12
+    paddingBottom: 11
+  - name: KillInfo_DualPistol
+    x: 257
+    y: 70
+    width: 50
+    height: 28
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 7
+    paddingRight: 7
+    paddingTop: 9
+    paddingBottom: 6
+  - name: KillInfo_Firelock
+    x: 321
+    y: 230
+    width: 64
+    height: 26
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 12
+    paddingBottom: 5
+  - name: KillInfo_Flamethrower
+    x: 0
+    y: 169
+    width: 64
+    height: 43
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: KillInfo_Flower
+    x: 0
+    y: 213
+    width: 64
+    height: 43
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: KillInfo_FreddyGun
+    x: 312
+    y: 125
+    width: 57
+    height: 26
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 3
+    paddingTop: 9
+    paddingBottom: 8
+  - name: KillInfo_G36K
+    x: 127
+    y: 21
+    width: 64
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 9
+    paddingBottom: 4
+  - name: KillInfo_GingerbreadBomb
+    x: 257
+    y: 99
+    width: 34
+    height: 42
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 14
+    paddingTop: 1
+    paddingBottom: 0
+  - name: KillInfo_GingerbreadKnife
+    x: 192
+    y: 137
+    width: 62
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 1
+    paddingRight: 1
+    paddingTop: 9
+    paddingBottom: 5
+  - name: KillInfo_GLOCK21
+    x: 65
+    y: 180
+    width: 57
+    height: 38
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 1
+    paddingRight: 6
+    paddingTop: 5
+    paddingBottom: 0
+  - name: KillInfo_HalloweenGun
+    x: 192
+    y: 197
+    width: 64
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 8
+    paddingBottom: 6
+  - name: KillInfo_HonorAK47
+    x: 438
+    y: 156
+    width: 60
+    height: 21
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 2
+    paddingTop: 12
+    paddingBottom: 11
+  - name: KillInfo_HonorAWP
+    x: 370
+    y: 94
+    width: 58
+    height: 16
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 3
+    paddingTop: 15
+    paddingBottom: 12
+  - name: KillInfo_HonorKnife
+    x: 257
+    y: 22
+    width: 47
+    height: 24
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 9
+    paddingRight: 8
+    paddingTop: 10
+    paddingBottom: 10
+  - name: KillInfo_HonorM134
+    x: 65
+    y: 12
+    width: 54
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 6
+    paddingTop: 8
+    paddingBottom: 5
+  - name: KillInfo_HonorM4
+    x: 370
+    y: 111
+    width: 58
+    height: 19
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 2
+    paddingTop: 11
+    paddingBottom: 14
+  - name: KillInfo_ImpulseGun
+    x: 257
+    y: 47
+    width: 53
+    height: 22
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 6
+    paddingRight: 5
+    paddingTop: 12
+    paddingBottom: 9
+  - name: KillInfo_LaserR7
+    x: 257
+    y: 203
+    width: 64
+    height: 25
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 12
+    paddingBottom: 6
+  - name: KillInfo_M1
+    x: 429
+    y: 114
+    width: 60
+    height: 16
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 2
+    paddingTop: 14
+    paddingBottom: 13
+  - name: KillInfo_M134
+    x: 192
+    y: 167
+    width: 64
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 7
+    paddingBottom: 7
+  - name: KillInfo_M249
+    x: 0
+    y: 41
+    width: 64
+    height: 39
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 4
+    paddingBottom: 0
+  - name: KillInfo_M29
+    x: 312
+    y: 152
+    width: 60
+    height: 25
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 2
+    paddingTop: 12
+    paddingBottom: 6
+  - name: KillInfo_M3
+    x: 322
+    y: 204
+    width: 64
+    height: 24
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 13
+    paddingBottom: 6
+  - name: KillInfo_M4
+    x: 376
+    y: 179
+    width: 64
+    height: 23
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 12
+    paddingBottom: 8
+  - name: KillInfo_M67
+    x: 0
+    y: 81
+    width: 64
+    height: 43
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: KillInfo_M87T
+    x: 386
+    y: 230
+    width: 64
+    height: 26
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 12
+    paddingBottom: 5
+  - name: KillInfo_MilkBomb
+    x: 0
+    y: 125
+    width: 64
+    height: 43
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: KillInfo_MiniCannon
+    x: 370
+    y: 72
+    width: 37
+    height: 21
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 11
+    paddingRight: 16
+    paddingTop: 11
+    paddingBottom: 11
+  - name: KillInfo_MK5
+    x: 127
+    y: 186
+    width: 64
+    height: 34
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 5
+    paddingBottom: 4
+  - name: KillInfo_MP5KA5
+    x: 65
+    y: 140
+    width: 51
+    height: 39
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 8
+    paddingTop: 4
+    paddingBottom: 0
+  - name: KillInfo_Nightmare
+    x: 312
+    y: 102
+    width: 56
+    height: 22
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 12
+    paddingBottom: 9
+  - name: KillInfo_NuclearEmitter
+    x: 65
+    y: 43
+    width: 55
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 4
+    paddingTop: 6
+    paddingBottom: 7
+  - name: KillInfo_RPG
+    x: 127
+    y: 52
+    width: 64
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 7
+    paddingBottom: 6
+  - name: KillInfo_SAK47
+    x: 387
+    y: 204
+    width: 64
+    height: 24
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 12
+    paddingBottom: 7
+  - name: KillInfo_SantaGun
+    x: 127
+    y: 83
+    width: 63
+    height: 33
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 1
+    paddingTop: 6
+    paddingBottom: 4
+  - name: KillInfo_SantaGun2014
+    x: 127
+    y: 151
+    width: 64
+    height: 34
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 6
+    paddingBottom: 3
+  - name: KillInfo_SAUG
+    x: 192
+    y: 108
+    width: 64
+    height: 28
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 10
+    paddingBottom: 5
+  - name: KillInfo_SDesertEagle
+    x: 0
+    y: 3
+    width: 61
+    height: 37
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 1
+    paddingRight: 2
+    paddingTop: 6
+    paddingBottom: 0
+  - name: KillInfo_SG36K
+    x: 192
+    y: 227
+    width: 64
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 10
+    paddingBottom: 4
+  - name: KillInfo_ShadowSnake
+    x: 312
+    y: 38
+    width: 56
+    height: 19
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 3
+    paddingTop: 14
+    paddingBottom: 10
+  - name: KillInfo_Shark
+    x: 257
+    y: 173
+    width: 54
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 7
+    paddingRight: 3
+    paddingTop: 8
+    paddingBottom: 6
+  - name: KillInfo_Shovel
+    x: 451
+    y: 229
+    width: 59
+    height: 27
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 2
+    paddingTop: 11
+    paddingBottom: 5
+  - name: KillInfo_SM134
+    x: 192
+    y: 79
+    width: 64
+    height: 28
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 8
+    paddingBottom: 7
+  - name: KillInfo_SM4
+    x: 373
+    y: 155
+    width: 64
+    height: 22
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 14
+    paddingBottom: 7
+  - name: KillInfo_SnowmanBomb
+    x: 312
+    y: 58
+    width: 26
+    height: 43
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 19
+    paddingRight: 19
+    paddingTop: 0
+    paddingBottom: 0
+  - name: KillInfo_StenMarkV
+    x: 257
+    y: 229
+    width: 63
+    height: 27
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 1
+    paddingTop: 11
+    paddingBottom: 5
+  - name: KillInfo_SweetMemory
+    x: 257
+    y: 142
+    width: 52
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 8
+    paddingRight: 4
+    paddingTop: 9
+    paddingBottom: 4
+  - name: KillInfo_TeslaP1
+    x: 370
+    y: 50
+    width: 31
+    height: 21
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 17
+    paddingTop: 11
+    paddingBottom: 11
+  - name: KillInfo_ThunderX6
+    x: 127
+    y: 1
+    width: 64
+    height: 19
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 12
+    paddingBottom: 12
+  - name: KillInfo_UZI
+    x: 65
+    y: 105
+    width: 55
+    height: 34
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 5
+    paddingTop: 8
+    paddingBottom: 1
+  - name: KillInfo_ZombieHand
+    x: 257
+    y: 6
+    width: 48
+    height: 15
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 8
+    paddingRight: 8
+    paddingTop: 15
+    paddingBottom: 13
+  - name: Skull
+    x: 312
+    y: 5
+    width: 32
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  mPixelSize: 1
+  mReplacement: {fileID: 0}
+  mCoordinates: 0
+  sprites: []

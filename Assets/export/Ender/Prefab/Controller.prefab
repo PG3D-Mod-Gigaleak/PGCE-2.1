@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1385676727907204}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0
+--- !u!1 &1385676727907204
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4119768117619134}
+  - 114: {fileID: 114937214925682682}
+  - 114: {fileID: 114908832443347600}
+  - 114: {fileID: 114824595122596144}
+  m_Layer: 0
+  m_Name: Controller
+  m_TagString: tagNotDestrContr
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4119768117619134
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385676727907204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &114937214925682682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385676727907204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78785aa1ef4f90744b77fbc339456f6f, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!114 &114908832443347600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385676727907204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b230a8ea6896ae0e8c79ca2d00b69c82, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  kolMonet: 20
+  myLevel: 1
+  maxLevel: 15
+  myOpit: 101
+  tonus: 0
+  radost: 100
+  sitost: 0
+  dirtyArray: []
+  skinName:
+  hatName:
+  shoesName:
+  tieName:
+  isRecord: 0
+  isPlay: 0
+  tonusPtInLevArr: 64000000780000008c000000a0000000c8000000f000000018010000400100006801000090010000c2010000f401000058020000bc02000084030000
+  sitostPtInLevArr: 64000000780000008c000000a0000000c8000000f000000018010000400100006801000090010000c2010000f401000058020000bc02000084030000
+  radostPtInLevArr: 64000000780000008c000000a0000000c8000000f000000018010000400100006801000090010000c2010000f401000058020000bc02000084030000
+  opitPtInLevArray: 3c000000960000002c010000f4010000bc020000b00400004006000098080000f00a0000ac0d000088130000581b000028230000c832000050460000
+  uvTonusPtMin:
+  - 1.7
+  - 2
+  - 2.3
+  - 2.7
+  - 3.3
+  - 2
+  - 2.3
+  - 2.7
+  - 3
+  - 3.3
+  - 2.5
+  - 2.8
+  - 3.3
+  - 3.8
+  - 5
+  umTonusProcMin: 0.416
+  umTonusProcMinGame: 1
+  umSitostProcMin: 0.56
+  umSitostProcMinGame: 1
+  umRadostProcMin: 0.56
+  umRadostProcMinSleep: 1
+  uvRadostPtMin: 20
+  uvDirtyProc: 20
+  uvDirtyTime: 60
+  uvDirtyTimeFood: 20
+  porogTonusa: 40
+  porogRadosti: 50
+  porogSitosti: 50
+  coinsPorogTonusa: 0a0000000a0000000a0000001400000014000000140000001e0000001e0000001e000000280000002800000028000000320000003200000032000000
+  coinsPorogSitosti: 0a0000000a0000000a0000001400000014000000140000001e0000001e0000001e000000280000002800000028000000320000003200000032000000
+  coinsPorogRadosti: 0a0000000a0000000a0000001400000014000000140000001e0000001e0000001e000000280000002800000028000000320000003200000032000000
+  opitPorogTonusa: 14000000280000002800000032000000320000005000000050000000500000006e0000006e0000006e000000c8000000c8000000c80000002c010000
+  opitPorogSitosti: 0a0000000a0000000f0000000f0000000f00000014000000190000001e00000023000000320000003c00000046000000500000005a00000064000000
+  opitPorogRadosti: 0a0000000a0000000f0000000f0000000f00000014000000190000001e00000023000000320000003c00000046000000500000005a00000064000000
+  porogTonusaProcForMG: 10
+  porogSitostiProcForMG_Slip: 40
+  porogRadostiProcForAnim: 20
+  textNotifications:
+  - I feel lonely. Will you come back to me?
+  - Are we no longer friends?
+  - I feel so bad without you. Return to me, my friend!
+  - Hey, I got enough sleep! Wake me up!
+  - Halloo, where are you? I am sleepy…
+  - I am in a blue mood, play with me!
+  - My tummy is growling. Are you going to feed me?
+  - I am dirty, can you clean me? ( you cannot wash him, as he is afraid of water)
+  textNotifButts:
+  - come back
+  - be friends
+  - come back
+  - wake up
+  - go to bed
+  - play
+  - feed
+  - clean
+  kolCoinsForEnter: 50
+  isPlayingGame: 0
+  isSleeping: 0
+  isFoodClick: 0
+  isDrinkClick: 0
+  isPlayingBall: 0
+  isSpeach: 0
+  isMagazin: 0
+  isWardrobe: 0
+  isMiniGames: 0
+  isWash: 0
+  otklLookTarger: 0
+  isVerySad: 0
+  isWantToilet: 0
+  isIdle: 1
+  timeBezdeistv: 0
+  timeDirty: 0
+  timeToilet: 0
+  toSkinMaker: 0
+  tranScript: {fileID: 0}
+--- !u!114 &114824595122596144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385676727907204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd73462b99c889838b3b3e70d37cd737, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:

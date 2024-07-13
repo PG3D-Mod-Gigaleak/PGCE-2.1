@@ -1,0 +1,441 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1323915333433322}
+  m_IsPrefabParent: 1
+--- !u!1 &1323915333433322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4593958428546786}
+  - component: {fileID: 114374427076732458}
+  m_Layer: 0
+  m_Name: SurvivalConfig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4593958428546786
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323915333433322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.44213486, y: -6.598194, z: 13.123991}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114374427076732458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323915333433322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a3db9696c0d664290fa39309c996ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+    levels:
+    - PossibleLevels:
+      - mySceneName: Cementery
+        myEnemies:
+        - 1
+        - 2
+        - 1
+        - 11
+        - 12
+        - 13
+        - 45
+        enemies:
+        - name: Zombie_Skeleton
+          prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+            type: 2}
+          skin: {fileID: 2800000, guid: f1e36f27ea25d534994e9557c68c0f44, type: 3}
+        - name: Crawler_Default
+          prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+            type: 2}
+          skin: {fileID: 2800000, guid: 8cdd104c581bdde419498cab4c359b9e, type: 3}
+        - name: Zombie_Skeleton
+          prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+            type: 2}
+          skin: {fileID: 2800000, guid: f1e36f27ea25d534994e9557c68c0f44, type: 3}
+        - name: Slime_Default
+          prefab: {fileID: 1453222124711526, guid: 9c070775079ae614e88165a2cee0342d,
+            type: 2}
+          skin: {fileID: 2800000, guid: 998c1212fea646c4c8cbed31b7da673d, type: 3}
+        - name: Spider_Default
+          prefab: {fileID: 1603652184724008, guid: 33197ef0285c87142a33537a92ad5520,
+            type: 2}
+          skin: {fileID: 2800000, guid: 73aff046dbf84fc4981b89c6c52e66b1, type: 3}
+        - name: Ghost_Default
+          prefab: {fileID: 1175101051638105, guid: 6a2583822e4896640bd14800bbc6e4de,
+            type: 2}
+          skin: {fileID: 2800000, guid: fd5fd5a8fba3f2f4b9a4b7953310d37f, type: 3}
+        - name: Lanky_Spider_Default
+          prefab: {fileID: 1565160265868098, guid: 5a585503c69594b4db4dbecb642e5600,
+            type: 2}
+          skin: {fileID: 2800000, guid: 076297fb8473a9445a8c73c5f09fb1b9, type: 3}
+        myMusicLevel: 1
+        myLoading: Loading_Cementery
+        myBoss: 1
+      - mySceneName: COMZ_Arena
+        myEnemies:
+        - 27
+        - 27
+        - 27
+        - 27
+        - 28
+        enemies:
+        - name: Mini_Zombie
+          prefab: {fileID: 1357271607759286, guid: 74eb77a0b1c75f648833333ae546e61c,
+            type: 2}
+          skin: {fileID: 2800000, guid: a0a414f41e23f5d459b75bb54c3eb567, type: 3}
+        - name: Mini_Zombie
+          prefab: {fileID: 1357271607759286, guid: 74eb77a0b1c75f648833333ae546e61c,
+            type: 2}
+          skin: {fileID: 2800000, guid: a0a414f41e23f5d459b75bb54c3eb567, type: 3}
+        - name: Mini_Zombie
+          prefab: {fileID: 1357271607759286, guid: 74eb77a0b1c75f648833333ae546e61c,
+            type: 2}
+          skin: {fileID: 2800000, guid: a0a414f41e23f5d459b75bb54c3eb567, type: 3}
+        - name: Mini_Zombie
+          prefab: {fileID: 1357271607759286, guid: 74eb77a0b1c75f648833333ae546e61c,
+            type: 2}
+          skin: {fileID: 2800000, guid: a0a414f41e23f5d459b75bb54c3eb567, type: 3}
+        - name: Mini_Zombie_Elite
+          prefab: {fileID: 1207609046188746, guid: acc7276f8930a4c429849de71d1b3158,
+            type: 2}
+          skin: {fileID: 2800000, guid: 4dfba8160b032c24bb8941956dc65df4, type: 3}
+        myMusicLevel: 4014
+        myLoading: Loading_COMZ_Arena
+        myBoss: 1
+    - PossibleLevels:
+      - mySceneName: Maze
+        myEnemies:
+        - 1
+        - 2
+        - 3
+        - 10
+        - 14
+        enemies:
+        - name: Zombie_Mummy
+          prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+            type: 2}
+          skin: {fileID: 2800000, guid: 8c7c904adebc0294cb4548abe2b886aa, type: 3}
+        - name: Egyptian_Crawler
+          prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+            type: 2}
+          skin: {fileID: 2800000, guid: d152b3fe892d6f64db91235e992ba229, type: 3}
+        - name: Raven_Mummy
+          prefab: {fileID: 1708163454137135, guid: edaa77e4a24d7a045814801a3bb1a77a,
+            type: 2}
+          skin: {fileID: 2800000, guid: d65e2466944739344b62ca793744cbac, type: 3}
+        - name: Egyptian_Stalker
+          prefab: {fileID: 1324027655793698, guid: ffc85a90a5b11414cb56c0326fb5813a,
+            type: 2}
+          skin: {fileID: 2800000, guid: 1d56a20b56df77c4695531efb8803117, type: 3}
+        - name: Skeleton_Head
+          prefab: {fileID: 1873817636696242, guid: d6d6d94eb9ac5194f94383d697cd6731,
+            type: 2}
+          skin: {fileID: 2800000, guid: 76203887a18424c4fa6fc360538c8601, type: 3}
+        myMusicLevel: 2
+        myLoading: Loading_Maze
+        myBoss: 2
+    - PossibleLevels:
+      - mySceneName: City
+        myEnemies:
+        - 1
+        - 2
+        - 3
+        - 9
+        - 10
+        - 12
+        - 14
+        - 15
+        enemies:
+        - name: Zombie_Default
+          prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+            type: 2}
+          skin: {fileID: 2800000, guid: 5e9d500cf1df0514fa9bcdf2a25f6de7, type: 3}
+        - name: Army_Crawler
+          prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+            type: 2}
+          skin: {fileID: 2800000, guid: a2c5778cc2db0c2438a534b9b58eee9c, type: 3}
+        - name: Raven_Default
+          prefab: {fileID: 1708163454137135, guid: edaa77e4a24d7a045814801a3bb1a77a,
+            type: 2}
+          skin: {fileID: 2800000, guid: 234008aa39a3e7d4fae5b3d3b4046a2a, type: 3}
+        - name: Zombie_Mutant_Default
+          prefab: {fileID: 1548786736643830, guid: 0558349170070b3419546580f0c9bc16,
+            type: 2}
+          skin: {fileID: 2800000, guid: 4422d896f087365458ab7c6a26e3ff71, type: 3}
+        - name: Stalker_Default
+          prefab: {fileID: 1324027655793698, guid: ffc85a90a5b11414cb56c0326fb5813a,
+            type: 2}
+          skin: {fileID: 2800000, guid: 591760b6c8f115c4990e85a4b62b2943, type: 3}
+        - name: Spider_Default
+          prefab: {fileID: 1603652184724008, guid: 33197ef0285c87142a33537a92ad5520,
+            type: 2}
+          skin: {fileID: 2800000, guid: ac2c96110a7a92a4d89d9c5ff5fd5af4, type: 3}
+        - name: Zombie_Head_Default
+          prefab: {fileID: 1873817636696242, guid: d6d6d94eb9ac5194f94383d697cd6731,
+            type: 2}
+          skin: {fileID: 2800000, guid: c0527b2d681a66f4386fe40e5704ed6e, type: 3}
+        - name: Headless_Zombie_Default
+          prefab: {fileID: 1346653557578468, guid: c7eaf209a1475704689db6841acad0cb,
+            type: 2}
+          skin: {fileID: 2800000, guid: 5c870ec38acf4ed4a8423d8bfc5bdc0a, type: 3}
+        myMusicLevel: 3
+        myLoading: Loading_City
+        myBoss: 3
+    - PossibleLevels:
+      - mySceneName: Hospital
+        myEnemies:
+        - 1
+        - 2
+        - 4
+        - 11
+        - 9
+        - 16
+        enemies:
+        - name: Zombie_Patient
+          prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+            type: 2}
+          skin: {fileID: 2800000, guid: 7c36c242bf44ceb408a865c524d6f136, type: 3}
+        - name: Zombie_Crawler
+          prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+            type: 2}
+          skin: {fileID: 2800000, guid: e4fde0ba0988a5e4bbd54dbf97e6e185, type: 3}
+        - name: Zombie_Surgeon
+          prefab: {fileID: 1348302472093010, guid: 3d2a4449801031e43815d84591c42215,
+            type: 2}
+          skin: {fileID: 2800000, guid: 85507a1d4b3e1984f832cf7c1b843df8, type: 3}
+        - name: Red_Slime
+          prefab: {fileID: 1453222124711526, guid: 9c070775079ae614e88165a2cee0342d,
+            type: 2}
+          skin: {fileID: 2800000, guid: 0ea74b881e4a1af47b67f9208032fdf5, type: 3}
+        - name: Zombie_Mutant_Default
+          prefab: {fileID: 1548786736643830, guid: 0558349170070b3419546580f0c9bc16,
+            type: 2}
+          skin: {fileID: 2800000, guid: a496c9803391d9c45bfb7b875f4acd64, type: 3}
+        - name: Stalker_Mutant_Default
+          prefab: {fileID: 1591070594792302, guid: f6f44f890ee738846a817b37185b96cf,
+            type: 2}
+          skin: {fileID: 2800000, guid: a745f2ea88dc81c488e6d6b9fa723058, type: 3}
+        myMusicLevel: 4
+        myLoading: Loading_Hospital
+        myBoss: 4
+    - PossibleLevels:
+      - mySceneName: Jail
+        myEnemies:
+        - 1
+        - 2
+        - 4
+        - 9
+        - 11
+        - 10
+        - 12
+        enemies:
+        - name: Zombie_Prisoner
+          prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+            type: 2}
+          skin: {fileID: 2800000, guid: 340203ebe76058948978c84ef2b35785, type: 3}
+        - name: Prisoner_Crawler
+          prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+            type: 2}
+          skin: {fileID: 2800000, guid: de8e38d24297dcc4287b5700fd71efd2, type: 3}
+        - name: Zombie_Police_Officer
+          prefab: {fileID: 1348302472093010, guid: 3d2a4449801031e43815d84591c42215,
+            type: 2}
+          skin: {fileID: 2800000, guid: 37660838a03165645aadadf919fe2542, type: 3}
+        - name: Mutant_Police_Officer
+          prefab: {fileID: 1548786736643830, guid: 0558349170070b3419546580f0c9bc16,
+            type: 2}
+          skin: {fileID: 2800000, guid: d43b21baef67d5e4a81d07518e46bfa3, type: 3}
+        - name: Stalker_Default
+          prefab: {fileID: 1324027655793698, guid: ffc85a90a5b11414cb56c0326fb5813a,
+            type: 2}
+          skin: {fileID: 2800000, guid: b4d91490126e3a644962f69003b4cb23, type: 3}
+        - name: Slime_Default
+          prefab: {fileID: 1453222124711526, guid: 9c070775079ae614e88165a2cee0342d,
+            type: 2}
+          skin: {fileID: 2800000, guid: 8ec8dab5fc96bab4890de6a57a5ef3a1, type: 3}
+        - name: Red_Spider
+          prefab: {fileID: 1603652184724008, guid: 33197ef0285c87142a33537a92ad5520,
+            type: 2}
+          skin: {fileID: 2800000, guid: 5693296eb6ae78a429186b5b04d11edd, type: 3}
+        myMusicLevel: 5
+        myLoading: Loading_Jail
+        myBoss: 5
+    - PossibleLevels:
+      - mySceneName: Gluk
+        myEnemies:
+        - 1
+        - 2
+        - 3
+        - 9
+        - 17
+        enemies:
+        - name: Enderman
+          prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+            type: 2}
+          skin: {fileID: 2800000, guid: 0ed2bce3226e785428d6a9f4e36b52b9, type: 3}
+        - name: Enderman_Crawler
+          prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+            type: 2}
+          skin: {fileID: 2800000, guid: 1cec6b4df33ae1e4b884ee9a316078ae, type: 3}
+        - name: Raven_Default
+          prefab: {fileID: 1708163454137135, guid: edaa77e4a24d7a045814801a3bb1a77a,
+            type: 2}
+          skin: {fileID: 2800000, guid: 42f9efbd29c608140819fe60c14c6c6c, type: 3}
+        - name: Ender_Mutant
+          prefab: {fileID: 1548786736643830, guid: 0558349170070b3419546580f0c9bc16,
+            type: 2}
+          skin: {fileID: 2800000, guid: b45f0f682f2d29d4ca386785c163fd94, type: 3}
+        - name: Obsidian_Monster
+          prefab: {fileID: 1371900867478340, guid: 63052414e22a86f4daf2e83770ce334d,
+            type: 2}
+          skin: {fileID: 2800000, guid: 508ae34b6602ee74196601e8327e9544, type: 3}
+        myMusicLevel: 6
+        myLoading: Loading_Gluk
+        myBoss: 6
+    - PossibleLevels:
+      - mySceneName: Arena
+        myEnemies:
+        - 6
+        - 7
+        - 7
+        - 1
+        - 2
+        enemies:
+        - name: Big_Troll
+          prefab: {fileID: 1979565685465406, guid: f22169d5680758147aaca9040ad85b25,
+            type: 2}
+          skin: {fileID: 2800000, guid: cd8f10bc0854a1743a12e6a1fade6f62, type: 3}
+        - name: Small_Troll
+          prefab: {fileID: 1851863228908615, guid: 55ae3174f9effc04a9da6e291d6efe74,
+            type: 2}
+          skin: {fileID: 2800000, guid: 6a4f7916b17ce5b45b704902b256c67b, type: 3}
+        - name: Small_Troll
+          prefab: {fileID: 1851863228908615, guid: 55ae3174f9effc04a9da6e291d6efe74,
+            type: 2}
+          skin: {fileID: 2800000, guid: 6a4f7916b17ce5b45b704902b256c67b, type: 3}
+        - name: Zombie_Pigman
+          prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+            type: 2}
+          skin: {fileID: 2800000, guid: 1bbc0853b70c4d2409a9531a74b919c8, type: 3}
+        - name: Skeleton_Crawler
+          prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+            type: 2}
+          skin: {fileID: 2800000, guid: cfb74226fc5836946ba8c680a105609f, type: 3}
+        myMusicLevel: 7
+        myLoading: Loading_Arena
+        myBoss: 7
+    - PossibleLevels:
+      - mySceneName: Area52
+        myEnemies:
+        - 1
+        - 2
+        - 8
+        - 10
+        - 11
+        - 12
+        enemies:
+        - name: Hazmat_Zombie
+          prefab: {fileID: 1417224907709963, guid: 413040c9ea7e1d843b020b3829b48aa8,
+            type: 2}
+          skin: {fileID: 2800000, guid: dbcfd8d282b46004ca4a35de04af1ae0, type: 3}
+        - name: Scientist_Crawler
+          prefab: {fileID: 1180997418199874, guid: c58a816c228eb034fa8e718d02cbe4f5,
+            type: 2}
+          skin: {fileID: 2800000, guid: f99b1cc76f609b44183fb05636c71499, type: 3}
+        - name: Alien_Default
+          prefab: {fileID: 1950321264163080, guid: 6bc3b34089a8a074b8110c5c0e26aeb1,
+            type: 2}
+          skin: {fileID: 2800000, guid: 317b089af62e6d041aef782310307b80, type: 3}
+        - name: Stalker_Default
+          prefab: {fileID: 1324027655793698, guid: ffc85a90a5b11414cb56c0326fb5813a,
+            type: 2}
+          skin: {fileID: 2800000, guid: 45627a60d43c74849a625ed03a6f2a98, type: 3}
+        - name: Yellow_Slime
+          prefab: {fileID: 1453222124711526, guid: 9c070775079ae614e88165a2cee0342d,
+            type: 2}
+          skin: {fileID: 2800000, guid: 1042cf33f7fe46b4799cec490b8ea3f5, type: 3}
+        - name: Red_Spider
+          prefab: {fileID: 1603652184724008, guid: 33197ef0285c87142a33537a92ad5520,
+            type: 2}
+          skin: {fileID: 2800000, guid: e2379d67b415e5f40899845fafe280e4, type: 3}
+        myMusicLevel: 8
+        myLoading: Loading_Area52
+        myBoss: 8
+    - PossibleLevels:
+      - mySceneName: Slender
+        myEnemies:
+        - 18
+        - 19
+        - 20
+        enemies:
+        - name: Zombie_Bear
+          prefab: {fileID: 1095544960184123, guid: aca0152428b8af04fbc35737058c4836,
+            type: 2}
+          skin: {fileID: 2800000, guid: 7c57dafa61a77314ab6ab5c0eb485807, type: 3}
+        - name: Slender
+          prefab: {fileID: 1803407515886872, guid: 9547055c64f59db4385e31337fba4ad6,
+            type: 2}
+          skin: {fileID: 2800000, guid: 9ea6c236c65c3674d9ee2d39ca964828, type: 3}
+        - name: Mutant_Slender
+          prefab: {fileID: 1892313947797212, guid: 48518cf99c24d014a95a65ea1b9a395c,
+            type: 2}
+          skin: {fileID: 2800000, guid: 9da7d68e86a4ee74e86c5c2ce87757db, type: 3}
+        myMusicLevel: 9
+        myLoading: Loading_Slender
+        myBoss: 9
+    - PossibleLevels:
+      - mySceneName: Castle
+        myEnemies:
+        - 21
+        - 22
+        - 23
+        - 24
+        - 25
+        enemies:
+        - name: Demon
+          prefab: {fileID: 1363545656046908, guid: 93afa04ba1071ae428ceca14c7ac8bf0,
+            type: 2}
+          skin: {fileID: 2800000, guid: 7c6216d56e71eb34eb76e4039cac41b3, type: 3}
+        - name: Magma_Demon
+          prefab: {fileID: 1388263283326229, guid: 03cbc4b74dbaa0742b330f01dfe8c507,
+            type: 2}
+          skin: {fileID: 2800000, guid: 78673da910fed5944b2d067e8746e564, type: 3}
+        - name: Lava_Spider
+          prefab: {fileID: 1557431264984787, guid: f04a3117e7d91034585ae8ff342c559d,
+            type: 2}
+          skin: {fileID: 2800000, guid: 0d71fd929a0e1fd42b703d7af1ac0f74, type: 3}
+        - name: Magma_Slime
+          prefab: {fileID: 1698694913763371, guid: 0504b4a1b69fb5e418f182c2ef7f4693,
+            type: 2}
+          skin: {fileID: 2800000, guid: d30d2e4d394f6414293856306fa2571f, type: 3}
+        - name: Wraith
+          prefab: {fileID: 1248854469358833, guid: 730937cf9822bcb42b779a03f214a5f3,
+            type: 2}
+          skin: {fileID: 2800000, guid: debc15eba543ba24fbc9981bd9fe7263, type: 3}
+        myMusicLevel: 10
+        myLoading: Loading_Hell
+        myBoss: 10
