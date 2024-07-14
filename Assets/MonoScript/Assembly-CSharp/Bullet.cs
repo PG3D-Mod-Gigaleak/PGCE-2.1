@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour
 			{
 				mMeshRenderer = GetComponent<MeshRenderer>();
 			}
+
 			return mMeshRenderer;
 		}
 	}
@@ -35,11 +36,10 @@ public class Bullet : MonoBehaviour
 			{
 				mTrailRenderer = GetComponent<TrailRenderer>();
 			}
+			
 			return mTrailRenderer;
 		}
 	}
-
-	public Light pointLight;
 
 	void Start()
 	{
@@ -59,10 +59,11 @@ public class Bullet : MonoBehaviour
 		transform.position += transform.forward * (Time.deltaTime * speed);
 	}
 
-	[Beebyte.Obfuscator.SkipRename]
+	[SkipRename]
 	void DestroySelf()
 	{
 		Destroy(gameObject);
+
 		if (destroyEffect)
 		{
 			Instantiate(effect, transform.position, transform.rotation);
@@ -80,15 +81,22 @@ public class Bullet : MonoBehaviour
 		{
 			return;
 		}
+
 		GradientColorKey[] colorKeys = trailRenderer.colorGradient.colorKeys;
+		
 		for (int i = 0; i < colorKeys.Length; i++)
 		{
 			colorKeys[i].color = newColor;
 		}
+
 		Gradient gradient = trailRenderer.colorGradient;
 		gradient.colorKeys = colorKeys;
+
 		trailRenderer.colorGradient = gradient;
-		meshRenderer.material.SetColor("_Color", newColor);
-		pointLight.color = newColor;
+
+		if (meshRenderer != null)
+		{
+			meshRenderer.material.SetColor("_Color", newColor);
+		}
 	}
 }
