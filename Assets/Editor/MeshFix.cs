@@ -21,7 +21,7 @@ public class MeshFix : Editor
                 continue;
             }
             
-            if (filter.gameObject.isStatic && filter.sharedMesh.name.StartsWith("Combined Mesh (root scene)"))
+            if (filter.gameObject.isStatic && (filter.sharedMesh.name.StartsWith("Combined Mesh (root scene)") || filter.sharedMesh.name.StartsWith("Combined Mesh (root_ scene)")))
             {
                 MeshCollider collider = filter.GetComponent<MeshCollider>();
 
