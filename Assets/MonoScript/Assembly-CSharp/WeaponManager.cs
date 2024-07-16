@@ -483,7 +483,7 @@ public sealed class WeaponManager : MonoBehaviour
 		NullCheckCategory(2, "Weapon1");
 		NullCheckCategory(3, "Weapon9");
 		NullCheckCategory(4, "Weapon73");
-		NullCheckCategory(5, "Weapon263");
+		NullCheckCategory(5, "Weapon204");
 	}
 
 	private static void NullCheckCategory(int category, string defaultWeapon)
@@ -533,10 +533,10 @@ public sealed class WeaponManager : MonoBehaviour
 	public void Reset()
 	{
 		Debug.LogWarning("cat1 is " + prefs.GetString("cat1"));
-		Debug.LogWarning("cat1 is " + prefs.GetString("cat2"));
-		Debug.LogWarning("cat1 is " + prefs.GetString("cat3"));
-		Debug.LogWarning("cat1 is " + prefs.GetString("cat4"));
-		Debug.LogWarning("cat1 is " + prefs.GetString("cat5"));
+		Debug.LogWarning("cat2 is " + prefs.GetString("cat2"));
+		Debug.LogWarning("cat3 is " + prefs.GetString("cat3"));
+		Debug.LogWarning("cat4 is " + prefs.GetString("cat4"));
+		Debug.LogWarning("cat5 is " + prefs.GetString("cat5"));
 		WeaponCatNullCheck();
 		_playerWeapons.Clear();
 		CurrentWeaponIndex = 0;
