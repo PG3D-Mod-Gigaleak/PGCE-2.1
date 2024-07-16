@@ -47,7 +47,7 @@ public sealed class Switcher : MonoBehaviour
 		//add this back when it's time, but we must do this LATER!!!
 		//int random = (int)UnityEngine.Random.Range(0, Defs.MainMenuScenes.Length);
 		//Defs.CurrentMainMenuScene = Defs.MainMenuScenes[random];
-		Defs.CurrentMainMenuScene = "Menu_DesertTemple";
+		Defs.CurrentMainMenuScene = "Menu_RainyDay";
 		Debug.Log("0 GlobalGameController.currentLevel " + GlobalGameController.currentLevel);
 		AudioListener.volume = (PlayerPrefsX.GetBool(PlayerPrefsX.SndSetting, true) ? prefs.GetFloat("setVolm", 1.0f) : 0);
 		if (GlobalGameController._currentIndexInMapping >= GlobalGameController.NumOfLevels - 1 && GlobalGameController.currentLevel != 101 && !isGameOver)
