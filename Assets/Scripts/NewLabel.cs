@@ -8,8 +8,11 @@ public class NewLabel : MonoBehaviour
 
 	void Update()
 	{
-		transform.LookAt(Camera.main.transform);
-		Vector3 eulers = transform.localRotation.eulerAngles;
-		transform.localRotation = Quaternion.Euler(0, eulers.y - 180, 0);
+		if (Camera.main != null && target != null)
+		{
+			transform.LookAt(Camera.main.transform);
+			Vector3 eulers = transform.localRotation.eulerAngles;
+			transform.localRotation = Quaternion.Euler(0, eulers.y - 180, 0);
+		}
 	}
 }
