@@ -484,6 +484,8 @@ public sealed class WeaponManager : MonoBehaviour
 		NullCheckCategory(3, "Weapon9");
 		NullCheckCategory(4, "Weapon73");
 		NullCheckCategory(5, "Weapon204");
+
+		PlayerPrefs.SetInt("refreshWeaponSystem", 1);
 	}
 
 	private static void NullCheckCategory(int category, string defaultWeapon)
@@ -493,7 +495,6 @@ public sealed class WeaponManager : MonoBehaviour
 		if (string.IsNullOrEmpty(weapon) || int.Parse(weapon.Replace("Weapon", "")) > WeaponPrefabs.Count || PlayerPrefs.GetInt("refreshWeaponSystem") == 0 ||
 		   (WeaponPrefabs.Find(x => x.name == weapon) as GameObject).GetComponent<WeaponSounds>().category != (CategoryType)(category - 1))
 		{
-			Debug.LogError("oops! " + weapon + " was replaced with " + defaultWeapon);
 			PlayerPrefs.SetString("cat" + category, defaultWeapon);
 		}
 	}
