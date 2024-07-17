@@ -10,7 +10,7 @@ public class NetworkInterpolatedTransform : MonoBehaviour
 
 	private void Awake()
 	{
-		if (prefs.GetInt("MultyPlayer") != 1 || prefs.GetString("TypeConnect").Equals("inet"))
+		if (PlayerPrefs.GetInt("MultyPlayer") != 1 || PlayerPrefs.GetString("TypeConnect").Equals("inet"))
 		{
 			base.enabled = false;
 		}

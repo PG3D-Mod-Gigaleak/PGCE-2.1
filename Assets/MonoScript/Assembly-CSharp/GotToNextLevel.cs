@@ -30,11 +30,11 @@ public class GotToNextLevel : MonoBehaviour
 	{
 		if (!(_player == null) && !(_playerMoveC == null) && !runLoading && Vector3.Distance(base.transform.position, _player.transform.position) < 1.5f)
 		{
-			prefs.SetFloat(Defs.CurrentHealthSett, _playerMoveC.CurHealth);
-			prefs.SetFloat(Defs.CurrentArmorSett, _playerMoveC.curArmor);
+			PlayerPrefs.SetFloat(Defs.CurrentHealthSett, _playerMoveC.CurHealth);
+			PlayerPrefs.SetFloat(Defs.CurrentArmorSett, _playerMoveC.curArmor);
 			runLoading = true;
 			Debug.Log("end GlobalGameController.currentLevel " + GlobalGameController.currentLevel);
-			if (prefs.GetInt("FullVersion", 0) == 0 && GlobalGameController.currentLevel == 5)
+			if (PlayerPrefs.GetInt("FullVersion", 0) == 0 && GlobalGameController.currentLevel == 5)
 			{
 				GameObject.FindGameObjectWithTag("PlayerGun").GetComponent<Player_move_c>().showGUIUnlockFullVersion = true;
 				return;

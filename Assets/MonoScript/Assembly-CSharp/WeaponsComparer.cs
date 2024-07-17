@@ -33,18 +33,18 @@ public class WeaponsComparer : IComparer
 		//WeaponManager.Sword_2_WN,
 		//WeaponManager.HammerWN,
 		//WeaponManager.StaffWN
-		prefs.GetString("cat1"),
-		prefs.GetString("cat5"),
-		prefs.GetString("cat2"),
-		prefs.GetString("cat4"),
-		prefs.GetString("cat3")
+		PlayerPrefs.GetString("cat1"),
+		PlayerPrefs.GetString("cat5"),
+		PlayerPrefs.GetString("cat2"),
+		PlayerPrefs.GetString("cat4"),
+		PlayerPrefs.GetString("cat3")
 	};
 
 	public int Compare(object x, object y)
 	{
 		string name = ((Weapon)x).weaponPrefab.name;
 		string name2 = ((Weapon)y).weaponPrefab.name;
-		if (prefs.GetInt("MultyPlayer", 0) == 1)
+		if (PlayerPrefs.GetInt("MultyPlayer", 0) == 1)
 		{
 			return Array.IndexOf(multiplayerWeaponsOrd, name2).CompareTo(Array.IndexOf(multiplayerWeaponsOrd, name));
 		}

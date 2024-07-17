@@ -93,9 +93,9 @@ namespace handler.data
 		private void EnsureCat(string postfix, Dictionary<string, string> catEquipList_Deserialized)
 		{
 			if (catEquipList_Deserialized["cat"+postfix] != "")
-				prefs.SetString("cat"+postfix, catEquipList_Deserialized["cat"+postfix]);
+				PlayerPrefs.SetString("cat"+postfix, catEquipList_Deserialized["cat"+postfix]);
 			else
-				prefs.DeleteKey("cat"+postfix);
+				PlayerPrefs.DeleteKey("cat"+postfix);
 		}
 		public IEnumerator GetPlayerInfo()
 		{
@@ -106,7 +106,7 @@ namespace handler.data
 					CustomPrefs.CurrentSkin = (string)resultDictionary2["skin_set"];
 					Storager.setInt("earsOn", (Convert.ToBoolean((string)resultDictionary2["catears_set"]) ? 1 : 0), false);
 					Storager.setInt(Defs.Coins, Convert.ToInt32((string)resultDictionary2["coins_set"]), false);
-					prefs.SetString("NamePlayer", (string)resultDictionary2["name_set"]);
+					PlayerPrefs.SetString("NamePlayer", (string)resultDictionary2["name_set"]);
 					Dictionary<string, string> catEquipList_Deserialized = JsonConvert.DeserializeObject<Dictionary<string, string>>((string)resultDictionary2["catlistserialized_set"]);
 					EnsureCat("1", catEquipList_Deserialized);
 					EnsureCat("2", catEquipList_Deserialized);

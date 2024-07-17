@@ -6,8 +6,8 @@ public class ScoresLabel : MonoBehaviour
 
 	private void Start()
 	{
-		base.gameObject.SetActive(prefs.GetInt("MultyPlayer", 0) == 0 || prefs.GetInt("COOP", 0) == 1);
-		if (prefs.GetInt("MultyPlayer", 0) == 0)
+		base.gameObject.SetActive(PlayerPrefs.GetInt("MultyPlayer", 0) == 0 || PlayerPrefs.GetInt("COOP", 0) == 1);
+		if (PlayerPrefs.GetInt("MultyPlayer", 0) == 0)
 		{
 			UIRoot uIRoot = NGUITools.FindInParents<UIRoot>(base.gameObject);
 			float num = (float)uIRoot.manualHeight * ((float)Screen.width / (float)Screen.height);

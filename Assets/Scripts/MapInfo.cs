@@ -37,7 +37,7 @@ public class MapInfo : MonoBehaviour
 	{
 		get
 		{
-			return (prefs.GetInt("COOP", 0) == 1 ? coopMaps : deathmatchMaps);
+			return (PlayerPrefs.GetInt("COOP", 0) == 1 ? coopMaps : deathmatchMaps);
 		}
 	}
 

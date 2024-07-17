@@ -7,7 +7,7 @@ public class InterpolateOnlyScale : Photon.MonoBehaviour
 
 	private void Awake()
 	{
-		if (prefs.GetInt("MultyPlayer") != 1 || prefs.GetString("TypeConnect").Equals("local"))
+		if (PlayerPrefs.GetInt("MultyPlayer") != 1 || PlayerPrefs.GetString("TypeConnect").Equals("local"))
 		{
 			base.enabled = false;
 		}

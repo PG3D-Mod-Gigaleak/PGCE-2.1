@@ -8,7 +8,7 @@ public class TimeLabel : MonoBehaviour
 
 	private void Start()
 	{
-		base.gameObject.SetActive(prefs.GetInt("COOP", 0) == 1);
+		base.gameObject.SetActive(PlayerPrefs.GetInt("COOP", 0) == 1);
 		_label = GetComponent<UILabel>();
 		_inGameGUI = GameObject.FindGameObjectWithTag("InGameGUI").GetComponent<InGameGUI>();
 	}

@@ -40,7 +40,7 @@ public class BonusCreator : MonoBehaviour
 
 	private void Awake()
 	{
-		if (prefs.GetInt("MultyPlayer") == 1)
+		if (PlayerPrefs.GetInt("MultyPlayer") == 1)
 		{
 			_isMultiplayer = true;
 		}
@@ -75,7 +75,7 @@ public class BonusCreator : MonoBehaviour
 	public void BeginCreateBonuses()
 	{
 		StartCoroutine(AddBonus());
-		if (prefs.GetInt("MultyPlayer") != 1)
+		if (PlayerPrefs.GetInt("MultyPlayer") != 1)
 		{
 			StartCoroutine(AddWeapon());
 		}
@@ -116,9 +116,9 @@ public class BonusCreator : MonoBehaviour
 			{
 				break;
 			}
-			if (prefs.GetInt("MultyPlayer") == 1)
+			if (PlayerPrefs.GetInt("MultyPlayer") == 1)
 			{
-				if (prefs.GetString("TypeConnect").Equals("inet"))
+				if (PlayerPrefs.GetString("TypeConnect").Equals("inet"))
 				{
 					GameObject[] _players = GameObject.FindGameObjectsWithTag("Player");
 					int minID = 10000000;
@@ -156,7 +156,7 @@ public class BonusCreator : MonoBehaviour
 					bonuses.Add(newBonus3);
 				}
 			}
-			else if (prefs.GetString("TypeConnect").Equals("local"))
+			else if (PlayerPrefs.GetString("TypeConnect").Equals("local"))
 			{
 				GameObject newBonus3 = (GameObject)PhotonNetwork.Instantiate(bonusPrefabs[(type >= 9) ? 1u : 0u].name, pos, Quaternion.identity, 0);
 			}
@@ -167,7 +167,7 @@ public class BonusCreator : MonoBehaviour
 				newBonus3.GetComponent<PhotonView>().viewID = _id;
 				_weaponManager.myTable.GetComponent<NetworkStartTable>().addBonus(_id, type, pos, Quaternion.identity);
 			}
-			if (bonuses.Count > 5 && prefs.GetInt("MultyPlayer") != 1)
+			if (bonuses.Count > 5 && PlayerPrefs.GetInt("MultyPlayer") != 1)
 			{
 				Object.Destroy((GameObject)bonuses[0]);
 				bonuses.RemoveAt(0);
@@ -236,6 +236,6 @@ public class BonusCreator : MonoBehaviour
 
 	private int _curLevel()
 	{
-		return (prefs.GetInt("MultyPlayer") == 1) ? GlobalGameController.currentLevel : ((GlobalGameController.currentLevel != GlobalGameController.levelMapping[0]) ? (GlobalGameController.previousLevel + 1) : 0);
+		return (PlayerPrefs.GetInt("MultyPlayer") == 1) ? GlobalGameController.currentLevel : ((GlobalGameController.currentLevel != GlobalGameController.levelMapping[0]) ? (GlobalGameController.previousLevel + 1) : 0);
 	}
 }

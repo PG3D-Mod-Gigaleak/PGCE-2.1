@@ -56,7 +56,7 @@ public class UICreateWidgetWizard : EditorWindow
 	static UIScrollBar.FillDirection mFillDir = UIScrollBar.FillDirection.LeftToRight;
 
 	/// <summary>
-	/// Save the specified string into player prefs.
+	/// Save the specified string into player PlayerPrefs.
 	/// </summary>
 
 	static void SaveString (string field, string val)
@@ -72,13 +72,13 @@ public class UICreateWidgetWizard : EditorWindow
 	}
 
 	/// <summary>
-	/// Load the specified string from player prefs.
+	/// Load the specified string from player PlayerPrefs.
 	/// </summary>
 
 	static string LoadString (string field) { string s = EditorPrefs.GetString(field); return (string.IsNullOrEmpty(s)) ? "" : s; }
 
 	/// <summary>
-	/// Save all serialized values in editor prefs.
+	/// Save all serialized values in editor PlayerPrefs.
 	/// This is necessary because static values get wiped out as soon as scripts get recompiled.
 	/// </summary>
 
@@ -108,7 +108,7 @@ public class UICreateWidgetWizard : EditorWindow
 	}
 
 	/// <summary>
-	/// Load all serialized values from editor prefs.
+	/// Load all serialized values from editor PlayerPrefs.
 	/// This is necessary because static values get wiped out as soon as scripts get recompiled.
 	/// </summary>
 

@@ -523,8 +523,8 @@ public sealed class StoreKitEventListener : MonoBehaviour
 		Debug.Log("Google: purchaseSucceededEvent: " + purchase);
 		if (purchase.productId.Equals(elixirID))
 		{
-			prefs.SetInt(elixirSettName, prefs.GetInt(elixirSettName, 1) + 1);
-			prefs.Save();
+			PlayerPrefs.SetInt(elixirSettName, PlayerPrefs.GetInt(elixirSettName, 1) + 1);
+			PlayerPrefs.Save();
 		}
 		else
 		{

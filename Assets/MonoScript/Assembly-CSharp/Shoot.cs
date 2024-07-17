@@ -35,7 +35,7 @@ public class Shoot : MonoBehaviour
 		//Debug.Log("Hit!");
 		//if (hitInfo.collider.gameObject.transform.CompareTag("Enemy"))
 		//{
-		//	if (prefs.GetInt("MultyPlayer") == 1)
+		//	if (PlayerPrefs.GetInt("MultyPlayer") == 1)
 		//	{
 		//		base.GetComponent<NetworkView>().RPC("Popal", RPCMode.All, hitInfo.collider.gameObject.transform.GetComponent<NetworkView>().viewID);
 		//	}

@@ -7,7 +7,7 @@ public class RanksTapReceiver : MonoBehaviour
 
 	private void Start()
 	{
-		base.gameObject.SetActive(prefs.GetInt("MultyPlayer", 0) == 1 && prefs.GetInt("COOP", 0) == 0);
+		base.gameObject.SetActive(PlayerPrefs.GetInt("MultyPlayer", 0) == 1 && PlayerPrefs.GetInt("COOP", 0) == 0);
 	}
 
 	private void OnPress(bool isDown)

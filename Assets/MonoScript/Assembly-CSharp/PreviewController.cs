@@ -113,7 +113,7 @@ public sealed class PreviewController : MonoBehaviour
 		}
 		TapTouches.Clear();
 		PanTouches.Clear();
-		base.transform.rotation = ((prefs.GetInt(Defs.SkinEditorMode, 0) != 1) ? Quaternion.identity : Quaternion.Euler(RotationInMuktProfile));
+		base.transform.rotation = ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 1) ? Quaternion.identity : Quaternion.Euler(RotationInMuktProfile));
 	}
 
 	public void ShowSkin(int idx)
@@ -146,7 +146,7 @@ public sealed class PreviewController : MonoBehaviour
 		SetTextureWithIndex(base.gameObject, CurrentTextureIndex);
 		StartCoroutine(clearAssets());
 		ResetState();
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			base.transform.rotation = Quaternion.Euler(RotationInMuktProfile);
 		}
@@ -170,12 +170,12 @@ public sealed class PreviewController : MonoBehaviour
 		{
 			_purchaseActivityIndicator.SetActive(false);
 		}
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			base.transform.rotation = Quaternion.Euler(RotationInMuktProfile);
 			CurrentTextureIndex = SpisokSkinov.EquippedSkinIndexToPreviewControllerIndex();
 		}
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			GameObject gameObject = GameObject.FindGameObjectWithTag("InAppGameObject");
 			StoreKitEventListener component = gameObject.GetComponent<StoreKitEventListener>();
@@ -184,7 +184,7 @@ public sealed class PreviewController : MonoBehaviour
 		_controller = GameObject.Find("Controller");
 		_spisokSkinov = _controller.GetComponent<SpisokSkinov>();
 		_viborChastiTela = _controller.GetComponent<ViborChastiTela>();
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 0)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 0)
 		{
 			Debug.Log("preview controller Start()");
 		}
@@ -379,10 +379,10 @@ public sealed class PreviewController : MonoBehaviour
 					PanTouches[touch.fingerId].FingerPos = touch.position;
 					PanTouches[touch.fingerId].SlideMagnitudeX = PanTouches[touch.fingerId].FingerMovedBy.x;
 					PanTouches[touch.fingerId].SlideMagnitudeY = PanTouches[touch.fingerId].FingerMovedBy.y;
-					if (IsEditingMode || prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+					if (IsEditingMode || PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 					{
 						float num5 = 0.5f;
-						base.gameObject.transform.Rotate(0f, (0f - num5) * PanTouches[touch.fingerId].SlideMagnitudeX, 0f, (prefs.GetInt(Defs.SkinEditorMode, 0) == 1) ? Space.Self : Space.World);
+						base.gameObject.transform.Rotate(0f, (0f - num5) * PanTouches[touch.fingerId].SlideMagnitudeX, 0f, (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1) ? Space.Self : Space.World);
 					}
 				}
 			}
@@ -421,11 +421,11 @@ public sealed class PreviewController : MonoBehaviour
 					{
 						if (TouchOnModel(touch) && (touch.position - PanTouches[touch.fingerId].InitialTouchPos).magnitude < 15f && Time.realtimeSinceStartup - PanTouches[touch.fingerId].StartTime < 0.45f)
 						{
-							if (editModeEnteredDelegate != null && prefs.GetInt(Defs.SkinEditorMode, 0) != 1)
+							if (editModeEnteredDelegate != null && PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 1)
 							{
 								editModeEnteredDelegate();
 							}
-							if (prefs.GetInt(Defs.SkinEditorMode, 0) != 1)
+							if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 1)
 							{
 								ResetState();
 							}

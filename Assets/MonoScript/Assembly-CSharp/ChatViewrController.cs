@@ -88,7 +88,7 @@ public class ChatViewrController : MonoBehaviour
 		}
 		for (int num = PlayerObject.GetComponent<Player_move_c>().messages.Count - 1; num >= 0; num--)
 		{
-			string text = (((!prefs.GetString("TypeConnect").Equals("inet") || PlayerObject.GetComponent<Player_move_c>().messages[num].ID != _weaponManager.myPlayer.GetComponent<PhotonView>().viewID)) ? "[FFFF26]" : "[00FF26]");
+			string text = (((!PlayerPrefs.GetString("TypeConnect").Equals("inet") || PlayerObject.GetComponent<Player_move_c>().messages[num].ID != _weaponManager.myPlayer.GetComponent<PhotonView>().viewID)) ? "[FFFF26]" : "[00FF26]");
 			UILabel component = labelChat.GetComponent<UILabel>();
 			component.text = component.text + text + PlayerObject.GetComponent<Player_move_c>().messages[num].text + "\n";
 		}

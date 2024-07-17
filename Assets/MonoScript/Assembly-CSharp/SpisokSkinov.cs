@@ -283,7 +283,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 
 	public static int EquippedSkinIndexToPreviewControllerIndex()
 	{
-		int num = prefs.GetInt(Defs.SkinIndexMultiplayer, 0);
+		int num = PlayerPrefs.GetInt(Defs.SkinIndexMultiplayer, 0);
 		if (num >= Controller.IndexBaseForUserMultiSkins)
 		{
 			num -= Controller.IndexBaseForUserMultiSkins;
@@ -300,14 +300,14 @@ public sealed class SpisokSkinov : MonoBehaviour
 
 	public static void GoFromProfileToConnect()
 	{
-		prefs.SetInt("typeConnect__", 0);
+		PlayerPrefs.SetInt("typeConnect__", 0);
 		Application.LoadLevel("NewMapList");
 	}
 
 	private void Start()
 	{
 		f = labelTitle.font;
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			InitFacebookEvents();
 			if (!Application.isEditor)
@@ -328,9 +328,9 @@ public sealed class SpisokSkinov : MonoBehaviour
 		viborChastiTelaController = GetComponent<ViborChastiTela>();
 		mainController.previewControl.editModeEnteredDelegate = shooseSkin;
 		rectDialogDel = new Rect((float)Screen.width * 0.5f - (float)oknoDelSkin.width * 0.5f * koefMashtab, (float)Screen.height * 0.5f - (float)oknoDelSkin.height * 0.5f * koefMashtab, (float)oknoDelSkin.width * koefMashtab, (float)oknoDelSkin.height * koefMashtab);
-		namePlayer = prefs.GetString("NamePlayer", Defs.defaultPlayerName);
+		namePlayer = PlayerPrefs.GetString("NamePlayer", Defs.defaultPlayerName);
 		nameStyle.fontSize = Mathf.RoundToInt(30f * koefMashtab);
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			Camera.main.transform.position += new Vector3(0f, 0.37f, 0f);
 			if (!Storager.hasKey(Defs.COOPScore))
@@ -351,17 +351,17 @@ public sealed class SpisokSkinov : MonoBehaviour
 	public void SetCurrent()
 	{
 		int num = mainController.previewControl.CurrentTextureIndex;
-		if (num >= prefs.GetInt(Defs.NumOfMultSkinsSett, 0))
+		if (num >= PlayerPrefs.GetInt(Defs.NumOfMultSkinsSett, 0))
 		{
 			num += Controller.IndexBaseForUserMultiSkins;
 		}
 		string value = (string)arrNameSkin[mainController.previewControl.CurrentTextureIndex];
-		prefs.SetString(Defs.SkinNameMultiplayer, value);
+		PlayerPrefs.SetString(Defs.SkinNameMultiplayer, value);
 		Debug.LogError(value);
-		prefs.SetInt(Defs.SkinIndexMultiplayer, num);
+		PlayerPrefs.SetInt(Defs.SkinIndexMultiplayer, num);
 		Debug.LogError(num + string.Empty);
-		prefs.SetString("NamePlayer", namePlayer);
-		prefs.Save();
+		PlayerPrefs.SetString("NamePlayer", namePlayer);
+		PlayerPrefs.Save();
 	}
 
 	private void OnGUI()
@@ -370,7 +370,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 		{
 			return;
 		}
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 0)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 0)
 		{
 			GUI.DrawTexture(new Rect(0f, 0f, Screen.width, (float)fonTitle.height * koefMashtab), fonTitle);
 			labelTitle.fontSize = Mathf.RoundToInt(25f * koefMashtab);
@@ -379,21 +379,21 @@ public sealed class SpisokSkinov : MonoBehaviour
 		}
 		bool flag = false || !dialogDelNeActiv;
 		int depth = GUI.depth;
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 		}
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			coinsPlashka.thisScript.enabled = true && !flag;
 		}
 		float left = 55f * koefMashtab;
 		float width = (float)butBack.normal.background.width * koefMashtab;
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			GUI.enabled = !StoreKitEventListener.restoreInProcess && !flag;
 		}
-		Rect position = ((prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? ConnectGUI.LeftButtonRect : new Rect(left, (float)Screen.height - (9f + (float)butBack.normal.background.height) * koefMashtab, width, (float)butBack.normal.background.height * koefMashtab));
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 0)
+		Rect position = ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? ConnectGUI.LeftButtonRect : new Rect(left, (float)Screen.height - (9f + (float)butBack.normal.background.height) * koefMashtab, width, (float)butBack.normal.background.height * koefMashtab));
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 0)
 		{
 			if (GUI.Button(position, string.Empty, butBack) && dialogDelNeActiv)
 			{
@@ -403,7 +403,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 		else if (GUI.RepeatButton(position, string.Empty, butBackProfile) && dialogDelNeActiv)
 		{
 			GUIHelper.DrawLoading();
-			if (prefs.GetInt(Defs.ProfileEnteredFromMenu, 0) == 1)
+			if (PlayerPrefs.GetInt(Defs.ProfileEnteredFromMenu, 0) == 1)
 			{
 				Application.LoadLevel(Defs.CurrentMainMenuScene);
 			}
@@ -412,14 +412,14 @@ public sealed class SpisokSkinov : MonoBehaviour
 				GoFromProfileToConnect();
 			}
 		}
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			GUI.enabled = true && !flag;
 		}
 		float num = 115f * Defs.Coef;
-		Rect position2 = new Rect((float)Screen.width * 0.5f - (float)(leftBut.normal.background.width * Screen.height) / 768f - num, (float)Screen.height * ((prefs.GetInt(Defs.SkinEditorMode, 0) != 1) ? 0.5f : 0.6f) - (float)(leftBut.normal.background.height * Screen.height) / 768f * 0.5f, (float)(leftBut.normal.background.width * Screen.height) / 768f, (float)(leftBut.normal.background.height * Screen.height) / 768f);
-		Rect position3 = new Rect((float)Screen.width * 0.5f + num, (float)Screen.height * ((prefs.GetInt(Defs.SkinEditorMode, 0) != 1) ? 0.5f : 0.6f) - (float)(leftBut.normal.background.height * Screen.height) / 768f * 0.5f, (float)(leftBut.normal.background.width * Screen.height) / 768f, (float)(leftBut.normal.background.height * Screen.height) / 768f);
-		if (!flag && dialogDelNeActiv && (!viborChastiTelaController.showEnabled || prefs.GetInt(Defs.SkinEditorMode, 0) == 1))
+		Rect position2 = new Rect((float)Screen.width * 0.5f - (float)(leftBut.normal.background.width * Screen.height) / 768f - num, (float)Screen.height * ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 1) ? 0.5f : 0.6f) - (float)(leftBut.normal.background.height * Screen.height) / 768f * 0.5f, (float)(leftBut.normal.background.width * Screen.height) / 768f, (float)(leftBut.normal.background.height * Screen.height) / 768f);
+		Rect position3 = new Rect((float)Screen.width * 0.5f + num, (float)Screen.height * ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 1) ? 0.5f : 0.6f) - (float)(leftBut.normal.background.height * Screen.height) / 768f * 0.5f, (float)(leftBut.normal.background.width * Screen.height) / 768f, (float)(leftBut.normal.background.height * Screen.height) / 768f);
+		if (!flag && dialogDelNeActiv && (!viborChastiTelaController.showEnabled || PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1))
 		{
 			if (GUI.Button(position2, string.Empty, leftBut))
 			{
@@ -430,7 +430,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 				mainController.previewControl.move(-1);
 			}
 		}
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			GUI.DrawTexture(new Rect((float)Screen.width / 2f - (float)head_Prof.width / 2f * koefMashtab, (float)Screen.height * 0.1f - (float)head_Prof.height / 2f * koefMashtab, (float)head_Prof.width * koefMashtab, (float)head_Prof.height * koefMashtab), head_Prof);
 			if (StoreKitEventListener.purchaseActivityInd == null)
@@ -471,11 +471,11 @@ public sealed class SpisokSkinov : MonoBehaviour
 			}
 			if (flag2)
 			{
-				prefs.SetString("NamePlayer", "Unnamed");
+				PlayerPrefs.SetString("NamePlayer", "Unnamed");
 			}
 			else
 			{
-				prefs.SetString("NamePlayer", namePlayer);
+				PlayerPrefs.SetString("NamePlayer", namePlayer);
 			}
 			if (namePlayer.Length > 20)
 			{
@@ -491,7 +491,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 			Rect rect = new Rect(coinsPlashka.thisScript.rectButCoins.x, position5.y + position5.height, num3, num3 / 3f);
 			if (!flag)
 			{
-				GUI.Box(rect, " Wins: " + prefs.GetInt("Rating", 0), winsLabelStyle);
+				GUI.Box(rect, " Wins: " + PlayerPrefs.GetInt("Rating", 0), winsLabelStyle);
 			}
 			scoresStyle.fontSize = winsLabelStyle.fontSize;
 			Rect position6 = rect;
@@ -500,7 +500,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 			position6.y = position2.y + position2.height * 0.5f - position6.height / 2f;
 			if (!flag)
 			{
-				GUI.Label(position6, "CO-OP\nMAX SCORE\n" + COOPScore + "\n\nSURVIVAL\nMAX SCORE\n" + prefs.GetInt(Defs.BestScoreSett, 0), scoresStyle);
+				GUI.Label(position6, "CO-OP\nMAX SCORE\n" + COOPScore + "\n\nSURVIVAL\nMAX SCORE\n" + PlayerPrefs.GetInt(Defs.BestScoreSett, 0), scoresStyle);
 			}
 			Rect rightButtonRect = ConnectGUI.RightButtonRect;
 			rightButtonRect.y = ConnectGUI.LeftButtonRect.y;
@@ -541,7 +541,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 			float num9 = (float)Screen.height * 0.105f;
 			Rect rect5 = new Rect(left2, position2.y + position2.height * 0.5f + (float)twitterStyle.normal.background.height * Defs.Coef * 0.5f + num7, (float)twitterStyle.normal.background.width * Defs.Coef, (float)twitterStyle.normal.background.height * Defs.Coef);
 			int num10 = EquippedSkinIndexToPreviewControllerIndex();
-			if (!mainController.previewControl.Locked && prefs.GetInt(Defs.SkinEditorMode, 0) == 1 && num10 == mainController.previewControl.CurrentTextureIndex)
+			if (!mainController.previewControl.Locked && PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1 && num10 == mainController.previewControl.CurrentTextureIndex)
 			{
 				GUI.DrawTexture(new Rect(position3.x + position3.width * 0.5f - (float)equipped.width * 0.5f * num4, rect2.y - rect2.height * 0.5f - (float)equipped.height * 0.67f * num4 - (float)equipped.height * 0.16f * num4, (float)equipped.width * num4, (float)equipped.height * num4), equipped);
 			}
@@ -560,7 +560,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 			float num13 = 36f * Defs.Coef;
 			Rect position9 = new Rect((float)Screen.width * 0.5f - num13 / 2f - (float)editSkinStyle.normal.background.width * Defs.Coef, position.y + position.height * 0.5f - (float)editSkinStyle.normal.background.height * Defs.Coef * 0.5f, (float)editSkinStyle.normal.background.width * Defs.Coef, (float)editSkinStyle.normal.background.height * Defs.Coef);
 			Rect position10 = new Rect((float)Screen.width * 0.5f + num13 / 2f, position.y + position.height * 0.5f - (float)deleteStyle.normal.background.height * Defs.Coef * 0.5f, (float)deleteStyle.normal.background.width * Defs.Coef, (float)deleteStyle.normal.background.height * Defs.Coef);
-			if (mainController.previewControl.CurrentTextureIndex >= prefs.GetInt(Defs.NumOfMultSkinsSett, 0))
+			if (mainController.previewControl.CurrentTextureIndex >= PlayerPrefs.GetInt(Defs.NumOfMultSkinsSett, 0))
 			{
 				if (GUI.Button(position9, string.Empty, editSkinStyle))
 				{
@@ -617,12 +617,12 @@ public sealed class SpisokSkinov : MonoBehaviour
 				GUI.Label(Player_move_c.SuccessMessageRect(), _SocialSentSuccess("Twitter"), labelStyle);
 			}
 		}
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 0)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 0)
 		{
 			labelTitleSkin.fontSize = Mathf.RoundToInt(20f * koefMashtab);
 			GUI.Label(new Rect(0f, 120f * koefMashtab, Screen.width, 50f * koefMashtab), (string)arrTitleSkin[mainController.previewControl.CurrentTextureIndex], labelTitleSkin);
 		}
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 0 && arrNameSkin != null && mainController.previewControl.CurrentTextureIndex > Controller.SkinMaker_arrVremTitle.Length - 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 0 && arrNameSkin != null && mainController.previewControl.CurrentTextureIndex > Controller.SkinMaker_arrVremTitle.Length - 1)
 		{
 			Rect position12 = new Rect((float)Screen.width - 55f * koefMashtab - (float)butDel.normal.background.width * koefMashtab, (float)Screen.height - (9f + (float)butDel.normal.background.height) * koefMashtab, (float)butDel.normal.background.width * koefMashtab, (float)butDel.normal.background.height * koefMashtab);
 			if (GUI.Button(position12, string.Empty, butDel) && dialogDelNeActiv)
@@ -635,7 +635,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 			if ((Application.isEditor || Storager.getInt(Defs.SkinsMakerInProfileBought, true) == 1) && GUI.Button(position13, string.Empty, addToProfileStyle))
 			{
 				viborChastiTelaController.cutSkin(mainController.previewControl.CurrentTextureIndex);
-				prefs.SetInt(Defs.SkinEditorMode, 1);
+				PlayerPrefs.SetInt(Defs.SkinEditorMode, 1);
 				string[] array = Load.LoadStringArray(Controller.arrNameSkin_sett);
 				string[] array2 = Load.LoadStringArray(Controller.arrTitleSkin_sett);
 				ArrayListWrapper arrayListWrapper = new ArrayListWrapper();
@@ -665,7 +665,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 					}
 				}
 				viborChastiTelaController.AddSkinToArrs(arrayListWrapper, arrayListWrapper2);
-				prefs.SetInt(Defs.SkinEditorMode, 0);
+				PlayerPrefs.SetInt(Defs.SkinEditorMode, 0);
 				GameObject gameObject = (GameObject)UnityEngine.Object.Instantiate(skinSavedToProfileMsg);
 				gameObject.GetComponent<Message>().message = "Skin was added to profile";
 			}
@@ -682,12 +682,12 @@ public sealed class SpisokSkinov : MonoBehaviour
 			if (GUI.Button(new Rect(rectDialogDel.x + rectDialogDel.width - 55f * koefMashtab - (float)butDlgOk.normal.background.width * koefMashtab, rectDialogDel.y + rectDialogDel.height - 125f * koefMashtab, (float)butDlgOk.normal.background.width * koefMashtab, (float)butDlgOk.normal.background.height * koefMashtab), string.Empty, butDlgOk))
 			{
 				bool flag5 = false;
-				if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+				if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 				{
 					flag5 = EquippedSkinIndexToPreviewControllerIndex() == mainController.previewControl.CurrentTextureIndex;
 					if (EquippedSkinIndexToPreviewControllerIndex() > mainController.previewControl.CurrentTextureIndex)
 					{
-						prefs.SetInt(Defs.SkinIndexMultiplayer, prefs.GetInt(Defs.SkinIndexMultiplayer, 0) - 1);
+						PlayerPrefs.SetInt(Defs.SkinIndexMultiplayer, PlayerPrefs.GetInt(Defs.SkinIndexMultiplayer, 0) - 1);
 					}
 				}
 				SkinsManager.DeleteTexture((string)arrNameSkin[mainController.previewControl.CurrentTextureIndex]);
@@ -717,7 +717,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 
 	private void ShoeDeleteDialog()
 	{
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 		}
 		dialogDelNeActiv = false;
@@ -727,7 +727,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 	private void shooseSkin()
 	{
 		int currentTextureIndex = mainController.previewControl.CurrentTextureIndex;
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			coinsPlashka.thisScript.enabled = false;
 		}
@@ -760,7 +760,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 		{
 			StoreKitEventListener.purchaseActivityInd.SetActive(false);
 		}
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			CleanFacebookEvents();
 		}
@@ -953,7 +953,7 @@ public sealed class SpisokSkinov : MonoBehaviour
 			Storager.setInt(Defs.COOPScore, 0, false);
 		}
 		int @int = Storager.getInt(Defs.COOPScore, false);
-		return "I have " + prefs.GetInt("Rating", 0) + " wins and " + @int + " points in Coop mode! Join now! " + Defs.ApplicationUrl;
+		return "I have " + PlayerPrefs.GetInt("Rating", 0) + " wins and " + @int + " points in Coop mode! Join now! " + Defs.ApplicationUrl;
 	}
 
 	private string _SocialSentSuccess(string SocialName)

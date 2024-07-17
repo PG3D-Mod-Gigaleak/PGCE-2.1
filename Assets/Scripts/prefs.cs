@@ -30,7 +30,7 @@ public class prefs {
 	}
 	public static void DeleteKey(string key) {
 		//EnsureLoaded();
-		//if (prefs.HasKey(key)) {
+		//if (PlayerPrefs.HasKey(key)) {
 		//	values.Remove(key);
 		//}
 		//Save();
@@ -45,7 +45,7 @@ public class prefs {
 	#region GET
 	public static float GetFloat(string key, float defaultValue = 0) {
 		//EnsureLoaded();
-		//if (prefs.HasKey(key)) {
+		//if (PlayerPrefs.HasKey(key)) {
 		//	return System.Convert.ToSingle(values[key]);
 		//}
 		//return defaultValue;
@@ -53,7 +53,7 @@ public class prefs {
 	}
 	public static int GetInt(string key, int defaultValue = 0) {
 		//EnsureLoaded();
-		//if (prefs.HasKey(key)) {
+		//if (PlayerPrefs.HasKey(key)) {
 		//	return System.Convert.ToInt32(values[key]);
 		//}
 		//return defaultValue;
@@ -61,7 +61,7 @@ public class prefs {
 	}
 	public static string GetString(string key, string defaultValue = "") {
 		//EnsureLoaded();
-		//if (prefs.HasKey(key)) {
+		//if (PlayerPrefs.HasKey(key)) {
 		//	return System.Convert.ToString(values[key]);
 		//}
 		//return defaultValue;

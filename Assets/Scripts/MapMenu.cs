@@ -50,12 +50,12 @@ public class MapMenu : MonoBehaviour
 			PhotonNetwork.Disconnect();
 			Application.LoadLevel(Defs.CurrentMainMenuScene);
 		};
-		prefs.SetString("TypeConnect", "inet");
+		PlayerPrefs.SetString("TypeConnect", "inet");
 		#if USES_WEBSOCKET
 		Dictionary<string, object> connectionArgs = new Dictionary<string, object>();
 		connectionArgs["uid"] = handler.data.UserController.Instance.ID;
 		connectionArgs["ak"] = handler.data.UserController.Instance.AuthKey;
-		connectionArgs["coop"] = prefs.GetInt("COOP", 0);
+		connectionArgs["coop"] = PlayerPrefs.GetInt("COOP", 0);
 		handler.networking.WebsocketHandler.CallAction("request_connection", (string data) => {
 			Dictionary<string, object> resultDictionary = handler.networking.WebsocketHandler.Decrypt(JsonConvert.DeserializeObject<Dictionary<string, object>>(data));
 			if ((string)resultDictionary["response"] == "success")
@@ -64,7 +64,7 @@ public class MapMenu : MonoBehaviour
 			}
 		}, connectionArgs);
 		#else
-		if (prefs.GetInt("COOP", 0) == 1)
+		if (PlayerPrefs.GetInt("COOP", 0) == 1)
 		{
 			PhotonNetwork.ConnectUsingSettings("v" + GlobalGameController.AppVersion + "COOP");
 		}
@@ -90,7 +90,7 @@ public class MapMenu : MonoBehaviour
 		HOTween.EnableOverwriteManager();
 		_info = Resources.Load<GameObject>("MapInfo").GetComponent<MapInfo>();
 		_mapButton = Resources.Load<GameObject>("MapButton");
-		List<MapInfo.Map> mapInfoList = (prefs.GetInt("COOP", 0) == 1 ? _info.coopMaps : _info.deathmatchMaps);
+		List<MapInfo.Map> mapInfoList = (PlayerPrefs.GetInt("COOP", 0) == 1 ? _info.coopMaps : _info.deathmatchMaps);
 		foreach (MapInfo.Map map in mapInfoList)
 		{
 			MapButton mapBtn = Instantiate(_mapButton, grid.transform).GetComponent<MapButton>();
@@ -130,8 +130,8 @@ public class MapMenu : MonoBehaviour
 			ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable();
 			hashtable["pass"] = string.Empty;
 			hashtable["map"] = mapInfoList.IndexOf(selectedMap);
-			prefs.SetString("TypeGame", "client");
-			prefs.SetInt("CustomGame", 0);
+			PlayerPrefs.SetString("TypeGame", "client");
+			PlayerPrefs.SetInt("CustomGame", 0);
 			PhotonNetwork.JoinRandomRoom(hashtable, 0);
 		};
 		backToSelected.Clicked += (object sender, System.EventArgs e) => {
@@ -188,8 +188,8 @@ public class MapMenu : MonoBehaviour
 			hashtable.Add("map", mapInfoList.IndexOf(selectedMap));
 			hashtable.Add("MaxKill", int.Parse(killToWin));
 			hashtable.Add("pass", password);
-			prefs.SetString("MapName", selectedMap.sceneName);
-			prefs.SetString("MaxKill", killToWin);
+			PlayerPrefs.SetString("MapName", selectedMap.sceneName);
+			PlayerPrefs.SetString("MaxKill", killToWin);
 			string roomName = name;
 			goMapName = selectedMap.sceneName;
 			mapLoading = (Texture2D)selectedMap.icon;
@@ -215,7 +215,7 @@ public class MapMenu : MonoBehaviour
 		limitsPlayer = "4";
 		killToWin = "10";
 		List<MapInfo.Map> mapInfoList = _info.CurrentMapsList;
-		prefs.SetString("TypeGame", "server");
+		PlayerPrefs.SetString("TypeGame", "server");
 		string[] propsToListInLobby = new string[3] { "map", "MaxKill", "pass" };
 		int selectMapIndex = mapInfoList.IndexOf(selectedMap);
 		goMapName = selectedMap.sceneName;
@@ -223,8 +223,8 @@ public class MapMenu : MonoBehaviour
 		hashtable.Add("map", selectMapIndex);
 		hashtable.Add("MaxKill", int.Parse(killToWin));
 		hashtable.Add("pass", password);
-		prefs.SetString("MapName", selectedMap.mapName);
-		prefs.SetString("MaxKill", killToWin);
+		PlayerPrefs.SetString("MapName", selectedMap.mapName);
+		PlayerPrefs.SetString("MaxKill", killToWin);
 		goMapName = selectedMap.sceneName;
 		mapLoading = (Texture2D)selectedMap.icon;	
 		string roomName = customRoomName;
@@ -272,8 +272,8 @@ public class MapMenu : MonoBehaviour
 			x.mine.Clicked += (object sender, System.EventArgs e) => {
 				// completely ignore pass cause it doesnt matter for now
 				GetComponent<AudioSource>().PlayOneShot(btnSnd);
-				prefs.SetString("MaxKill", room.CustomProperties["MaxKill"].ToString());
-				prefs.SetString("MapName", mapInfoList[(int)room.CustomProperties["map"]].sceneName);
+				PlayerPrefs.SetString("MaxKill", room.CustomProperties["MaxKill"].ToString());
+				PlayerPrefs.SetString("MapName", mapInfoList[(int)room.CustomProperties["map"]].sceneName);
 				goMapName = mapInfoList[(int)room.CustomProperties["map"]].sceneName;
 				mapLoading = (Texture2D)mapInfoList[(int)room.CustomProperties["map"]].icon;	
 				PhotonNetwork.JoinRoom(room.Name);
@@ -285,14 +285,14 @@ public class MapMenu : MonoBehaviour
 	}
 	private void OnJoinedRoom()
 	{
-		prefs.SetString("RoomName", PhotonNetwork.room.Name);
+		PlayerPrefs.SetString("RoomName", PhotonNetwork.room.Name);
 		PhotonNetwork.isMessageQueueRunning = false;
 		StartCoroutine(MoveToGameScene());
 	}
 	private void OnCreatedRoom()
 	{
 		Debug.Log("OnCreatedRoom");
-		prefs.SetString("RoomName", PhotonNetwork.room.Name);
+		PlayerPrefs.SetString("RoomName", PhotonNetwork.room.Name);
 		StartCoroutine(MoveToGameScene());
 	}
 	private string goMapName;

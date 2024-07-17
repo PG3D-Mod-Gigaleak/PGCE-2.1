@@ -21,7 +21,7 @@ public class BotAI : MonoBehaviour
 
 	private void Awake()
 	{
-		if (prefs.GetInt("COOP") == 1)
+		if (PlayerPrefs.GetInt("COOP") == 1)
 		{
 			base.enabled = false;
 		}

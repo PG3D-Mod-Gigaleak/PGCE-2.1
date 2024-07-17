@@ -438,7 +438,7 @@ public class FirstPersonControl : MonoBehaviour
 		if (!(vector2.magnitude <= 1f))
 		{
 		}
-		float @float = prefs.GetFloat("SensitivitySett", 12f);
+		float @float = PlayerPrefs.GetFloat("SensitivitySett", 12f);
 		vector2 *= Time.deltaTime * @float;
 		thisTransform.Rotate(0f, vector2.x, 0f, Space.World);
 		cameraPivot.Rotate(0f - vector2.y * (Globals.PlayerMove.isGravFlipped ? -1 : 1), 0f, 0f);

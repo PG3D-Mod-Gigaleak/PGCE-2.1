@@ -60,9 +60,9 @@ public sealed class Initializer : MonoBehaviour
 
 	private void Awake()
 	{
-		prefs.SetInt("ExitGame", 0);
+		PlayerPrefs.SetInt("ExitGame", 0);
 		GameObject gameObject = null;
-		if (prefs.GetInt("MultyPlayer") != 1)
+		if (PlayerPrefs.GetInt("MultyPlayer") != 1)
 		{
 			gameObject = ((GlobalGameController.currentLevel != GlobalGameController.levelMapping[0]) ? (Resources.Load("BackgroundMusic/BackgroundMusic_Level" + (Defs.GetBGMNumberFromRandomByIndex(GlobalGameController.previousLevel))) as GameObject) : (Resources.Load("BackgroundMusic/BackgroundMusic_Level0") as GameObject));
 		}
@@ -73,7 +73,7 @@ public sealed class Initializer : MonoBehaviour
 			gameObject = Resources.Load("BackgroundMusic/BackgroundMusic_Level" + musicNum) as GameObject;
 		}
 		UnityEngine.Object.Instantiate(gameObject);
-		if (prefs.GetInt("MultyPlayer") != 1)
+		if (PlayerPrefs.GetInt("MultyPlayer") != 1)
 		{
 			GameObject gameObject2 = GameObject.FindGameObjectWithTag("Configurator");
 			CoinConfigurator component = gameObject2.GetComponent<CoinConfigurator>();
@@ -88,9 +88,9 @@ public sealed class Initializer : MonoBehaviour
 	private void Start()
 	{
 		_purchaseActivityIndicator = StoreKitEventListener.purchaseActivityInd;
-		prefs.SetInt("StartAfterDisconnect", 0);
+		PlayerPrefs.SetInt("StartAfterDisconnect", 0);
 		PhotonNetwork.isMessageQueueRunning = true;
-		if (prefs.GetInt("MultyPlayer") == 1)
+		if (PlayerPrefs.GetInt("MultyPlayer") == 1)
 		{
 			_isMultiplayer = true;
 		}
@@ -147,9 +147,9 @@ public sealed class Initializer : MonoBehaviour
 		}
 		tc = UnityEngine.Object.Instantiate(tempCam, position, rotation) as GameObject;
 
-		if (prefs.GetString("TypeConnect").Equals("local"))
+		if (PlayerPrefs.GetString("TypeConnect").Equals("local"))
 		{
-			if (prefs.GetString("TypeGame").Equals("client"))
+			if (PlayerPrefs.GetString("TypeGame").Equals("client"))
 			{
 				//bool useNat = !PhotonNetwork.HavePublicAddress();
 				//Network.useNat = useNat;
@@ -187,7 +187,7 @@ public sealed class Initializer : MonoBehaviour
 	[Beebyte.Obfuscator.SkipRename]
 	public void SetupObjectThatNeedsPlayer()
 	{
-		if (prefs.GetInt("MultyPlayer") == 1)
+		if (PlayerPrefs.GetInt("MultyPlayer") == 1)
 		{
 			Initializer.PlayerAddedEvent();
 			return;
@@ -249,7 +249,7 @@ public sealed class Initializer : MonoBehaviour
 		messagesStyle.fontSize = Mathf.RoundToInt(60f * (float)Screen.height / 768f);
 		messagesStyle.normal.textColor = Color.white;
 		Rect position = new Rect(0f, (float)Screen.height * 0.15f, Screen.width, (float)Screen.height * 0.2f);
-		if (showLoading && prefs.GetInt("MultyPlayer") == 1 && prefs.GetString("TypeConnect").Equals("inet"))
+		if (showLoading && PlayerPrefs.GetInt("MultyPlayer") == 1 && PlayerPrefs.GetString("TypeConnect").Equals("inet"))
 		{
 			if (_weaponManager.myTable != null)
 			{
@@ -316,7 +316,7 @@ public sealed class Initializer : MonoBehaviour
 	public void OnLeftRoom()
 	{
 		Debug.Log("OnLeftRoom (local) init");
-		if (prefs.GetInt("ExitGame") == 1)
+		if (PlayerPrefs.GetInt("ExitGame") == 1)
 		{
 			showLoading = true;
 			Invoke("goToConnect", 0.1f);
@@ -339,7 +339,7 @@ public sealed class Initializer : MonoBehaviour
 		isCancelReConnect = false;
 		isNotConnectRoom = false;
 		countConnectToRoom = 0;
-		prefs.SetString("TypeGame", "client");
+		PlayerPrefs.SetString("TypeGame", "client");
 		Debug.Log("OnConnectionFail " + GlobalGameController.Score);
 		Debug.Log("OnConnectionFail " + cause);
 		tc.SetActive(true);
@@ -374,7 +374,7 @@ public sealed class Initializer : MonoBehaviour
 		if (!isCancelReConnect)
 		{
 			Debug.Log("ConnectToPhoton ");
-			if (prefs.GetInt("COOP", 0) == 1)
+			if (PlayerPrefs.GetInt("COOP", 0) == 1)
 			{
 				PhotonNetwork.ConnectUsingSettings("v" + GlobalGameController.AppVersion + "COOP");
 			}
@@ -402,10 +402,10 @@ public sealed class Initializer : MonoBehaviour
 	[Beebyte.Obfuscator.SkipRename]
 	private void ConnectToRoom()
 	{
-		Debug.Log("OnJoinedLobby " + prefs.GetString("RoomName"));
+		Debug.Log("OnJoinedLobby " + PlayerPrefs.GetString("RoomName"));
 		if (!isCancelReConnect)
 		{
-			PhotonNetwork.JoinRoom(prefs.GetString("RoomName"));
+			PhotonNetwork.JoinRoom(PlayerPrefs.GetString("RoomName"));
 		}
 	}
 
@@ -430,7 +430,7 @@ public sealed class Initializer : MonoBehaviour
 		Debug.Log("OnJoinedRoom - init");
 		if (isDisconnect)
 		{
-			prefs.SetInt("StartAfterDisconnect", 1);
+			PlayerPrefs.SetInt("StartAfterDisconnect", 1);
 			_weaponManager.myTable = PhotonNetwork.Instantiate("NetworkTable", base.transform.position, base.transform.rotation, 0);
 		}
 		isDisconnect = false;

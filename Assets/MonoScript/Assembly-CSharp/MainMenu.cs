@@ -231,11 +231,11 @@ public sealed class MainMenu : MonoBehaviour
 		if (GUI.RepeatButton(func(arg), string.Empty, playStyle))
 		{
 			GUIHelper.DrawLoading();
-			prefs.SetInt("MultyPlayer", 0);
-			prefs.SetInt("COOP", 0);
+			PlayerPrefs.SetInt("MultyPlayer", 0);
+			PlayerPrefs.SetInt("COOP", 0);
 			GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>().Reset();
-			prefs.SetFloat(Defs.CurrentHealthSett, Player_move_c.MaxPlayerHealth);
-			prefs.SetFloat(Defs.CurrentArmorSett, 0f);
+			PlayerPrefs.SetFloat(Defs.CurrentHealthSett, Player_move_c.MaxPlayerHealth);
+			PlayerPrefs.SetFloat(Defs.CurrentArmorSett, 0f);
 			FlurryPluginWrapper.LogSurvivalModePress();
 			Application.LoadLevel("LoadingNoWait");
 		}
@@ -243,8 +243,8 @@ public sealed class MainMenu : MonoBehaviour
 		if (GUI.RepeatButton(func(arg2), string.Empty, playMultyStyle))
 		{
 			GUIHelper.DrawLoading();
-			prefs.SetInt("MultyPlayer", 1);
-			prefs.SetInt("COOP", 0);
+			PlayerPrefs.SetInt("MultyPlayer", 1);
+			PlayerPrefs.SetInt("COOP", 0);
 			GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>().Reset();
 			FlurryPluginWrapper.LogDeathmatchModePress();
 			Application.LoadLevel("NewMapList");
@@ -253,9 +253,9 @@ public sealed class MainMenu : MonoBehaviour
 		if (GUI.RepeatButton(func(arg3), string.Empty, coopStyle))
 		{
 			GUIHelper.DrawLoading();
-			prefs.SetString("TypeConnect", "inet");
-			prefs.SetInt("COOP", 1);
-			prefs.SetInt("MultyPlayer", 1);
+			PlayerPrefs.SetString("TypeConnect", "inet");
+			PlayerPrefs.SetInt("COOP", 1);
+			PlayerPrefs.SetInt("MultyPlayer", 1);
 			GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>().Reset();
 			FlurryPluginWrapper.LogCOOPModePress();
 			Application.LoadLevel("NewMapList");
@@ -301,14 +301,14 @@ public sealed class MainMenu : MonoBehaviour
 		if (true)
 		{
 			Rect position = new Rect(rightBorder - num3, _003CDrawToolbar_003Ec__AnonStorey1C.toolbarTop, num3, (float)skinsMakerStyle.normal.background.height * num);
-			bool flag = Defs.IsProEdition || prefs.GetInt(Defs.SkinsMakerInMainMenuPurchased) > 0;
+			bool flag = Defs.IsProEdition || PlayerPrefs.GetInt(Defs.SkinsMakerInMainMenuPurchased) > 0;
 			GUIStyle style = skinsMakerStyle;
 			if ((Application.platform != RuntimePlatform.Android) ? GUI.RepeatButton(position, string.Empty, skinsMakerStyle) : GUI.Button(position, string.Empty, style))
 			{
 				if (flag)
 				{
 					GUIHelper.DrawLoading();
-					prefs.SetInt(Defs.SkinEditorMode, 0);
+					PlayerPrefs.SetInt(Defs.SkinEditorMode, 0);
 					FlurryPluginWrapper.LogSkinsMakerModePress();
 					FlurryPluginWrapper.LogSkinsMakerEnteredEvent();
 					Application.LoadLevel("SkinEditor");
@@ -338,7 +338,7 @@ public sealed class MainMenu : MonoBehaviour
 
 	private void PerformSkinsMakerQueryIfLiteEdition()
 	{
-		if (!Defs.IsProEdition && prefs.GetInt(Defs.SkinsMakerInMainMenuPurchased) <= 0)
+		if (!Defs.IsProEdition && PlayerPrefs.GetInt(Defs.SkinsMakerInMainMenuPurchased) <= 0)
 		{
 			GoogleIABManager.queryInventorySucceededEvent += HandleSkinsMakerQueryInventorySucceededEvent;
 			GoogleIABManager.queryInventoryFailedEvent += HandleSkinsMakerQueryInventoryFailedEvent;
@@ -370,7 +370,7 @@ public sealed class MainMenu : MonoBehaviour
 		}
 		if (purchases.Any(_003C_003Ef__am_0024cache3B))
 		{
-			prefs.SetInt(Defs.SkinsMakerInMainMenuPurchased, 1);
+			PlayerPrefs.SetInt(Defs.SkinsMakerInMainMenuPurchased, 1);
 		}
 		_skinsMakerQuerySucceeded = true;
 		string message2 = string.Format("Skins Maker query inventory succeeded.\n\t[ {0} ]\n\t[ {1} ]", arg, arg2);
@@ -390,7 +390,7 @@ public sealed class MainMenu : MonoBehaviour
 	{
 		if (!(purchase.productId != "skinsmaker"))
 		{
-			prefs.SetInt(Defs.SkinsMakerInMainMenuPurchased, 1);
+			PlayerPrefs.SetInt(Defs.SkinsMakerInMainMenuPurchased, 1);
 			Debug.Log("Skins Maker purchase succeeded: " + purchase.productId);
 			GoogleIABManager.purchaseSucceededEvent -= HandleSkinsMakerPurchaseSucceededEvent;
 			GoogleIABManager.purchaseFailedEvent -= HandleSkinsMakerPurchasePurchaseFailedEvent;
@@ -413,13 +413,13 @@ public sealed class MainMenu : MonoBehaviour
 		GUI.DrawTexture(new Rect(0.5f * ((float)Screen.width - (float)head_Free.width * num), 0f, (float)head_Free.width * num, (float)head_Free.height * num), head_Free);
 		if (true)
 		{
-			if (prefs.GetInt("freeFacebook", 0) == 0)
+			if (PlayerPrefs.GetInt("freeFacebook", 0) == 0)
 			{
 				if (GUI.Button(new Rect((float)Screen.width * 0.7f - (float)f_Free.normal.background.width * 0.38f * num, (float)Screen.height * 0.5f - (float)f_Free.normal.background.height * num * 1.14f - num2, (float)f_Free.normal.background.width * num * 0.76f, (float)f_Free.normal.background.height * num * 0.76f), string.Empty, f_Free))
 				{
 					FlurryPluginWrapper.LogFacebook();
 					FlurryPluginWrapper.LogFreeCoinsFacebook();
-					prefs.SetInt("freeFacebook", 1);
+					PlayerPrefs.SetInt("freeFacebook", 1);
 					if (!Application.isEditor && FacebookSupported())
 					{
 						int @int = Storager.getInt(Defs.Coins, false);
@@ -435,11 +435,11 @@ public sealed class MainMenu : MonoBehaviour
 		}
 		if (true)
 		{
-			if (prefs.GetInt("freeTwitter", 0) == 0)
+			if (PlayerPrefs.GetInt("freeTwitter", 0) == 0)
 			{
 				if (GUI.Button(new Rect((float)Screen.width * 0.7f - (float)f_Free.normal.background.width * 0.38f * num, (float)Screen.height * 0.5f - (float)f_Free.normal.background.height * num * 0.38f, (float)f_Free.normal.background.width * num * 0.76f, (float)f_Free.normal.background.height * num * 0.76f), string.Empty, t_Free))
 				{
-					prefs.SetInt("freeTwitter", 1);
+					PlayerPrefs.SetInt("freeTwitter", 1);
 					FlurryPluginWrapper.LogTwitter();
 					FlurryPluginWrapper.LogFreeCoinsTwitter();
 					if (!Application.isEditor)
@@ -455,13 +455,13 @@ public sealed class MainMenu : MonoBehaviour
 				GUI.DrawTexture(new Rect((float)Screen.width * 0.7f - (float)f_Free.normal.background.width * 0.38f * num, (float)Screen.height * 0.5f - (float)f_Free.normal.background.height * num * 0.38f, (float)f_Free.normal.background.width * num * 0.76f, (float)f_Free.normal.background.height * num * 0.76f), freeTwitterOff);
 			}
 		}
-		if (prefs.GetInt("freeTube", 0) == 0)
+		if (PlayerPrefs.GetInt("freeTube", 0) == 0)
 		{
 			Rect position = new Rect((float)Screen.width * 0.7f - (float)f_Free.normal.background.width * 0.38f * num, (float)Screen.height * 0.5f + (float)f_Free.normal.background.height * num * 0.38f + num2, (float)f_Free.normal.background.width * num * 0.76f, (float)f_Free.normal.background.height * num * 0.76f);
 			if (GUI.Button(position, string.Empty, tube_free))
 			{
 				FlurryPluginWrapper.LogFreeCoinsYoutube();
-				prefs.SetInt("freeTube", 1);
+				PlayerPrefs.SetInt("freeTube", 1);
 				int int3 = Storager.getInt(Defs.Coins, false);
 				Storager.setInt(Defs.Coins, int3 + 100, false);
 			}
@@ -526,7 +526,7 @@ public sealed class MainMenu : MonoBehaviour
 	private string _SocialMessage()
 	{
 		string applicationUrl = Defs.ApplicationUrl;
-		return "I scored " + prefs.GetInt(Defs.BestScoreSett, 0) + " points in Pixel Gun 3D! Try right now! " + applicationUrl;
+		return "I scored " + PlayerPrefs.GetInt(Defs.BestScoreSett, 0) + " points in Pixel Gun 3D! Try right now! " + applicationUrl;
 	}
 
 	private string _SocialSentSuccess(string SocialName)
@@ -568,11 +568,11 @@ public sealed class MainMenu : MonoBehaviour
 		Application.targetFrameRate = 240;
 		PhotonNetwork.PhotonServerSettings.UseCloud("57aa4ce3-57e7-4092-a71f-416d847507f2", 0);
 		PerformSkinsMakerQueryIfLiteEdition();
-		string @string = prefs.GetString(Defs.ShouldReoeatActionSett, string.Empty);
+		string @string = PlayerPrefs.GetString(Defs.ShouldReoeatActionSett, string.Empty);
 		if (@string.Equals(Defs.GoToProfileAction))
 		{
-			prefs.SetString(Defs.ShouldReoeatActionSett, string.Empty);
-			prefs.Save();
+			PlayerPrefs.SetString(Defs.ShouldReoeatActionSett, string.Empty);
+			PlayerPrefs.Save();
 		}
 		else if (!@string.Equals(Defs.GoToSkinsMakerAction))
 		{
@@ -588,7 +588,7 @@ public sealed class MainMenu : MonoBehaviour
 		Invoke("setEnabledGUI", 0.1f);
 		if (GlobalGameController.isFullVersion)
 		{
-			prefs.SetInt("FullVersion", 1);
+			PlayerPrefs.SetInt("FullVersion", 1);
 			Debug.Log("FULL VERSION");
 		}
 		else
@@ -604,7 +604,7 @@ public sealed class MainMenu : MonoBehaviour
 		{
 			_purchaseActivityIndicator.SetActive(false);
 		}
-		prefs.SetInt("typeConnect__", 0);
+		PlayerPrefs.SetInt("typeConnect__", 0);
 		productIdentifiers = StoreKitEventListener.idsForFull;
 		Debug.Log("productIdentifiers = " + productIdentifiers);
 		if (!GameObject.FindGameObjectWithTag("SkinsManager") && (bool)skinsManagerPrefab)

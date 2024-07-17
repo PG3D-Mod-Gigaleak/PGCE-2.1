@@ -7,11 +7,11 @@ public class TestingController : MonoBehaviour
 	public void EnterSurvival()
 	{
 		loading = true;
-		prefs.SetInt("MultyPlayer", 0);
-		prefs.SetInt("COOP", 0);
+		PlayerPrefs.SetInt("MultyPlayer", 0);
+		PlayerPrefs.SetInt("COOP", 0);
 		GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>().Reset();
-		prefs.SetFloat(Defs.CurrentHealthSett, Player_move_c.MaxPlayerHealth);
-		prefs.SetFloat(Defs.CurrentArmorSett, 0f);
+		PlayerPrefs.SetFloat(Defs.CurrentHealthSett, Player_move_c.MaxPlayerHealth);
+		PlayerPrefs.SetFloat(Defs.CurrentArmorSett, 0f);
 		FlurryPluginWrapper.LogSurvivalModePress();
 		Application.LoadLevel("LoadingNoWait");
 	}
@@ -19,9 +19,9 @@ public class TestingController : MonoBehaviour
 	public void EnterCOOP()
 	{
 		loading = true;
-		prefs.SetString("TypeConnect", "inet");
-		prefs.SetInt("COOP", 1);
-		prefs.SetInt("MultyPlayer", 1);
+		PlayerPrefs.SetString("TypeConnect", "inet");
+		PlayerPrefs.SetInt("COOP", 1);
+		PlayerPrefs.SetInt("MultyPlayer", 1);
 		GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>().Reset();
 		FlurryPluginWrapper.LogCOOPModePress();
 		Application.LoadLevel("NewMapList");

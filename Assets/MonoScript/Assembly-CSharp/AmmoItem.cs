@@ -15,7 +15,7 @@ public class AmmoItem : MonoBehaviour
 	private void Start()
 	{
 		photonView = PhotonView.Get(this);
-		if (prefs.GetInt("MultyPlayer") == 1)
+		if (PlayerPrefs.GetInt("MultyPlayer") == 1)
 		{
 			if (GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>() != null && GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>().myGun != null)
 			{
@@ -75,7 +75,7 @@ public class AmmoItem : MonoBehaviour
 		}
 		if (test == null || player == null)
 		{
-			if (prefs.GetInt("MultyPlayer") == 1)
+			if (PlayerPrefs.GetInt("MultyPlayer") == 1)
 			{
 				if (GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>() != null && GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>().myGun != null)
 				{
@@ -117,7 +117,7 @@ public class AmmoItem : MonoBehaviour
 			test.gameObject.GetComponent<AudioSource>().PlayOneShot(AmmoItemUp);
 		}
 		isKilled = true;
-		if (prefs.GetInt("MultyPlayer") == 1)
+		if (PlayerPrefs.GetInt("MultyPlayer") == 1)
 		{
 			photonView.RPC("delBonusPhoton", PhotonTargets.All, GetComponent<PhotonView>().viewID, player.GetComponent<PhotonView>().viewID);
 		}

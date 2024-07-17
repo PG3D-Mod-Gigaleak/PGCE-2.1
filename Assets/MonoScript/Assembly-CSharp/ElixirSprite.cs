@@ -6,7 +6,7 @@ public class ElixirSprite : MonoBehaviour
 
 	private void Start()
 	{
-		bool flag = prefs.GetInt("MultyPlayer", 0) == 0;
+		bool flag = PlayerPrefs.GetInt("MultyPlayer", 0) == 0;
 		base.gameObject.SetActive(flag);
 		if (flag)
 		{

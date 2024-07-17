@@ -38,15 +38,15 @@ public class GameLoad : MonoBehaviour
 
 	public void BeginLoading()
 	{
-		if (prefs.GetInt("startingValues") == 0)
+		if (PlayerPrefs.GetInt("startingValues") == 0)
 		{
-			prefs.SetFloat("setVolm", 0.5f);
-			prefs.SetFloat("SensitivitySett", 25f);
-			prefs.SetInt("startingValues", 1);
+			PlayerPrefs.SetFloat("setVolm", 0.5f);
+			PlayerPrefs.SetFloat("SensitivitySett", 25f);
+			PlayerPrefs.SetInt("startingValues", 1);
 		}
 		
-		WeaponSounds.hideArms = prefs.GetInt("hideArms") == 1;
-		WeaponSounds.leftArm = prefs.GetInt("leftArm") == 1;
+		WeaponSounds.hideArms = PlayerPrefs.GetInt("hideArms") == 1;
+		WeaponSounds.leftArm = PlayerPrefs.GetInt("leftArm") == 1;
 
 		StartCoroutine(LoadWeapons());
 	}

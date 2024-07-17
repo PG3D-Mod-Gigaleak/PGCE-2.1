@@ -287,7 +287,7 @@ public class Joystick : MonoBehaviour
 				{
 					flag = true;
 				}
-				isSerialShooting = prefs.GetInt("setSeriya") == 1;
+				isSerialShooting = PlayerPrefs.GetInt("setSeriya") == 1;
 				bool num = flag;
 				if (num)
 				{

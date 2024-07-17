@@ -105,10 +105,10 @@ public class InGameGUI : MonoBehaviour
 
 	private void Start()
 	{
-		if (prefs.GetInt("AddCoins", 0) == 1)
+		if (PlayerPrefs.GetInt("AddCoins", 0) == 1)
 		{
 			Invoke("GenerateMiganie", 1f);
-			prefs.SetInt("AddCoins", 0);
+			PlayerPrefs.SetInt("AddCoins", 0);
 		}
 	}
 
@@ -214,7 +214,7 @@ public class InGameGUI : MonoBehaviour
 		{
 			Debug.LogWarning($"FPS hit below 30! FPS count: {(1f / Time.unscaledDeltaTime)}");
 		}
-		if (prefs.GetInt("ShowFPS", 0) == 0) {
+		if (PlayerPrefs.GetInt("ShowFPS", 0) == 0) {
 			pingLabel.alpha = 0;
 			fpsLabel.alpha = 0;
 		}

@@ -517,15 +517,15 @@ public class UIInput : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Save the specified value to player prefs.
+	/// Save the specified value to player PlayerPrefs.
 	/// </summary>
 
 	protected void SaveToPlayerPrefs (string val)
 	{
 		if (!string.IsNullOrEmpty(savedAs))
 		{
-			if (string.IsNullOrEmpty(val)) prefs.DeleteKey(savedAs);
-			else prefs.SetString(savedAs, val);
+			if (string.IsNullOrEmpty(val)) PlayerPrefs.DeleteKey(savedAs);
+			else PlayerPrefs.SetString(savedAs, val);
 		}
 	}
 
@@ -1577,7 +1577,7 @@ public class UIInput : MonoBehaviour
 		{
 			string val = mValue.Replace("\\n", "\n");
 			mValue = "";
-			value = prefs.HasKey(savedAs) ? prefs.GetString(savedAs) : val;
+			value = PlayerPrefs.HasKey(savedAs) ? PlayerPrefs.GetString(savedAs) : val;
 		}
 	}
 }

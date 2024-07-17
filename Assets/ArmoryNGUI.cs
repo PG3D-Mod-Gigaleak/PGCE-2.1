@@ -139,7 +139,7 @@ public class ArmoryNGUI : MonoBehaviour
         }
         else
         {
-            prefs.SetString("cat" + ((int)sounds.category + 1), sounds.name);
+            PlayerPrefs.SetString("cat" + ((int)sounds.category + 1), sounds.name);
         }
     }
 
@@ -191,7 +191,7 @@ public class ArmoryNGUI : MonoBehaviour
 
         foreach (GameObject weapon in WeaponManager.WeaponPrefabs)
         {
-            if (weapon.name == prefs.GetString("cat" + (index + 1)))
+            if (weapon.name == PlayerPrefs.GetString("cat" + (index + 1)))
             {
                 sounds = weapon.GetComponent<WeaponSounds>();
                 break;

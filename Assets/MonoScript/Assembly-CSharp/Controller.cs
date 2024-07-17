@@ -105,7 +105,7 @@ public sealed class Controller : MonoBehaviour
 	{
 		get
 		{
-			return (prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Mult_arrNameSkin" : "arrNameSkin";
+			return (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Mult_arrNameSkin" : "arrNameSkin";
 		}
 	}
 
@@ -113,7 +113,7 @@ public sealed class Controller : MonoBehaviour
 	{
 		get
 		{
-			return (prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Mult_arrTitleSkin" : "arrTitleSkin";
+			return (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Mult_arrTitleSkin" : "arrTitleSkin";
 		}
 	}
 
@@ -121,7 +121,7 @@ public sealed class Controller : MonoBehaviour
 	{
 		get
 		{
-			return (prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Mult_nomSkinForSave" : "nomSkinForSave";
+			return (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Mult_nomSkinForSave" : "nomSkinForSave";
 		}
 	}
 
@@ -137,31 +137,31 @@ public sealed class Controller : MonoBehaviour
 
 	private void PrepareSkins(string folderName, string baseName, string arrNameSkin_sett, string arrTitleSkin_sett, string CreateSpisokSkinov_sett, string nomSkinForSave_sett, string[] arrVremTitle)
 	{
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 0)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 0)
 		{
 			Debug.Log("folderName: " + folderName + "\nbaseName: " + baseName + "\narrNameSkin_sett: " + arrNameSkin_sett + "\narrTitleSkin_sett: " + arrTitleSkin_sett + "\nCreateSpisokSkinov_sett " + CreateSpisokSkinov_sett + " = " + Load.LoadBool(CreateSpisokSkinov_sett) + "\nnomSkinForSave_sett: " + nomSkinForSave_sett + "\narrVremTitle:" + arrVremTitle);
 		}
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
-			object[] array = new object[(prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? 28 : 16];
+			object[] array = new object[(PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? 28 : 16];
 			for (int i = 0; i < array.Length; i++)
 			{
-				array[i] = Resources.Load((prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Multiplayer Skins" : "Skins");
+				array[i] = Resources.Load((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Multiplayer Skins" : "Skins");
 			}
-			prefs.SetInt(Defs.NumOfMultSkinsSett, array.Length);
+			PlayerPrefs.SetInt(Defs.NumOfMultSkinsSett, array.Length);
 		}
 		if (!Load.LoadBool(CreateSpisokSkinov_sett))
 		{
-			object[] array2 = new object[(prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? 28 : 16];
+			object[] array2 = new object[(PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? 28 : 16];
 			for (int i = 0; i < array2.Length; i++)
 			{
-				array2[i] = Resources.Load((prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Multiplayer Skins" : "Skins");
+				array2[i] = Resources.Load((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Multiplayer Skins" : "Skins");
 			}
-			if (prefs.GetInt(Defs.SkinEditorMode, 0) == 0)
+			if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 0)
 			{
 				Debug.Log("arrTextur.length: " + array2.Length + "\narrTextur: " + array2);
 			}
-			if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+			if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 			{
 				NumericComparer comparer = new NumericComparer();
 				Array.Sort(array2, comparer);
@@ -220,7 +220,7 @@ public sealed class Controller : MonoBehaviour
 			}
 		}
 		spisokSkinovContoller.arrTitleSkin = arrTitleSkin;
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 0)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 0)
 		{
 			Debug.Log("arrTitleSkin.length: " + arrTitleSkin.Count + "\narrTitleSkin: " + arrTitleSkin);
 			Debug.Log("arrNameSkin.length: " + arrNameSkin.Count + "\narrNameSkin: " + arrNameSkin);
@@ -248,10 +248,10 @@ public sealed class Controller : MonoBehaviour
 		arrTitleSkin = new ArrayListWrapper();
 		Debug.Log("Application.persistentDataPath: " + Application.persistentDataPath);
 		string text = "Multiplayer Skins";
-		string folderName = ((prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? text : SkinMaker_folderName);
-		string baseName = ((prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? Defs.SkinBaseName : SkinMaker_baseName);
-		string createSpisokSkinov_sett = ((prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Mult_CreateSpisokSkinov_UPDATE2" : "CreateSpisokSkinov");
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 0)
+		string folderName = ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? text : SkinMaker_folderName);
+		string baseName = ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? Defs.SkinBaseName : SkinMaker_baseName);
+		string createSpisokSkinov_sett = ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? "Mult_CreateSpisokSkinov_UPDATE2" : "CreateSpisokSkinov");
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 0)
 		{
 			Debug.Log(" previewControl  arrNameSkin_sett " + arrNameSkin_sett);
 		}
@@ -262,25 +262,25 @@ public sealed class Controller : MonoBehaviour
 			"Bad Guy", "Chief", "Space Engineer", "Nano Soldier", "Steel Man", "Captain Skin", "Hawk Skin", "Green Guy Skin", "Thunder God Skin", "Gordon Skin",
 			"Anime Girl", "EMO Girl", "Nurse", "Magic Girl", "Brave Girl", "Glam Doll", "Kitty", "Famos Boy"
 		};
-		string[] arrVremTitle = ((prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? array : SkinMaker_arrVremTitle);
+		string[] arrVremTitle = ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? array : SkinMaker_arrVremTitle);
 		PrepareSkins(folderName, baseName, arrNameSkin_sett, arrTitleSkin_sett, createSpisokSkinov_sett, nomSkinForSave_sett, arrVremTitle);
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			GoToSpisokSkinov();
 			return;
 		}
-		string @string = prefs.GetString(Defs.ShouldReoeatActionSett, string.Empty);
+		string @string = PlayerPrefs.GetString(Defs.ShouldReoeatActionSett, string.Empty);
 		if (@string.Equals(Defs.GoToSkinsMakerAction) || @string.Equals(Defs.GoToPresetsAction))
 		{
-			prefs.SetString(Defs.ShouldReoeatActionSett, string.Empty);
-			prefs.Save();
+			PlayerPrefs.SetString(Defs.ShouldReoeatActionSett, string.Empty);
+			PlayerPrefs.Save();
 		}
 	}
 
 	public void GoToSpisokSkinov()
 	{
 		objPeople.active = true;
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 0)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 0)
 		{
 			Debug.Log("before update spisok  arrTitleSkin.length: " + arrTitleSkin.Count + "\narrTitleSkin: " + arrTitleSkin);
 			Debug.Log("before update spisok  arrNameSkin.length: " + arrNameSkin.Count + "\narrNameSkin: " + arrNameSkin);

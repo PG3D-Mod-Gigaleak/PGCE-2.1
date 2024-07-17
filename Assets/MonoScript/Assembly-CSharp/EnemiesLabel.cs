@@ -8,11 +8,11 @@ public class EnemiesLabel : MonoBehaviour
 
 	private void Start()
 	{
-		bool flag = prefs.GetInt("MultyPlayer", 0) == 0;
+		bool flag = PlayerPrefs.GetInt("MultyPlayer", 0) == 0;
 		base.gameObject.SetActive(flag);
 		if (flag)
 		{
-			if (prefs.GetInt("MultyPlayer", 0) == 0)
+			if (PlayerPrefs.GetInt("MultyPlayer", 0) == 0)
 			{
 				UIRoot uIRoot = NGUITools.FindInParents<UIRoot>(base.gameObject);
 				float num = (float)uIRoot.manualHeight * ((float)Screen.width / (float)Screen.height);

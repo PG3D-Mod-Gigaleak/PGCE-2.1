@@ -8,15 +8,15 @@ public class CustomPrefs
 	{
 		get
 		{
-			if (prefs.GetString("base64_multskin") == "")
+			if (PlayerPrefs.GetString("base64_multskin") == "")
 			{
-				prefs.SetString("base64_multskin", System.Convert.ToBase64String(ImageConversion.EncodeToPNG(Resources.Load<Texture2D>("multiplayer skins/multi_skin_1"))));
+				PlayerPrefs.SetString("base64_multskin", System.Convert.ToBase64String(ImageConversion.EncodeToPNG(Resources.Load<Texture2D>("multiplayer skins/multi_skin_1"))));
 			}
-			return prefs.GetString("base64_multskin");
+			return PlayerPrefs.GetString("base64_multskin");
 		}
 		set
 		{
-			prefs.SetString("base64_multskin", value);
+			PlayerPrefs.SetString("base64_multskin", value);
 		}
 	}
 }

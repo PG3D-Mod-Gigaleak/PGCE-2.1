@@ -26,7 +26,7 @@ public class BotHealth : MonoBehaviour
 
 	private void Awake()
 	{
-		if (prefs.GetInt("COOP") == 1)
+		if (PlayerPrefs.GetInt("COOP") == 1)
 		{
 			base.enabled = false;
 		}
@@ -140,11 +140,11 @@ public class BotHealth : MonoBehaviour
 		}
 		if (_soundClips.health == 0f)
 		{
-			if (prefs.GetInt(base.name.Replace("(Clone)", "") + "_EncyclopediaUnlock") == 0)
+			if (PlayerPrefs.GetInt(base.name.Replace("(Clone)", "") + "_EncyclopediaUnlock") == 0)
 			{
 				GameObject.FindGameObjectWithTag("InGameGUI").GetComponent<InGameGUI>().newEntryPopup(base.name.Replace("(Clone)", "") + "_EncyclopediaUnlock");
 			}
-			prefs.SetInt(base.name.Replace("(Clone)", "") + "_EncyclopediaUnlock", 1);
+			PlayerPrefs.SetInt(base.name.Replace("(Clone)", "") + "_EncyclopediaUnlock", 1);
 			IsLife = false;
 		}
 		else

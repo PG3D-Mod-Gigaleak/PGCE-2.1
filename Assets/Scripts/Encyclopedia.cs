@@ -35,7 +35,7 @@ public class Encyclopedia : MonoBehaviour
 		lockedEnemyButtonTemplate = Resources.Load<GameObject>("EncyclopediaLockedEnemyButton");
 		foreach (SurvivalConfig.Enemy enemy in parsedEnemies)
 		{
-			if (prefs.GetInt(enemy.name + "_EncyclopediaUnlock") == 1)
+			if (PlayerPrefs.GetInt(enemy.name + "_EncyclopediaUnlock") == 1)
 			{
 				CreateButton(enemy, false);
 				continue;

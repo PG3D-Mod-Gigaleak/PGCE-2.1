@@ -16,7 +16,7 @@ public class ProfileShopNGUIController : MonoBehaviour {
 		skinTex.LoadImage(B64byteData);
 		skinTex.filterMode = FilterMode.Point;
 		skinTex.mipMapBias = 0;
-		usernameInput.value = prefs.GetString("NamePlayer", "Player");
+		usernameInput.value = PlayerPrefs.GetString("NamePlayer", "Player");
 		button.skin.sharedMaterial = new Material(Shader.Find("Mobile/Diffuse"));
 		button.skin.sharedMaterial.SetTexture("_MainTex", skinTex);
 		usernameInput.onValidate += Validate;
@@ -77,7 +77,7 @@ public class ProfileShopNGUIController : MonoBehaviour {
 		canActuallySet = true;
 	}
 	public void OnUsernameInputCHANGED() {
-		if (usernameInput.value == prefs.GetString("NamePlayer", "Player"))
+		if (usernameInput.value == PlayerPrefs.GetString("NamePlayer", "Player"))
 			return;
 		usernameInput.gameObject.SetActive(false);
 		#if USES_WEBSOCKET
@@ -85,7 +85,7 @@ public class ProfileShopNGUIController : MonoBehaviour {
 			Dictionary<string, object> resultDictionary = handler.networking.WebsocketHandler.Decrypt(JsonConvert.DeserializeObject<Dictionary<string, object>>(data));
 			if ((string)resultDictionary["response"] == "success")
 			{
-				prefs.SetString("NamePlayer", (string)resultDictionary["name_set"]);
+				PlayerPrefs.SetString("NamePlayer", (string)resultDictionary["name_set"]);
 				usernameInput.value = (string)resultDictionary["name_set"];
 				usernameInput.gameObject.SetActive(true);
 			}
@@ -95,7 +95,7 @@ public class ProfileShopNGUIController : MonoBehaviour {
 			{"newname", _weaponManager.gameObject.GetComponent<FilterBadWorld>().FilterString(usernameInput.value)},
 		});
 		#else
-		prefs.SetString("NamePlayer", _weaponManager.gameObject.GetComponent<FilterBadWorld>().FilterString(usernameInput.value));
+		PlayerPrefs.SetString("NamePlayer", _weaponManager.gameObject.GetComponent<FilterBadWorld>().FilterString(usernameInput.value));
 		usernameInput.gameObject.SetActive(true);
 		#endif
 	}

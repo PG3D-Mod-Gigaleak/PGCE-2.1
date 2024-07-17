@@ -73,7 +73,7 @@ public sealed class ZombiUpravlenie : MonoBehaviour
 	{
 		_modelChild = base.transform.GetChild(0).gameObject;
 		health = _modelChild.GetComponent<Sounds>().health;
-		if (prefs.GetInt("COOP") != 1)
+		if (PlayerPrefs.GetInt("COOP") != 1)
 		{
 			base.enabled = false;
 		}
@@ -283,13 +283,13 @@ public sealed class ZombiUpravlenie : MonoBehaviour
 	{
 		if (photonView.isMine)
 		{
-			if (prefs.GetInt(base.name.Replace("(Clone)", "") + "_EncyclopediaUnlock") == 0)
+			if (PlayerPrefs.GetInt(base.name.Replace("(Clone)", "") + "_EncyclopediaUnlock") == 0)
 			{
 				GameObject.FindGameObjectWithTag("InGameGUI").GetComponent<InGameGUI>().newEntryPopup(base.name.Replace("(Clone)", "") + "_EncyclopediaUnlock");
 			}
-			prefs.SetInt(base.name.Replace("(Clone)", "") + "_EncyclopediaUnlock", 1);
+			PlayerPrefs.SetInt(base.name.Replace("(Clone)", "") + "_EncyclopediaUnlock", 1);
 		}
-		if (prefs.GetInt("COOP", 0) == 1)
+		if (PlayerPrefs.GetInt("COOP", 0) == 1)
 		{
 			if (gameObject.name == "HER" || gameObject.name == "Whiteface") {
 				_modelChild.transform.Find("Audio Source").GetComponent<AudioSource>().Stop();
@@ -348,7 +348,7 @@ public sealed class ZombiUpravlenie : MonoBehaviour
 
 	public void PlayZombieRun()
 	{
-		if (tekAnim != 1 && prefs.GetInt("COOP", 0) == 1)
+		if (tekAnim != 1 && PlayerPrefs.GetInt("COOP", 0) == 1)
 		{
 			if ((bool)_modelChild.GetComponent<Animation>()[myCAnim(zombieWalkAnim)])
 			{
@@ -361,7 +361,7 @@ public sealed class ZombiUpravlenie : MonoBehaviour
 
 	public void PlayZombieAttack()
 	{
-		if (tekAnim != 2 && prefs.GetInt("COOP", 0) == 1)
+		if (tekAnim != 2 && PlayerPrefs.GetInt("COOP", 0) == 1)
 		{
 			if ((bool)_modelChild.GetComponent<Animation>()[myCAnim(attackAnim)])
 			{

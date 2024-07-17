@@ -15,7 +15,7 @@ public class crossHair : MonoBehaviour
 	private void Start()
 	{
 		photonView = PhotonView.Get(this);
-		if ((((prefs.GetString("TypeConnect").Equals("inet") && photonView.isMine)) && prefs.GetInt("MultyPlayer") == 1) || prefs.GetInt("MultyPlayer") != 1)
+		if ((((PlayerPrefs.GetString("TypeConnect").Equals("inet") && photonView.isMine)) && PlayerPrefs.GetInt("MultyPlayer") == 1) || PlayerPrefs.GetInt("MultyPlayer") != 1)
 		{
 			crossHairPosition = new Rect((Screen.width - crossHairTexture.width * Screen.height / 640) / 2, (Screen.height - crossHairTexture.height * Screen.height / 640) / 2, crossHairTexture.width * Screen.height / 640, crossHairTexture.height * Screen.height / 640);
 			pauser = GameObject.FindGameObjectWithTag("GameController").GetComponent<Pauser>();
@@ -25,7 +25,7 @@ public class crossHair : MonoBehaviour
 
 	private void OnGUI()
 	{
-		if (((((prefs.GetString("TypeConnect").Equals("inet") && photonView.isMine)) && prefs.GetInt("MultyPlayer") == 1) || prefs.GetInt("MultyPlayer") != 1) && !pauser.paused)
+		if (((((PlayerPrefs.GetString("TypeConnect").Equals("inet") && photonView.isMine)) && PlayerPrefs.GetInt("MultyPlayer") == 1) || PlayerPrefs.GetInt("MultyPlayer") != 1) && !pauser.paused)
 		{
 			GUI.DrawTexture(crossHairPosition, crossHairTexture);
 		}

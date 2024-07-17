@@ -12,17 +12,17 @@ public class PlayerPrefsX
 
 	public static void SetBool(string name, bool booleanValue)
 	{
-		prefs.SetInt(name, booleanValue ? 1 : 0);
+		PlayerPrefs.SetInt(name, booleanValue ? 1 : 0);
 	}
 
 	public static bool GetBool(string name)
 	{
-		return prefs.GetInt(name) == 1;
+		return PlayerPrefs.GetInt(name) == 1;
 	}
 
 	public static bool GetBool(string name, bool defaultValue)
 	{
-		if (prefs.HasKey(name))
+		if (PlayerPrefs.HasKey(name))
 		{
 			return GetBool(name);
 		}

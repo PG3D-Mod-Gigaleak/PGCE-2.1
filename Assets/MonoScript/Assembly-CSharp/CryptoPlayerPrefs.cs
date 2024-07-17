@@ -22,23 +22,23 @@ public static class CryptoPlayerPrefs
 	public static bool HasKey(string key)
 	{
 		string key2 = hashedKey(key);
-		return prefs.HasKey(key2);
+		return PlayerPrefs.HasKey(key2);
 	}
 
 	public static void DeleteKey(string key)
 	{
 		string key2 = hashedKey(key);
-		prefs.DeleteKey(key2);
+		PlayerPrefs.DeleteKey(key2);
 	}
 
 	public static void DeleteAll()
 	{
-		prefs.DeleteAll();
+		PlayerPrefs.DeleteAll();
 	}
 
 	public static void Save()
 	{
-		prefs.Save();
+		PlayerPrefs.Save();
 	}
 
 	public static void SetInt(string key, int val)
@@ -53,11 +53,11 @@ public static class CryptoPlayerPrefs
 		}
 		if (_useRijndael)
 		{
-			prefs.SetString(text, encrypt(text, string.Empty + num));
+			PlayerPrefs.SetString(text, encrypt(text, string.Empty + num));
 		}
 		else
 		{
-			prefs.SetInt(text, num);
+			PlayerPrefs.SetInt(text, num);
 		}
 	}
 
@@ -83,11 +83,11 @@ public static class CryptoPlayerPrefs
 		}
 		if (_useRijndael)
 		{
-			prefs.SetString(text, encrypt(text, text2));
+			PlayerPrefs.SetString(text, encrypt(text, text2));
 		}
 		else
 		{
-			prefs.SetString(text, text2);
+			PlayerPrefs.SetString(text, text2);
 		}
 	}
 
@@ -99,11 +99,11 @@ public static class CryptoPlayerPrefs
 	public static int GetInt(string key, int defaultValue = 0)
 	{
 		string text = hashedKey(key);
-		if (!prefs.HasKey(text))
+		if (!PlayerPrefs.HasKey(text))
 		{
 			return defaultValue;
 		}
-		int num = ((!_useRijndael) ? prefs.GetInt(text) : int.Parse(decrypt(text)));
+		int num = ((!_useRijndael) ? PlayerPrefs.GetInt(text) : int.Parse(decrypt(text)));
 		int result = num;
 		if (_useXor)
 		{
@@ -122,11 +122,11 @@ public static class CryptoPlayerPrefs
 	public static string GetString(string key, string defaultValue = "")
 	{
 		string text = hashedKey(key);
-		if (!prefs.HasKey(text))
+		if (!PlayerPrefs.HasKey(text))
 		{
 			return defaultValue;
 		}
-		string text2 = ((!_useRijndael) ? prefs.GetString(text) : decrypt(text));
+		string text2 = ((!_useRijndael) ? PlayerPrefs.GetString(text) : decrypt(text));
 		string text3 = text2;
 		if (_useXor)
 		{
@@ -155,7 +155,7 @@ public static class CryptoPlayerPrefs
 
 	private static string decrypt(string cKey)
 	{
-		return DecryptString(prefs.GetString(cKey), getEncryptionPassword(cKey));
+		return DecryptString(PlayerPrefs.GetString(cKey), getEncryptionPassword(cKey));
 	}
 
 	private static string hashedKey(string key)
@@ -296,7 +296,7 @@ public static class CryptoPlayerPrefs
 		bool flag2 = num == @int;
 		flag = flag && flag2;
 		Debug.Log("INT Bordertest Zero: " + ((!flag2) ? "fail" : "ok"));
-		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num + "; Saved value: " + prefs.GetString(text2) + "; Return value: " + @int + ")");
+		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num + "; Saved value: " + PlayerPrefs.GetString(text2) + "; Return value: " + @int + ")");
 		num = int.MaxValue;
 		text = "cryptotest_intmax";
 		text2 = hashedKey(text);
@@ -305,7 +305,7 @@ public static class CryptoPlayerPrefs
 		flag2 = num == @int;
 		flag = flag && flag2;
 		Debug.Log("INT Bordertest Max: " + ((!flag2) ? "fail" : "ok"));
-		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num + "; Saved value: " + prefs.GetString(text2) + "; Return value: " + @int + ")");
+		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num + "; Saved value: " + PlayerPrefs.GetString(text2) + "; Return value: " + @int + ")");
 		num = int.MinValue;
 		text = "cryptotest_intmin";
 		text2 = hashedKey(text);
@@ -314,7 +314,7 @@ public static class CryptoPlayerPrefs
 		flag2 = num == @int;
 		flag = flag && flag2;
 		Debug.Log("INT Bordertest Min: " + ((!flag2) ? "fail" : "ok"));
-		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num + "; Saved value: " + prefs.GetString(text2) + "; Return value: " + @int + ")");
+		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num + "; Saved value: " + PlayerPrefs.GetString(text2) + "; Return value: " + @int + ")");
 		text = "cryptotest_intrand";
 		text2 = hashedKey(text);
 		bool flag3 = true;
@@ -337,7 +337,7 @@ public static class CryptoPlayerPrefs
 		flag2 = num3.ToString().Equals(@float.ToString());
 		flag = flag && flag2;
 		Debug.Log("FLOAT Bordertest Zero: " + ((!flag2) ? "fail" : "ok"));
-		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num3 + "; Saved value: " + prefs.GetString(text2) + "; Return value: " + @float + ")");
+		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num3 + "; Saved value: " + PlayerPrefs.GetString(text2) + "; Return value: " + @float + ")");
 		num3 = float.MaxValue;
 		text = "cryptotest_floatmax";
 		text2 = hashedKey(text);
@@ -346,7 +346,7 @@ public static class CryptoPlayerPrefs
 		flag2 = num3.ToString().Equals(@float.ToString());
 		flag = flag && flag2;
 		Debug.Log("FLOAT Bordertest Max: " + ((!flag2) ? "fail" : "ok"));
-		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num3 + "; Saved value: " + prefs.GetString(text2) + "; Return value: " + @float + ")");
+		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num3 + "; Saved value: " + PlayerPrefs.GetString(text2) + "; Return value: " + @float + ")");
 		num3 = float.MinValue;
 		text = "cryptotest_floatmin";
 		text2 = hashedKey(text);
@@ -355,7 +355,7 @@ public static class CryptoPlayerPrefs
 		flag2 = num3.ToString().Equals(@float.ToString());
 		flag = flag && flag2;
 		Debug.Log("FLOAT Bordertest Min: " + ((!flag2) ? "fail" : "ok"));
-		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num3 + "; Saved value: " + prefs.GetString(text2) + "; Return value: " + @float + ")");
+		Debug.Log("(Key: " + text + "; Crypted Key: " + text2 + "; Input value: " + num3 + "; Saved value: " + PlayerPrefs.GetString(text2) + "; Return value: " + @float + ")");
 		text = "cryptotest_floatrand";
 		text2 = hashedKey(text);
 		flag3 = true;

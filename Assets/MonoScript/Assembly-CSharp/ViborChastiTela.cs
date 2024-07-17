@@ -77,7 +77,7 @@ public class ViborChastiTela : MonoBehaviour
 	public void AddSkinToArrs(ArrayListWrapper names, ArrayListWrapper titles)
 	{
 		int num = Load.LoadInt(Controller.nomSkinForSave_sett);
-		string text = ((prefs.GetInt(Defs.SkinEditorMode, 0) != 1) ? "Skin_" : Controller.SkinMaker_MultUser_baseName) + ((prefs.GetInt(Defs.SkinEditorMode, 0) != 1) ? num : (num + Controller.IndexBaseForUserMultiSkins));
+		string text = ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 1) ? "Skin_" : Controller.SkinMaker_MultUser_baseName) + ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 1) ? num : (num + Controller.IndexBaseForUserMultiSkins));
 		SkinsManager.SaveTextureWithName(sobratSkinIzArr(), text);
 		titles.Add(nameNewSkin);
 		names.Add(text);
@@ -134,7 +134,7 @@ public class ViborChastiTela : MonoBehaviour
 				mainController.previewControl.ShowSkin(spisokSkinovController.arrNameSkin.Count - 1);
 				skinIzm = false;
 				spisokSkinovController.showEnabled = true;
-				if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+				if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 				{
 					exit();
 					spisokSkinovController.SetCurrent();
@@ -163,7 +163,7 @@ public class ViborChastiTela : MonoBehaviour
 
 	public void ExitToEquippedSkin()
 	{
-		int idx = ((prefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? SpisokSkinov.EquippedSkinIndexToPreviewControllerIndex() : 0);
+		int idx = ((PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) != 0) ? SpisokSkinov.EquippedSkinIndexToPreviewControllerIndex() : 0);
 		mainController.previewControl.ShowSkin(idx);
 		exit();
 	}
@@ -283,7 +283,7 @@ public class ViborChastiTela : MonoBehaviour
 		mainController.previewControl.Locked = false;
 		exitBezSaveActiv = false;
 		showEnabled = false;
-		if (prefs.GetInt(Defs.SkinEditorMode, 0) == 1)
+		if (PlayerPrefs.GetInt(Defs.SkinEditorMode, 0) == 1)
 		{
 			dialogSaveNeActiv = true;
 			skinIzm = false;

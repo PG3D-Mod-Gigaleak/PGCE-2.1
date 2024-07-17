@@ -34,7 +34,7 @@ public class FlurryPluginWrapper : MonoBehaviour
 	{
 		get
 		{
-			return (prefs.GetInt("COOP", 0) != 1) ? MultiplayerWayDeaathmatchEvent : MultiplayerWayCOOPEvent;
+			return (PlayerPrefs.GetInt("COOP", 0) != 1) ? MultiplayerWayDeaathmatchEvent : MultiplayerWayCOOPEvent;
 		}
 	}
 
@@ -159,6 +159,6 @@ public class FlurryPluginWrapper : MonoBehaviour
 	}
 	
 	public void Update() {
-		AudioListener.volume = prefs.GetFloat("setVolm", 1.0f);
+		AudioListener.volume = PlayerPrefs.GetFloat("setVolm", 1.0f);
 	}
 }

@@ -20,7 +20,7 @@ public class PersConfigurator : MonoBehaviour
 		List<GameObject> list = new List<GameObject>();
 		foreach (GameObject obj in BonusCreator.GetAllWeapons())
 		{
-			if (obj.name.Replace("(Clone)", "") == prefs.GetString("cat1") || obj.name.Replace("(Clone)", "") == prefs.GetString("cat2") || obj.name.Replace("(Clone)", "") == prefs.GetString("cat3") || obj.name.Replace("(Clone)", "") == prefs.GetString("cat4") || obj.name.Replace("(Clone)", "") == prefs.GetString("cat5"))
+			if (obj.name.Replace("(Clone)", "") == PlayerPrefs.GetString("cat1") || obj.name.Replace("(Clone)", "") == PlayerPrefs.GetString("cat2") || obj.name.Replace("(Clone)", "") == PlayerPrefs.GetString("cat3") || obj.name.Replace("(Clone)", "") == PlayerPrefs.GetString("cat4") || obj.name.Replace("(Clone)", "") == PlayerPrefs.GetString("cat5"))
 			{
 				list.Add(obj);
 			}
@@ -55,7 +55,7 @@ public class PersConfigurator : MonoBehaviour
 			RaycastHit hitInfo;
 			if (touch.phase == TouchPhase.Began && Physics.Raycast(ray, out hitInfo, 1000f, -5) && hitInfo.collider.gameObject.name.Equals("MainMenu_Pers"))
 			{
-				prefs.SetInt(Defs.ProfileEnteredFromMenu, 1);
+				PlayerPrefs.SetInt(Defs.ProfileEnteredFromMenu, 1);
 				ConnectGUI.GoToProfile();
 				break;
 			}

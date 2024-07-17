@@ -230,7 +230,7 @@ public class GlobalGameController
 	public static void ResetParameters()
 	{
 		reGenerateLevelMapping();
-		currentLevel = ((prefs.GetInt(Defs.TrainingComplSett, 0) != 1) ? 101 : levelMapping[0]);
+		currentLevel = ((PlayerPrefs.GetInt(Defs.TrainingComplSett, 0) != 1) ? 101 : levelMapping[0]);
 		AllLevelsCompleted = 0;
 		numOfCompletedLevels = -1;
 		totalNumOfCompletedLevels = -1;

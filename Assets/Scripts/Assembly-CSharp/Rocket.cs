@@ -39,10 +39,10 @@ public class Rocket : MonoBehaviour
 
 	private void Awake()
 	{
-		isMulti = prefs.GetInt("MultyPlayer") == 1;
-		isInet = true;//prefs.GetString("TypeConnect").Equals("inet");
-		isCompany = false;//prefs.GetInt("company", 0) == 1;
-		isCOOP = prefs.GetInt("COOP", 0) == 1;
+		isMulti = PlayerPrefs.GetInt("MultyPlayer") == 1;
+		isInet = true;//PlayerPrefs.GetString("TypeConnect").Equals("inet");
+		isCompany = false;//PlayerPrefs.GetInt("company", 0) == 1;
+		isCOOP = PlayerPrefs.GetInt("COOP", 0) == 1;
 	}
 
 	private void Start()

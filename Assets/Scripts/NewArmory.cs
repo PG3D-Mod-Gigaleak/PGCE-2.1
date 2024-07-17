@@ -283,13 +283,13 @@ public class NewArmory : MonoBehaviour
 			{"wc", (int)weapon.category},
 		});
 		#else
-		prefs.SetString(GetCatStringFromCategoryType(weapon.category), weapon.name);
+		PlayerPrefs.SetString(GetCatStringFromCategoryType(weapon.category), weapon.name);
 		#endif
 	}
 
 	public bool WeaponEquipped(WeaponSounds weapon)
 	{
-		return prefs.GetString(GetCatStringFromCategoryType(weapon.category)) == weapon.name;
+		return PlayerPrefs.GetString(GetCatStringFromCategoryType(weapon.category)) == weapon.name;
 	}
 
 	public string GetCatStringFromCategoryType(CategoryType category)

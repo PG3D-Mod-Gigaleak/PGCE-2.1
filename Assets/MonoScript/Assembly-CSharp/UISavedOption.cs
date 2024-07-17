@@ -13,7 +13,7 @@ using UnityEngine;
 public class UISavedOption : MonoBehaviour
 {
 	/// <summary>
-	/// prefs.stored key for this option.
+	/// PlayerPrefs.stored key for this option.
 	/// </summary>
 
 	public string keyName;
@@ -44,22 +44,22 @@ public class UISavedOption : MonoBehaviour
 		if (mList != null)
 		{
 			EventDelegate.Add(mList.onChange, SaveSelection);
-			string s = prefs.GetString(key);
+			string s = PlayerPrefs.GetString(key);
 			if (!string.IsNullOrEmpty(s)) mList.value = s;
 		}
 		else if (mCheck != null)
 		{
 			EventDelegate.Add(mCheck.onChange, SaveState);
-			mCheck.value = (prefs.GetInt(key, mCheck.startsActive ? 1 : 0) != 0);
+			mCheck.value = (PlayerPrefs.GetInt(key, mCheck.startsActive ? 1 : 0) != 0);
 		}
 		else if (mSlider != null)
 		{
 			EventDelegate.Add(mSlider.onChange, SaveProgress);
-			mSlider.value = prefs.GetFloat(key, mSlider.value);
+			mSlider.value = PlayerPrefs.GetFloat(key, mSlider.value);
 		}
 		else
 		{
-			string s = prefs.GetString(key);
+			string s = PlayerPrefs.GetString(key);
 			UIToggle[] toggles = GetComponentsInChildren<UIToggle>(true);
 
 			for (int i = 0, imax = toggles.Length; i < imax; ++i)
@@ -89,7 +89,7 @@ public class UISavedOption : MonoBehaviour
 
 				if (ch.value)
 				{
-					prefs.SetString(key, ch.name);
+					PlayerPrefs.SetString(key, ch.name);
 					break;
 				}
 			}
@@ -100,17 +100,17 @@ public class UISavedOption : MonoBehaviour
 	/// Save the selection.
 	/// </summary>
 
-	public void SaveSelection () { prefs.SetString(key, UIPopupList.current.value); }
+	public void SaveSelection () { PlayerPrefs.SetString(key, UIPopupList.current.value); }
 
 	/// <summary>
 	/// Save the state.
 	/// </summary>
 
-	public void SaveState () { prefs.SetInt(key, UIToggle.current.value ? 1 : 0); }
+	public void SaveState () { PlayerPrefs.SetInt(key, UIToggle.current.value ? 1 : 0); }
 
 	/// <summary>
 	/// Save the current progress.
 	/// </summary>
 
-	public void SaveProgress () { prefs.SetFloat(key, UIProgressBar.current.value); }
+	public void SaveProgress () { PlayerPrefs.SetFloat(key, UIProgressBar.current.value); }
 }

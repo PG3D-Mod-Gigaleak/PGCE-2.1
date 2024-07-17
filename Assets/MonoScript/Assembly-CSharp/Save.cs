@@ -5,28 +5,28 @@ public class Save : MonoBehaviour
 {
 	public static void SavePos(string name, GameObject gameObject)
 	{
-		prefs.SetString(name, gameObject.transform.position.x + "&" + gameObject.transform.position.y + "&" + gameObject.transform.position.z);
+		PlayerPrefs.SetString(name, gameObject.transform.position.x + "&" + gameObject.transform.position.y + "&" + gameObject.transform.position.z);
 	}
 
 	public static void SaveString(string name, string variable)
 	{
-		prefs.SetString(name, variable);
+		PlayerPrefs.SetString(name, variable);
 	}
 
 	public static void SaveStringArray(string name, string[] variable)
 	{
 		Debug.Log("SaveStringArray name: " + name + "  variable=" + variable);
-		prefs.SetString(name, string.Join("#"[0].ToString(), variable));
+		PlayerPrefs.SetString(name, string.Join("#"[0].ToString(), variable));
 	}
 
 	public static void SaveStringArray(string name, string[] variable, char separator)
 	{
-		prefs.SetString(name, string.Join(separator.ToString(), variable));
+		PlayerPrefs.SetString(name, string.Join(separator.ToString(), variable));
 	}
 
 	public static void SaveInt(string name, int variable)
 	{
-		prefs.SetInt(name, variable);
+		PlayerPrefs.SetInt(name, variable);
 	}
 
 	public static void SaveIntArray(string name, int[] variable)
@@ -36,12 +36,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveUInt(string name, uint variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveUIntArray(string name, uint[] variable)
@@ -51,12 +51,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveLong(string name, long variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveLongArray(string name, long[] variable)
@@ -66,12 +66,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveULong(string name, ulong variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveULongArray(string name, ulong[] variable)
@@ -81,12 +81,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveShort(string name, short variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveShortArray(string name, short[] variable)
@@ -96,12 +96,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveUShort(string name, ushort variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveUShortArray(string name, ushort[] variable)
@@ -111,12 +111,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveFloat(string name, float variable)
 	{
-		prefs.SetFloat(name, variable);
+		PlayerPrefs.SetFloat(name, variable);
 	}
 
 	public static void SaveFloatArray(string name, float[] variable)
@@ -126,12 +126,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveDouble(string name, double variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveDoubleArray(string name, double[] variable)
@@ -141,12 +141,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveBool(string name, bool variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveBoolArray(string name, bool[] variable)
@@ -156,12 +156,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveChar(string name, char variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveCharArray(string name, char[] variable)
@@ -171,7 +171,7 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveCharArray(string name, char[] variable, char separator)
@@ -181,12 +181,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + separator;
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveDecimal(string name, decimal variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveDecimalArray(string name, decimal[] variable)
@@ -196,12 +196,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveByte(string name, byte variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveByteArray(string name, byte[] variable)
@@ -211,12 +211,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveSByte(string name, sbyte variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveSByteArray(string name, sbyte[] variable)
@@ -226,12 +226,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i] + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveVector4(string name, Vector4 variable)
 	{
-		prefs.SetString(name, variable.x + "&" + variable.y + "&" + variable.z + "&" + variable.w);
+		PlayerPrefs.SetString(name, variable.x + "&" + variable.y + "&" + variable.z + "&" + variable.w);
 	}
 
 	public static void SaveVector4Array(string name, Vector4[] variable)
@@ -242,12 +242,12 @@ public class Save : MonoBehaviour
 			string text2 = text;
 			text = text2 + variable[i].x + "&" + variable[i].y + "&" + variable[i].z + "&" + variable[i].w + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveVector3(string name, Vector3 variable)
 	{
-		prefs.SetString(name, variable.x + "&" + variable.y + "&" + variable.z);
+		PlayerPrefs.SetString(name, variable.x + "&" + variable.y + "&" + variable.z);
 	}
 
 	public static void SaveVector3Array(string name, Vector3[] variable)
@@ -258,12 +258,12 @@ public class Save : MonoBehaviour
 			string text2 = text;
 			text = text2 + variable[i].x + "&" + variable[i].y + "&" + variable[i].z + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveVector2(string name, Vector2 variable)
 	{
-		prefs.SetString(name, variable.x + "&" + variable.y);
+		PlayerPrefs.SetString(name, variable.x + "&" + variable.y);
 	}
 
 	public static void SaveVector2Array(string name, Vector2[] variable)
@@ -274,12 +274,12 @@ public class Save : MonoBehaviour
 			string text2 = text;
 			text = text2 + variable[i].x + "&" + variable[i].y + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveQuaternion(string name, Quaternion variable)
 	{
-		prefs.SetString(name, variable.x + "&" + variable.y + "&" + variable.z + "&" + variable.w);
+		PlayerPrefs.SetString(name, variable.x + "&" + variable.y + "&" + variable.z + "&" + variable.w);
 	}
 
 	public static void SaveQuaternionArray(string name, Quaternion[] variable)
@@ -290,12 +290,12 @@ public class Save : MonoBehaviour
 			string text2 = text;
 			text = text2 + variable[i].x + "&" + variable[i].y + "&" + variable[i].z + "&" + variable[i].w + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveColor(string name, Color variable)
 	{
-		prefs.SetString(name, variable.r + "&" + variable.g + "&" + variable.b + "&" + variable.a);
+		PlayerPrefs.SetString(name, variable.r + "&" + variable.g + "&" + variable.b + "&" + variable.a);
 	}
 
 	public static void SaveColorArray(string name, Color[] variable)
@@ -306,12 +306,12 @@ public class Save : MonoBehaviour
 			string text2 = text;
 			text = text2 + variable[i].r + "&" + variable[i].g + "&" + variable[i].b + "&" + variable[i].a + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveKeyCode(string name, KeyCode variable)
 	{
-		prefs.SetString(name, variable.ToString());
+		PlayerPrefs.SetString(name, variable.ToString());
 	}
 
 	public static void SaveKeyCodeArray(string name, KeyCode[] variable)
@@ -321,12 +321,12 @@ public class Save : MonoBehaviour
 		{
 			text = text + variable[i].ToString() + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveRect(string name, Rect variable)
 	{
-		prefs.SetString(name, variable.x + "&" + variable.y + "&" + variable.width + "&" + variable.height);
+		PlayerPrefs.SetString(name, variable.x + "&" + variable.y + "&" + variable.width + "&" + variable.height);
 	}
 
 	public static void SaveRectArray(string name, Rect[] variable)
@@ -337,7 +337,7 @@ public class Save : MonoBehaviour
 			string text2 = text;
 			text = text2 + variable[i].x + "&" + variable[i].y + "&" + variable[i].width + "&" + variable[i].height + "#";
 		}
-		prefs.SetString(name, text.ToString());
+		PlayerPrefs.SetString(name, text.ToString());
 	}
 
 	public static void SaveTexture2D(string name, Texture2D variable)
@@ -346,16 +346,16 @@ public class Save : MonoBehaviour
 		int width = variable.width;
 		int height = variable.height;
 		string value = width + "&" + height + "&" + Convert.ToBase64String(inArray);
-		prefs.SetString(name, value);
+		PlayerPrefs.SetString(name, value);
 	}
 
 	public static void Delete(string name)
 	{
-		prefs.DeleteKey(name);
+		PlayerPrefs.DeleteKey(name);
 	}
 
 	public static void DeleteAll()
 	{
-		prefs.DeleteAll();
+		PlayerPrefs.DeleteAll();
 	}
 }

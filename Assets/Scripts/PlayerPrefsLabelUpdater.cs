@@ -20,11 +20,11 @@ public class PlayerPrefsLabelUpdater : MonoBehaviour
 		switch (PDT)
 		{
 			case PrefsDataType.Integer:
-			return (PT == PrefsType.PlayerPrefs ? prefs.GetInt(key) : Storager.getInt(key, false)) + "";
+			return (PT == PrefsType.PlayerPrefs ? PlayerPrefs.GetInt(key) : Storager.getInt(key, false)) + "";
 			case PrefsDataType.String:
-			return (PT == PrefsType.PlayerPrefs ? prefs.GetString(key) : Storager.getString(key, false));
+			return (PT == PrefsType.PlayerPrefs ? PlayerPrefs.GetString(key) : Storager.getString(key, false));
 			case PrefsDataType.Float:
-			return (PT == PrefsType.PlayerPrefs ? prefs.GetFloat(key) : Storager.getFloat(key, false)) + "";
+			return (PT == PrefsType.PlayerPrefs ? PlayerPrefs.GetFloat(key) : Storager.getFloat(key, false)) + "";
 		}
 		return "";
 	}

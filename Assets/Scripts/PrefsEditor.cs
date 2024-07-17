@@ -9,7 +9,7 @@ public class PrefsEditor : Editor
 	[MenuItem("LinuxPrefs/Clear")]
 	public static void ClearPrefs()
 	{
-		prefs.DeleteAll();
+		PlayerPrefs.DeleteAll();
 	}
 }
 #endif

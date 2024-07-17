@@ -10,8 +10,8 @@ public class MenuGUI : MonoBehaviour
 	public void EnterDeathmatch()
 	{
 		loading = true;
-		prefs.SetInt("MultyPlayer", 1);
-		prefs.SetInt("COOP", 0);
+		PlayerPrefs.SetInt("MultyPlayer", 1);
+		PlayerPrefs.SetInt("COOP", 0);
 		GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>().Reset();
 		FlurryPluginWrapper.LogDeathmatchModePress();
 		Application.LoadLevel("NewMapList");
@@ -38,7 +38,7 @@ public class MenuGUI : MonoBehaviour
 	public void EnterSkinmaker()
 	{
 		loading = true;
-		prefs.SetInt(Defs.SkinEditorMode, 0);
+		PlayerPrefs.SetInt(Defs.SkinEditorMode, 0);
 		FlurryPluginWrapper.LogSkinsMakerModePress();
 		FlurryPluginWrapper.LogSkinsMakerEnteredEvent();
 		Application.LoadLevel("SkinEditor");
