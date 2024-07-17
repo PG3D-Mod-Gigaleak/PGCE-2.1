@@ -3602,33 +3602,35 @@ public sealed class Player_move_c : MonoBehaviour
 		if(_weaponManager.currentWeaponSounds.isSwapIn)
 		{
 			isSwappin = true;
-			_weaponManager.currentWeaponSounds.animationObject.GetComponent<Animation>().Play("SwapIn");
-			if (PlayerPrefs.GetInt("MultyPlayer") == 1)
-			{
-				photonView.RPC("SwapInGunPhoton", PhotonTargets.Others, base.gameObject.GetComponent<PhotonView>().viewID);
-			}
-			yield return new WaitForSeconds(_weaponManager.currentWeaponSounds.swapTime);
+			//_weaponManager.currentWeaponSounds.animationObject.GetComponent<Animation>().Play("SwapIn");
+			//if (PlayerPrefs.GetInt("MultyPlayer") == 1)
+			//{
+			//	photonView.RPC("SwapInGunPhoton", PhotonTargets.Others, base.gameObject.GetComponent<PhotonView>().viewID);
+			//}
+			//yield return new WaitForSeconds(_weaponManager.currentWeaponSounds.swapTime);
 			isSwappin = false;
 		}
 		if (((Weapon)_weaponManager.playerWeapons[_weaponManager.CurrentWeaponIndex]).currentAmmoInClip == 0)
 		{
 			_weaponManager.currentWeaponSounds.EmptyState();
 		}
+		yield break;
 	}
 
 	public IEnumerator SwapOutRoutine(CategoryType category)
 	{
 		isSwappin = true;
-		_weaponManager.currentWeaponSounds.animationObject.GetComponent<Animation>().Play("SwapOut");
-		if (PlayerPrefs.GetInt("MultyPlayer") == 1)
-		{
-			photonView.RPC("SwapOutGunPhoton", PhotonTargets.Others, base.gameObject.GetComponent<PhotonView>().viewID);
-		}
-		yield return new WaitForSeconds(_weaponManager.currentWeaponSounds.swapTime);
+		//_weaponManager.currentWeaponSounds.animationObject.GetComponent<Animation>().Play("SwapOut");
+		//if (PlayerPrefs.GetInt("MultyPlayer") == 1)
+		//{
+		//	photonView.RPC("SwapOutGunPhoton", PhotonTargets.Others, base.gameObject.GetComponent<PhotonView>().viewID);
+		//}
+		//yield return new WaitForSeconds(_weaponManager.currentWeaponSounds.swapTime);
 		isSwappin = false;
 		_weaponManager.CurrentWeaponIndex = categoryIndex(category);
 		ChangeWeapon(_weaponManager.CurrentWeaponIndex, false);
 		StartCoroutine(SwapInRoutine());
+		yield break;
 	}
 
 	private IEnumerator SetCanReceiveSwipes()
