@@ -37,7 +37,7 @@ public class EarsHelper : MonoBehaviour
 		}
 		catch (Exception e)
 		{
-			Debug.LogException(e);
+			Debug.LogError($"{e.ToString()}");
 		}
 
 		return new Color(rAverage, gAverage, bAverage);

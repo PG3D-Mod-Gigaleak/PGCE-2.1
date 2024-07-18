@@ -1693,12 +1693,6 @@ public sealed class Player_move_c : MonoBehaviour
 		if (gameObject3 != null)
 		{
 			SetTextureRecursivelyFrom(gameObject3, gameObject3.GetComponent<SkinName>().playerGameObject.GetComponent<Player_move_c>()._skin, array);
-			
-			Material earMaterial = EarsHelper.EarsDynamic((Texture2D)_skin);
-			foreach (MeshRenderer rend in earshat.GetComponentsInChildren<MeshRenderer>())
-			{
-				rend.sharedMaterial = earMaterial;
-			}
 		}
 	}
 
@@ -2418,6 +2412,21 @@ public sealed class Player_move_c : MonoBehaviour
 	[PunRPC]
 	private void SynchEarsHatOn(bool isOn) {
 		earshat.SetActive(isOn);
+		if (isOn)
+		{
+			Material earMaterial = new Material(Shader.Find("Legacy Shaders/Diffuse"));
+			try {
+				earMaterial = EarsHelper.EarsDynamic((Texture2D)myTable.GetComponent<NetworkStartTable>().mySkin);
+			}
+			catch (Exception e)
+			{
+				Debug.LogError($"{e.ToString()}");
+			}
+			foreach (MeshRenderer rend in earshat.GetComponentsInChildren<MeshRenderer>())
+			{
+				rend.sharedMaterial = earMaterial;
+			}
+		}
 	}
 
 	[PunRPC]
