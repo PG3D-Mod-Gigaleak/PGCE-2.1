@@ -7,10 +7,12 @@ public class ImpactReceiver : MonoBehaviour
 	private Vector3 impact = Vector3.zero;
 
 	private CharacterController character;
+	private FirstPersonControl fpcs;
 
 	private void Start()
 	{
 		character = GetComponent<CharacterController>();
+		fpcs = GetComponent<FirstPersonControl>();
 	}
 
 	private void Update()
@@ -31,6 +33,14 @@ public class ImpactReceiver : MonoBehaviour
 		}
 		if (gameObject.GetComponent<FirstPersonControl>().playerGameObject.GetComponent<Player_move_c>().isMine && gameObject.GetComponent<FirstPersonControl>().playerGameObject.GetComponent<Player_move_c>().isGravFlipped) {
 			dir.y *= -1;
+		}
+		if (!fpcs)
+		{
+			fpcs = GetComponent<FirstPersonControl>();
+		}
+		if (fpcs)
+		{
+			fpcs.velocity.y = fpcs.jumpSpeed * (Globals.PlayerMove.isGravFlipped ? -1 : 1);;
 		}
 		impact += dir.normalized * force / mass;
 	}

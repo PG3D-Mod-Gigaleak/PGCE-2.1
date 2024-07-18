@@ -44,7 +44,7 @@ public class FirstPersonControl : MonoBehaviour
 
 	private Vector3 cameraVelocity;
 
-	private Vector3 velocity;
+	public Vector3 velocity;
 
 	private bool canJump;
 
