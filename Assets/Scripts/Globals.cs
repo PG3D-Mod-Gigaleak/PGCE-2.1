@@ -19,6 +19,7 @@ public class Globals
 			return WeaponManager.sharedManager.myPlayer;
 		}
 	}
+
 	public static SkinName SkinName
 	{
 		get
@@ -26,6 +27,7 @@ public class Globals
 			return WeaponManager.sharedManager.myPlayer.GetComponent<SkinName>();
 		}
 	}
+
 	public static FirstPersonControl FirstPersonControl
 	{
 		get
@@ -33,6 +35,7 @@ public class Globals
 			return WeaponManager.sharedManager.myPlayer.GetComponent<FirstPersonControl>();
 		}
 	}
+
 	public static FilterBadWorld FilterBadWorld
 	{
 		get
@@ -40,11 +43,20 @@ public class Globals
 			return WeaponManager.sharedManager.gameObject.GetComponent<FilterBadWorld>();
 		}
 	}
+
 	public static MapInfo.Map CurrentMap
 	{
 		get
 		{
 			return MapInfo.Instance.CurrentMapsList.Find(x => x.sceneName == Application.loadedLevelName);
+		}
+	}
+
+	public static List<WeaponManager.infoClient> Players
+	{
+		get
+		{
+			return WeaponManager.sharedManager.players;
 		}
 	}
 }

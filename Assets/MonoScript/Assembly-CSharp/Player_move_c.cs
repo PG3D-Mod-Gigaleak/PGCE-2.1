@@ -3795,7 +3795,7 @@ public sealed class Player_move_c : MonoBehaviour
 			} else {
 				frameSinceLastDie = 8;
 			}
-			if (CurHealth <= 20f)
+			if (CurHealth <= 20f && Globals.Players.Count != 1)
 			{
 				timeWithDMW += Time.deltaTime;
 			}
