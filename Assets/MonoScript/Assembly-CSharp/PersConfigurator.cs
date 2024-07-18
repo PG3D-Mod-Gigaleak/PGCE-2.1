@@ -43,6 +43,12 @@ public class PersConfigurator : MonoBehaviour
 		Texture texture = SkinsManager.currentMultiplayerSkin();
 		texture.filterMode = FilterMode.Point;
 		Player_move_c.SetTextureRecursivelyFrom(base.gameObject, texture, new GameObject[1] { gun });
+		
+		Material earMaterial = EarsHelper.EarsDynamic((Texture2D)SkinsManager.currentMultiplayerSkin());
+		foreach (MeshRenderer rend in ears.GetComponentsInChildren<MeshRenderer>())
+		{
+			rend.sharedMaterial = earMaterial;
+		}
 	}
 
 	private void Update()
