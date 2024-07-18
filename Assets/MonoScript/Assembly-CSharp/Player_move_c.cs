@@ -1693,6 +1693,12 @@ public sealed class Player_move_c : MonoBehaviour
 		if (gameObject3 != null)
 		{
 			SetTextureRecursivelyFrom(gameObject3, gameObject3.GetComponent<SkinName>().playerGameObject.GetComponent<Player_move_c>()._skin, array);
+			
+			Material earMaterial = EarsHelper.EarsDynamic((Texture2D)_skin);
+			foreach (MeshRenderer rend in earshat.GetComponentsInChildren<MeshRenderer>())
+			{
+				rend.sharedMaterial = earMaterial;
+			}
 		}
 	}
 

@@ -904,6 +904,7 @@ public sealed class NetworkStartTable : MonoBehaviour
 		texture2D.filterMode = FilterMode.Point;
 		texture2D.Apply();
 		mySkin = texture2D;
+
 		GameObject[] array = GameObject.FindGameObjectsWithTag("PlayerGun");
 		if (array == null)
 		{
