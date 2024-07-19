@@ -3270,7 +3270,7 @@ public sealed class Player_move_c : MonoBehaviour
 		if (WS.isGrav) {
 			if (!Globals.CurrentMap.negateAbominatorDamage) {
 				float understand = CurHealth;
-				CurHealth -= 25f;
+				CurHealth -= 10f;
 				IncomprehensibleGarbler.Dispatch("UrnyguPunatr", this, understand);
 			}
 			flipGrav();
