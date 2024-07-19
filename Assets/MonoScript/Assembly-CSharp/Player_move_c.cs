@@ -1633,7 +1633,7 @@ public sealed class Player_move_c : MonoBehaviour
 	{
 		if (_singleOrMultiMine() && (bool)_weaponManager && (bool)_weaponManager.currentWeaponSounds)
 		{
-			_weaponManager.currentWeaponSounds.animationObject.GetComponent<Animation>().CrossFade(myCAnim("Walk"), 0.125f);
+			//_weaponManager.currentWeaponSounds.animationObject.GetComponent<Animation>().CrossFade(myCAnim("Walk"), 0.125f);
 		}
 	}
 
@@ -3919,29 +3919,29 @@ public sealed class Player_move_c : MonoBehaviour
 					showChat = false;
 				}
 			}
-			if (walking)
-			{
-				if (!parentedAnimation.IsPlaying("ParentedWalk"))
-				{
-					if (sprinting)
-					{
-						parentedAnimation["ParentedWalk"].speed = _weaponManager.currentWeaponSounds.speedModifier * 1.4f;
-						parentedAnimation.CrossFade("ParentedWalk", 0.1f);
-					}
-					else
-					{
-						parentedAnimation["ParentedWalk"].speed = _weaponManager.currentWeaponSounds.speedModifier;
-						parentedAnimation.CrossFade("ParentedWalk", 0.1f);
-					}
-				}
-			}
-			else
-			{
-				if (!parentedAnimation.IsPlaying("ParentedIdle"))
-				{
-					parentedAnimation.CrossFade("ParentedIdle", 0.15f);
-				}
-			}
+			//if (walking)
+			//{
+			//	if (!parentedAnimation.IsPlaying("ParentedWalk"))
+			//	{
+			//		if (sprinting)
+			//		{
+			//			parentedAnimation["ParentedWalk"].speed = _weaponManager.currentWeaponSounds.speedModifier * 1.4f;
+			//			parentedAnimation.CrossFade("ParentedWalk", 0.1f);
+			//		}
+			//		else
+			//		{
+			//			parentedAnimation["ParentedWalk"].speed = _weaponManager.currentWeaponSounds.speedModifier;
+			//			parentedAnimation.CrossFade("ParentedWalk", 0.1f);
+			//		}
+			//	}
+			//}
+			//else
+			//{
+			//	if (!parentedAnimation.IsPlaying("ParentedIdle"))
+			//	{
+			//		parentedAnimation.CrossFade("ParentedIdle", 0.15f);
+			//	}
+			//}
 			bool c = true;
 			#if UNITY_EDITOR
 			if (showingAdminInput)

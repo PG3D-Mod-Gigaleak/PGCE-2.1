@@ -7923,6 +7923,7 @@ GameObject:
   - component: {fileID: 114477157549182514}
   - component: {fileID: 114562743884575598}
   - component: {fileID: 114411550837766502}
+  - component: {fileID: 6615959732702618329}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8011,6 +8012,7 @@ MonoBehaviour:
   playerGameObject: {fileID: 1166298083777220}
   typeAnim: 0
   camPlayer: {fileID: 1361502147575346}
+  character: {fileID: 0}
   isMine: 0
   jumpButton: {fileID: 114338687832328354}
   camSwaySpeed: 8
@@ -8108,6 +8110,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc032f6ebbe4ee24ba56455a0d05969e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6615959732702618329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991673729806072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1abef2aeff274b44b591551df230e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunCamera: {fileID: 20937941271881730}
+  bobSpeed: 5
+  bobMultiplier: 0.05
+  lerpSpeed: 1.75
 --- !u!1 &894920682538729885
 GameObject:
   m_ObjectHideFlags: 0

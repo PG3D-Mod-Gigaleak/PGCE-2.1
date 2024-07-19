@@ -40,7 +40,8 @@ public class FirstPersonControl : MonoBehaviour
 
 	public GameObject camPlayer;
 
-	private CharacterController character;
+	[HideInInspector]
+	public CharacterController character;
 
 	private Vector3 cameraVelocity;
 
