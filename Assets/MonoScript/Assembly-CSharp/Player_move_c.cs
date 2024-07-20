@@ -1627,6 +1627,17 @@ public sealed class Player_move_c : MonoBehaviour
 		}
 	}
 
+	public bool generalWalking
+	{
+		get
+		{
+			#if UNITY_EDITOR
+			return (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d")) && !showingAdminInput;
+			#endif
+			return (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"));
+		}
+	}
+
 	public Animation parentedAnimation;
 
 	private void WalkAnimation()
@@ -4005,7 +4016,7 @@ public sealed class Player_move_c : MonoBehaviour
 			}
 		}
 		if (!isZoomed && isMine && !armoryGuiOverlayed) {
-			if (sprinting)
+			if (sprinting && generalWalking)
 			{
 				if (Camera.main.fieldOfView < 90f)
 				{
