@@ -3223,8 +3223,8 @@ public sealed class Player_move_c : MonoBehaviour
 		Achievements.Give("gravflip");
 		ImpactReceiver impactReceiver = Globals.Player.GetComponent<ImpactReceiver>();
 		Globals.Player.transform.localScale = new Vector3(Globals.Player.transform.localScale.x, Globals.Player.transform.localScale.y * -1, Globals.Player.transform.localScale.z);
-		Globals.Player.GetComponent<FirstPersonControl>().cameraPivot.Rotate(0, 180, 0);
-		impactReceiver.AddImpact(Vector3.up, Mathf.Abs(Physics.gravity.y)*-4f, true);
+		Globals.FirstPersonControl.cameraPivot.Rotate(0, 180, 0);
+		impactReceiver.AddImpact(Vector3.up, Mathf.Abs(Physics.gravity.y) * -4f, true);
 		Physics.gravity *= -1;
 		isGravFlipped = !isGravFlipped;
 	}
