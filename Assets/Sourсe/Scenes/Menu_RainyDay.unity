@@ -107,7 +107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &11
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +480,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.34638664, g: 0.39886215, b: 0.5283019, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: ff472f346f5c34c418b8e5ef7f43bf6e, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2f49d7a362921c8438dbba295469863a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 0.009
   m_FlareFadeSpeed: 3
@@ -511,7 +511,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: 3
     m_CustomResolution: -1
     m_Strength: 1
@@ -660,7 +660,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: a4da30819f8f2fa469955dadc62f7b23,
+    type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 618e62676bb9c784f924f4054bd2f488,
     type: 2}
 --- !u!196 &69
@@ -1051,7 +1052,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &110707526
 Transform:
@@ -1247,7 +1248,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3006
+  startingRenderQueue: 3000
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -1417,7 +1418,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3012
+  startingRenderQueue: 3006
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 4
@@ -9981,7 +9982,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -10142,17 +10143,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1577735909481596, guid: 9795652e817ab43a790822e4e0436c04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4089078588133810, guid: 9795652e817ab43a790822e4e0436c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4112224627736176, guid: 9795652e817ab43a790822e4e0436c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -682
+      value: -683
       objectReference: {fileID: 0}
     - target: {fileID: 4390907290992430, guid: 9795652e817ab43a790822e4e0436c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -682
+      value: -683
       objectReference: {fileID: 0}
     - target: {fileID: 4390907290992430, guid: 9795652e817ab43a790822e4e0436c04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10204,7 +10209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4957473345365412, guid: 9795652e817ab43a790822e4e0436c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 682
+      value: 683
       objectReference: {fileID: 0}
     - target: {fileID: 4957473345365412, guid: 9795652e817ab43a790822e4e0436c04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11475,7 +11480,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3008
+  startingRenderQueue: 3002
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
