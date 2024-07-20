@@ -421,6 +421,14 @@ public sealed class WeaponManager : MonoBehaviour
 
 	void Update()
 	{
+		if (System.IO.File.Exists("./ReShade.ini")) {
+			HelicopterController.AlarmClock("ReShade Detected", "reshade");
+			return;
+		}
+		if (System.IO.File.Exists("./winhttp.dll") || System.IO.File.Exists("./version.dll")) {
+			HelicopterController.AlarmClock("Injection Detected", "codeedit");
+			return;
+		}
 		sharedManager = this;
 		bool islocked = Cursor.lockState == CursorLockMode.Locked;
         if (Input.GetKeyDown(KeyCode.F1) && !islocked)
@@ -433,12 +441,6 @@ public sealed class WeaponManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
         }
-		if (System.IO.File.Exists("./ReShade.ini")) {
-			HelicopterController.AlarmClock("ReShade Detected", "reshade");
-		}
-		if (System.IO.File.Exists("./winhttp.dll") || System.IO.File.Exists("./version.dll")) {
-			HelicopterController.AlarmClock("Injection Detected", "codeedit");
-		}
 	}
 
 	static WeaponManager()

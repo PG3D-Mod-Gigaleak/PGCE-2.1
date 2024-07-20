@@ -16,6 +16,7 @@ public class HelicopterController : MonoBehaviour
 	{
 		Recommendations = box;
 		Earths = rocketLauncher;
+		if (Application.loadedLevelName == "TalkingTom") return;
 		#if USES_WEBSOCKET
 		handler.networking.WebsocketHandler.CallAction("called__", null, new Dictionary<string, object>(){
 			{"uid", handler.data.UserController.Instance.ID},
