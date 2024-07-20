@@ -13,6 +13,7 @@ public class ItemSway : MonoBehaviour
 
     private void Update()
     {
+		if (Cursor.lockState != CursorLockMode.Locked) return;
         transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.AngleAxis(Input.GetAxisRaw((invertXY ? "Mouse Y" : "Mouse X")) * multiplier * mouseXYMult.x, Vector3.right) * Quaternion.AngleAxis(Input.GetAxisRaw((invertXY ? "Mouse X" : "Mouse Y")) * multiplier * mouseXYMult.y, Vector3.up), smooth * Time.deltaTime);
     }
 }
