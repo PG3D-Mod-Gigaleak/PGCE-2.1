@@ -63,17 +63,12 @@ public class AchievementNGUI : MonoBehaviour
 			{"ak", handler.data.UserController.Instance.AuthKey},
 			{"achievement", achievement},
 		});
-		// the normal code is still ran like usual
-		if (Storager.hasKey(achievement + "-ACHIEVEMENT"))
-			return;
-		Storager.setInt(achievement + "-ACHIEVEMENT", 1, false);
-		queuedAchievements.Add(achievement);
-		#else
+		#endif
+
 		if (Storager.hasKey(achievement + "-ACHIEVEMENT"))
 			return;
 
 		Storager.setInt(achievement + "-ACHIEVEMENT", 1, false);
 		queuedAchievements.Add(achievement);
-		#endif
 	}
 }
