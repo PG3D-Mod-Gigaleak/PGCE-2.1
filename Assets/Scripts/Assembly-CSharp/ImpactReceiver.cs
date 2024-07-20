@@ -24,7 +24,7 @@ public class ImpactReceiver : MonoBehaviour
 		impact = Vector3.Lerp(impact, Vector3.zero, 5f * Time.deltaTime);
 	}
 
-	public void AddImpact(Vector3 dir, float force)
+	public void AddImpact(Vector3 dir, float force, bool ignoreJumpForce = false)
 	{
 		dir.Normalize();
 		if (dir.y < 0f)
@@ -38,7 +38,7 @@ public class ImpactReceiver : MonoBehaviour
 		{
 			fpcs = GetComponent<FirstPersonControl>();
 		}
-		if (fpcs)
+		if (fpcs && !ignoreJumpForce)
 		{
 			fpcs.velocity.y = fpcs.jumpSpeed * (Globals.PlayerMove.isGravFlipped ? -1 : 1);;
 		}

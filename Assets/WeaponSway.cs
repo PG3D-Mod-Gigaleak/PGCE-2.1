@@ -76,7 +76,7 @@ public class WeaponSway : MonoBehaviour
 		
 		if (control.character.isGrounded && control.moveTouchPad.position != Vector2.zero)
 		{
-			time += Time.deltaTime * bobSpeed * (control.moveTouchPad.position.y == 0 ? control.moveTouchPad.position.x : control.moveTouchPad.position.y) * (Input.GetKey(KeyCode.LeftShift) ? 1.25f : 1f);
+			time += Time.deltaTime * bobSpeed * (control.moveTouchPad.position.y == 0 ? control.moveTouchPad.position.x : control.moveTouchPad.position.y) * (control.usableVelocity*5).magnitude;
 		}
 		else if (!control.character.isGrounded)
 		{

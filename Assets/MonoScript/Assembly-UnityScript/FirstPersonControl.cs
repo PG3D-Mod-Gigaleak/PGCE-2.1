@@ -47,6 +47,8 @@ public class FirstPersonControl : MonoBehaviour
 
 	public Vector3 velocity;
 
+	public Vector3 usableVelocity;
+
 	private bool canJump;
 
 	public bool isMine;
@@ -116,12 +118,12 @@ public class FirstPersonControl : MonoBehaviour
 
 	private float lerpup(ref float x, ref float y)
 	{
-		return Mathf.Lerp(x, y * Globals.PlayerMove.GetSpeedMod() * bhopSpeedMult * (Globals.PlayerMove.crouching ? 0.25f : ConstantMultiplier), 0.05f);
+		return Mathf.Lerp(x, y * Globals.PlayerMove.GetSpeedMod() * bhopSpeedMult * (Globals.PlayerMove.crouching ? 0.25f : ConstantMultiplier), 1f);
 	}
 
 	private float lerpdown(ref float x)
 	{
-		return Mathf.Lerp(x, 0, 0.05f);
+		return Mathf.Lerp(x, 0, 1f);
 	}
 
 	private const float ConstantMultiplier = 1.35f;
@@ -386,6 +388,7 @@ public class FirstPersonControl : MonoBehaviour
 		motion += velocity;
 		motion += Physics.gravity;
 		motion *= Time.deltaTime;
+		usableVelocity = motion;
 		timeUpdateAnim -= Time.deltaTime;
 		if (!(timeUpdateAnim >= 0f) && isGrounded)
 		{
@@ -407,6 +410,7 @@ public class FirstPersonControl : MonoBehaviour
 			return;
 		}
 		character.Move(motion);
+		
 		if (isGrounded)
 		{
 			velocity = Vector3.zero;
