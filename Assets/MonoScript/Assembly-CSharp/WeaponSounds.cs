@@ -44,8 +44,6 @@ public class WeaponSounds : MonoBehaviour
 
 	public Vector3 gunPosition = new Vector3(0.35f, -0.25f, 0.6f);
 
-	public Texture preview;
-
 	public int inAppExtensionModifier = 10;
 
 	public float meleeAngle = 45f;

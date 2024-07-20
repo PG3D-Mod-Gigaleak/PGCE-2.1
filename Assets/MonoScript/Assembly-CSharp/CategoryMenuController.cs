@@ -87,17 +87,17 @@ public class CategoryMenuController : MonoBehaviour {
 	{
 		string[] weaponthe = WeaponLists[weaponIndex].weaponNames;
 		Texture[] texs = new Texture[weaponsInThisPage()];
-		for (int i = 0; i < weaponsInThisPage(); i++)
-		{
-			if (!isGear)
-			{
-				texs[i] = Utilities.LoadObject("Weapons/" + weaponthe[i]).GetComponent<WeaponSounds>().preview;
-			}
-			else
-			{
-				texs[i] = Utilities.LoadObject("Gear/" + weaponthe[i]).GetComponent<GearStats>().preview;
-			}
-		}
+		//for (int i = 0; i < weaponsInThisPage(); i++)
+		//{
+		//	if (!isGear)
+		//	{
+		//		texs[i] = Utilities.LoadObject("Weapons/" + weaponthe[i]).GetComponent<WeaponSounds>().preview;
+		//	}
+		//	else
+		//	{
+		//		texs[i] = Utilities.LoadObject("Gear/" + weaponthe[i]).GetComponent<GearStats>().preview;
+		//	}
+		//}
 		return texs;
 	}
 
@@ -109,7 +109,7 @@ public class CategoryMenuController : MonoBehaviour {
 		}
 		else
 		{
-			return Utilities.LoadObject("Weapons/" + Utilities.LoadObject("upgrades/" + WeaponLists[weaponIndex].weaponNames[popupIndex]).GetComponent<UpgradeInfo>().weaponNames[currentUpgradeIndex()]).GetComponent<WeaponSounds>().preview;
+			return null;//Utilities.LoadObject("Weapons/" + Utilities.LoadObject("upgrades/" + WeaponLists[weaponIndex].weaponNames[popupIndex]).GetComponent<UpgradeInfo>().weaponNames[currentUpgradeIndex()]).GetComponent<WeaponSounds>().preview;
 		}
 	}
 

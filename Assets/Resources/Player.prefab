@@ -5992,7 +5992,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4692275546813590}
-  - component: {fileID: 114734427808327108}
   m_Layer: 0
   m_Name: SwayObject
   m_TagString: Untagged
@@ -6015,22 +6014,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4676405018129978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114734427808327108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380329182296280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e5fc9ad94494347b4c0eff650b9046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smooth: 3
-  multiplier: 5
-  invertXY: 1
-  mouseXYMult: {x: 1.5, y: 0.75}
 --- !u!1 &1403805794706882
 GameObject:
   m_ObjectHideFlags: 0
@@ -8013,6 +7996,8 @@ MonoBehaviour:
   typeAnim: 0
   camPlayer: {fileID: 1361502147575346}
   character: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  usableVelocity: {x: 0, y: 0, z: 0}
   isMine: 0
   jumpButton: {fileID: 114338687832328354}
   camSwaySpeed: 8
@@ -8123,7 +8108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunCamera: {fileID: 20937941271881730}
-  bobSpeed: 5
+  bobSpeed: 10
   bobMultiplier: 0.05
   lerpSpeed: 1.75
 --- !u!1 &894920682538729885
