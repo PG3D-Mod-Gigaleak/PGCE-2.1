@@ -1,8 +1,8 @@
-﻿#if USES_WEBSOCKET
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 public class MainThreadDispatcher : MonoBehaviour
 {
+	#if USES_WEBSOCKET
     private static MainThreadDispatcher instance;
 
     private Queue<System.Action> actionQueue = new Queue<System.Action>();
@@ -48,5 +48,5 @@ public class MainThreadDispatcher : MonoBehaviour
             }
         }
     }
+	#endif
 }
-#endif
