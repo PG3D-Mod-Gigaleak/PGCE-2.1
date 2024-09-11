@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Holoville.HOTween;
 using UnityEngine;
 using System.Linq;
 
@@ -154,55 +153,6 @@ public sealed class Player_move_c : MonoBehaviour
 				GameObject gameObject = UnityEngine.Object.Instantiate(_003C_003Ef__this.customDialogPrefab) as GameObject;
 				CustomDialog component = gameObject.GetComponent<CustomDialog>();
 				component.yesPressed = _003CshowCategory_003Ec__AnonStorey._003C_003Em__32;
-			}
-		}
-	}
-
-	[CompilerGenerated]
-	private sealed class _003CUpdate_003Ec__AnonStorey28
-	{
-		internal Func<bool> pauserIsPaused;
-
-		internal Player_move_c _003C_003Ef__this;
-
-		internal bool _003C_003Em__2D()
-		{
-			return _003C_003Ef__this._pauser != null && _003C_003Ef__this._pauser.paused;
-		}
-
-		internal void _003C_003Em__2E()
-		{
-			_003C_003Ef__this.transform.parent.transform.localScale = new Vector3(1f, 1f, 1f);
-			_003C_003Ef__this.isDeadFrame = false;
-			_003C_003Ef__this.Invoke("SetNoKilled", 0.5f);
-			_003C_003Ef__this._weaponManager.myPlayer.GetComponent<SkinName>().camPlayer.transform.parent = _003C_003Ef__this._weaponManager.myPlayer.transform;
-			if (!pauserIsPaused())
-			{
-				_003C_003Ef__this._leftJoystick.SetActive(true);
-				_003C_003Ef__this._rightJoystick.SetActive(true);
-			}
-			_003C_003Ef__this._rightJoystick.SendMessage("HasAmmo");
-			if (_003C_003Ef__this.isGravFlipped && _003C_003Ef__this.isMine) {
-				Physics.gravity *= -1;
-			}
-			if (_003C_003Ef__this.isMine) {
-				_003C_003Ef__this.isGravFlipped = false;
-			}
-			float understand = _003C_003Ef__this.CurHealth;
-			_003C_003Ef__this.CurHealth = _003C_003Ef__this.MaxHealth;
-			IncomprehensibleGarbler.Dispatch("UrnyguPunatr", _003C_003Ef__this, understand);
-			Debug.Log("zoneCreatePlayer " + _003C_003Ef__this.zoneCreatePlayer.Length + " " + UnityEngine.Random.Range(0, _003C_003Ef__this.zoneCreatePlayer.Length));
-			GameObject gameObject = _003C_003Ef__this.zoneCreatePlayer[UnityEngine.Random.Range(0, _003C_003Ef__this.zoneCreatePlayer.Length)];
-			BoxCollider component = gameObject.GetComponent<BoxCollider>();
-			Vector2 vector = new Vector2(component.size.x * gameObject.transform.localScale.x, component.size.z * gameObject.transform.localScale.z);
-			Rect rect = new Rect(gameObject.transform.position.x - vector.x / 2f, gameObject.transform.position.z - vector.y / 2f, vector.x, vector.y);
-			Vector3 position = new Vector3(rect.x + UnityEngine.Random.Range(0f, rect.width), gameObject.transform.position.y + 2f, rect.y + UnityEngine.Random.Range(0f, rect.height));
-			_003C_003Ef__this.transform.parent.transform.position = position;
-			_003C_003Ef__this.Invoke("ChangePositionAfterRespawn", 0.01f);
-			foreach (Weapon playerWeapon in _003C_003Ef__this._weaponManager.playerWeapons)
-			{
-				playerWeapon.currentAmmoInClip = playerWeapon.weaponPrefab.GetComponent<WeaponSounds>().ammoInClip;
-				playerWeapon.currentAmmoInBackpack = playerWeapon.weaponPrefab.GetComponent<WeaponSounds>().InitialAmmo;
 			}
 		}
 	}
@@ -2216,8 +2166,6 @@ public sealed class Player_move_c : MonoBehaviour
 			}
 		}
 		zoneCreatePlayer = GameObject.FindGameObjectsWithTag((PlayerPrefs.GetInt("COOP", 0) != 1) ? "MultyPlayerCreateZone" : "MultyPlayerCreateZoneCOOP");
-		HOTween.Init(true, true, true);
-		HOTween.EnableOverwriteManager();
 		if (PlayerPrefs.GetInt("MultyPlayer") == 1)
 		{
 			if ((((PlayerPrefs.GetString("TypeConnect").Equals("inet") && photonView.isMine)) && PlayerPrefs.GetInt("MultyPlayer") == 1) || PlayerPrefs.GetInt("MultyPlayer") != 1)
@@ -2900,6 +2848,8 @@ public sealed class Player_move_c : MonoBehaviour
 
 	public AudioClip[] headshotSounds;
 
+	private bool lastWasHeadshot;
+
 	[PunRPC]
 	public void minusLivePhoton(int id, int idKiller, float minus, bool headShot)
 	{
@@ -2946,6 +2896,7 @@ public sealed class Player_move_c : MonoBehaviour
 						float understand = item.gameObject.GetComponent<Player_move_c>().CurHealth;
 						item.gameObject.GetComponent<Player_move_c>().CurHealth -= num;
 						IncomprehensibleGarbler.Dispatch("UrnyguPunatr", this, understand);
+						lastWasHeadshot = headShot;
 					} else {
 						item.gameObject.GetComponent<Player_move_c>().CurHealth -= num;
 					}
@@ -4031,8 +3982,6 @@ public sealed class Player_move_c : MonoBehaviour
 				}
 			}
 		}	
-		_003CUpdate_003Ec__AnonStorey28 _003CUpdate_003Ec__AnonStorey = new _003CUpdate_003Ec__AnonStorey28();
-		_003CUpdate_003Ec__AnonStorey._003C_003Ef__this = this;
 		if (_weaponManager.myPlayer != null && _singleOrMultiMine())
 		{
 			GlobalGameController.posMyPlayer = _weaponManager.myPlayer.transform.position;
@@ -4060,8 +4009,7 @@ public sealed class Player_move_c : MonoBehaviour
 			_weaponManager.currentWeaponSounds.transform.localPosition = new Vector3(0, -1.7f, 0);
 		else
 			_weaponManager.currentWeaponSounds.transform.localPosition = new Vector3(0, -2f, 0);*/
-		_003CUpdate_003Ec__AnonStorey.pauserIsPaused = _003CUpdate_003Ec__AnonStorey._003C_003Em__2D;
-		if (!_003CUpdate_003Ec__AnonStorey.pauserIsPaused() && canReceiveSwipes && !isInappWinOpen)
+		if (!PauserIsPaused() && canReceiveSwipes && !isInappWinOpen)
 		{
 			Rect rect = new Rect((float)Screen.width - 264f * (float)Screen.width / 1024f, (float)Screen.height - 94f * (float)Screen.width / 1024f - 95f * (float)Screen.width / 1024f, 264f * (float)Screen.width / 1024f, 95f * (float)Screen.width / 1024f);
 			if (!showChat)
@@ -4175,10 +4123,12 @@ public sealed class Player_move_c : MonoBehaviour
 			StartCoroutine(FlashWhenDead());
 			_leftJoystick.SetActive(false);
 			_rightJoystick.SetActive(false);
+			string deathAnimation = "Dead" + (transform.root.GetComponent<CharacterController>().isGrounded ? "MidAir" : "") + (lastWasHeadshot ? "Headshot" : "");
 			if (isMine) {
 				DispatchDie();
+				photonView.RPC("DeathAnimation", PhotonTargets.Others, deathAnimation);
 			}
-			HOTween.From(base.transform.parent.transform, 2f, new TweenParms().Prop("localRotation", new Vector3(0f, 2520f, 0f)).Ease(EaseType.EaseInCubic).OnComplete(_003CUpdate_003Ec__AnonStorey._003C_003Em__2E));
+			Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length);
 		}
 		else
 		{
@@ -4190,6 +4140,61 @@ public sealed class Player_move_c : MonoBehaviour
 			Application.LoadLevel("GameOver");
 		}
 	}
+	}
+
+	public Animation fpsPlayer;
+
+	[PunRPC]
+	public void DeathAnimation(string deathAnimation)
+	{
+		fpsPlayer.Play(deathAnimation);
+		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length);
+	}
+
+	public void DeathParticles()
+	{
+		Instantiate(Resources.Load<GameObject>("DeathParticles"), transform.parent.position, Quaternion.identity);
+	}
+
+	public bool PauserIsPaused()
+	{
+		return _pauser != null && _pauser.paused;
+	}
+
+	public void KillFinished()
+	{
+		transform.parent.transform.localScale = new Vector3(1f, 1f, 1f);
+		isDeadFrame = false;
+		_weaponManager.myPlayer.GetComponent<SkinName>().camPlayer.transform.parent = _weaponManager.myPlayer.transform;
+		if (!PauserIsPaused())
+		{
+			_leftJoystick.SetActive(true);
+			_rightJoystick.SetActive(true);
+		}
+		_rightJoystick.SendMessage("HasAmmo");
+		if (isGravFlipped && isMine) {
+			Physics.gravity *= -1;
+		}
+		if (isMine) {
+			isGravFlipped = false;
+		}
+		float understand = CurHealth;
+		CurHealth = MaxHealth;
+		IncomprehensibleGarbler.Dispatch("UrnyguPunatr", this, understand);
+		Debug.Log("zoneCreatePlayer " + zoneCreatePlayer.Length + " " + UnityEngine.Random.Range(0, zoneCreatePlayer.Length));
+		GameObject gameObject = zoneCreatePlayer[UnityEngine.Random.Range(0, zoneCreatePlayer.Length)];
+		BoxCollider component = gameObject.GetComponent<BoxCollider>();
+		Vector2 vector = new Vector2(component.size.x * gameObject.transform.localScale.x, component.size.z * gameObject.transform.localScale.z);
+		Rect rect = new Rect(gameObject.transform.position.x - vector.x / 2f, gameObject.transform.position.z - vector.y / 2f, vector.x, vector.y);
+		Vector3 position = new Vector3(rect.x + UnityEngine.Random.Range(0f, rect.width), gameObject.transform.position.y + 2f, rect.y + UnityEngine.Random.Range(0f, rect.height));
+		transform.parent.transform.position = position;
+		Invoke("ChangePositionAfterRespawn", 0.01f);
+		foreach (Weapon playerWeapon in _weaponManager.playerWeapons)
+		{
+			playerWeapon.currentAmmoInClip = playerWeapon.weaponPrefab.GetComponent<WeaponSounds>().ammoInClip;
+			playerWeapon.currentAmmoInBackpack = playerWeapon.weaponPrefab.GetComponent<WeaponSounds>().InitialAmmo;
+		}
+		SetNoKilled();
 	}
 
 	[HideInInspector] public bool diedInCOOP;
@@ -4234,6 +4239,7 @@ public sealed class Player_move_c : MonoBehaviour
 		if ((bool)base.transform.parent)
 		{
 			base.transform.parent.transform.position += Vector3.forward * 0.01f;
+			
 		}
 	}
 
