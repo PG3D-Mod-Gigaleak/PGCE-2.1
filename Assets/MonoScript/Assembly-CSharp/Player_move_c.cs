@@ -4142,7 +4142,7 @@ public sealed class Player_move_c : MonoBehaviour
 				Debug.LogError("got here");
 				DispatchDie();
 				photonView.RPC("DeathAnimation", PhotonTargets.Others, deathAnimation);
-				Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length);
+				Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length - 0.01f);
 			}
 		}
 		else
@@ -4195,7 +4195,7 @@ public sealed class Player_move_c : MonoBehaviour
 		realWeapon = current.gameObject;
 		fpsPlayer.Stop();
 		fpsPlayer.Play(deathAnimation);
-		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length);}catch(Exception e){Debug.LogError(e);}
+		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length - 0.01f);}catch(Exception e){Debug.LogError(e);}
 	}
 
 	public void DeathParticles()
