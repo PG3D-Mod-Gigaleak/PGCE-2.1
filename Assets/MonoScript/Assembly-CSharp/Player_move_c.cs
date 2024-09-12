@@ -4124,7 +4124,9 @@ public sealed class Player_move_c : MonoBehaviour
 			_leftJoystick.SetActive(false);
 			_rightJoystick.SetActive(false);
 			string deathAnimation = "Dead" + (transform.root.GetComponent<CharacterController>().isGrounded ? "" : "MidAir") + (lastWasHeadshot ? "Headshot" : "");
+			Debug.LogError("got here");
 			if (isMine) {
+				Debug.LogError("got here");
 				DispatchDie();
 				photonView.RPC("DeathAnimation", PhotonTargets.Others, deathAnimation);
 				Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length);
@@ -4148,9 +4150,9 @@ public sealed class Player_move_c : MonoBehaviour
 
 	[PunRPC]
 	public void DeathAnimation(string deathAnimation)
-	{
+	{try{
 		SkinnedMeshRenderer renderer = _weaponManager.currentWeaponSounds.bonusPrefab.GetComponent<SkinnedMeshRenderer>();
-		WeaponSounds original = Resources.Load<GameObject>("weapons/" + _weaponManager.currentWeaponSounds.bonusPrefab.name.Replace("(Clone)", "")).GetComponent<WeaponSounds>();
+		WeaponSounds original = Resources.Load<GameObject>("weapons/" + _weaponManager.currentWeaponSounds.name.Replace("(Clone)", "")).GetComponent<WeaponSounds>();
 		SkinnedMeshRenderer originalRenderer = _weaponManager.currentWeaponSounds.bonusPrefab.GetComponent<SkinnedMeshRenderer>();
 		if (renderer == null)
 		{
@@ -4167,8 +4169,8 @@ public sealed class Player_move_c : MonoBehaviour
 		Destroy(_weaponManager.currentWeaponSounds);
 		fpsPlayer.Stop();
 		fpsPlayer.Play(deathAnimation);
-		Debug.LogError(fpsPlayer[deathAnimation].length);
-		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length);
+		Debug.LogError(fpsPlayer[deathAnimation].length + " " + isMine);
+		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length);}catch(Exception e){Debug.LogError(e);}
 	}
 
 	public void DeathParticles()
