@@ -4151,14 +4151,15 @@ public sealed class Player_move_c : MonoBehaviour
 	[PunRPC]
 	public void DeathAnimation(string deathAnimation)
 	{try{
-		SkinnedMeshRenderer renderer = _weaponManager.currentWeaponSounds.bonusPrefab.GetComponent<SkinnedMeshRenderer>();
-		WeaponSounds original = Resources.Load<GameObject>("weapons/" + _weaponManager.currentWeaponSounds.name.Replace("(Clone)", "")).GetComponent<WeaponSounds>();
-		SkinnedMeshRenderer originalRenderer = _weaponManager.currentWeaponSounds.bonusPrefab.GetComponent<SkinnedMeshRenderer>();
+		WeaponSounds current = GetComponentInChildren<WeaponSounds>();
+		SkinnedMeshRenderer renderer = current.bonusPrefab.GetComponent<SkinnedMeshRenderer>();
+		WeaponSounds original = Resources.Load<GameObject>("weapons/" + current.name.Replace("(Clone)", "")).GetComponent<WeaponSounds>();
+		SkinnedMeshRenderer originalRenderer = current.bonusPrefab.GetComponent<SkinnedMeshRenderer>();
 		if (renderer == null)
 		{
-			_weaponManager.currentWeaponSounds.bonusPrefab.transform.parent = weaponPoint.transform;
-			_weaponManager.currentWeaponSounds.bonusPrefab.transform.localPosition = original.transform.localPosition;
-			_weaponManager.currentWeaponSounds.bonusPrefab.transform.localRotation = original.transform.localRotation;
+			current.bonusPrefab.transform.parent = weaponPoint.transform;
+			current.bonusPrefab.transform.localPosition = original.transform.localPosition;
+			current.bonusPrefab.transform.localRotation = original.transform.localRotation;
 		}
 		else
 		{
@@ -4166,7 +4167,7 @@ public sealed class Player_move_c : MonoBehaviour
 			renderer.rootBone.transform.localPosition = originalRenderer.rootBone.transform.localPosition;
 			renderer.rootBone.transform.localRotation = originalRenderer.rootBone.transform.localRotation;
 		}
-		Destroy(_weaponManager.currentWeaponSounds);
+		Destroy(current.gameObject);
 		fpsPlayer.Stop();
 		fpsPlayer.Play(deathAnimation);
 		Debug.LogError(fpsPlayer[deathAnimation].length + " " + isMine);
