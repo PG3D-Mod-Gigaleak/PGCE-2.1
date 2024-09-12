@@ -3540,21 +3540,20 @@ public sealed class Player_move_c : MonoBehaviour
 	}
 
 	[PunRPC]
-	private void ImRespawn(int index)
+	private void ImRespawn(int index, Vector3 position, Vector3 rotation)
 	{
-		if (!isMine)
+		leftArm.SetActive(false);
+		rightArm.SetActive(false);
+		if (fakeWeapon != null)
 		{
-			leftArm.SetActive(false);
-			rightArm.SetActive(false);
-			if (fakeWeapon != null)
-			{
-				Destroy(fakeWeapon);
-			}
-			if (realWeapon != null)
-			{
-				realWeapon.SetActive(true);
-			}
+			Destroy(fakeWeapon);
 		}
+		if (realWeapon != null)
+		{
+			realWeapon.SetActive(true);
+		}
+		transform.root.position = position;
+		transform.root.rotation = Quaternion.Euler(rotation);
 		base.gameObject.GetComponent<AudioSource>().PlayOneShot(respawnPlayerSounds[index]);
 	}
 
@@ -4142,7 +4141,7 @@ public sealed class Player_move_c : MonoBehaviour
 				Debug.LogError("got here");
 				DispatchDie();
 				photonView.RPC("DeathAnimation", PhotonTargets.Others, deathAnimation);
-				Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length - 0.01f);
+				Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length);
 			}
 		}
 		else
@@ -4195,7 +4194,7 @@ public sealed class Player_move_c : MonoBehaviour
 		realWeapon = current.gameObject;
 		fpsPlayer.Stop();
 		fpsPlayer.Play(deathAnimation);
-		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length - 0.01f);}catch(Exception e){Debug.LogError(e);}
+		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length - (Time.deltaTime * 2f));}catch(Exception e){Debug.LogError(e);}
 	}
 
 	public void DeathParticles()
@@ -4277,7 +4276,7 @@ public sealed class Player_move_c : MonoBehaviour
 	{
 		randomRespawnIndex = UnityEngine.Random.Range(0, respawnPlayerSounds.Length);
 		GetComponent<AudioSource>().PlayOneShot(respawnPlayerSounds[randomRespawnIndex]);
-		photonView.RPC("ImRespawn", PhotonTargets.Others, randomRespawnIndex);
+		photonView.RPC("ImRespawn", PhotonTargets.Others, randomRespawnIndex, transform.root.position, transform.root.rotation.eulerAngles);
 		isKilled = false;
 	}
 
@@ -4287,7 +4286,6 @@ public sealed class Player_move_c : MonoBehaviour
 		if ((bool)base.transform.parent)
 		{
 			base.transform.parent.transform.position += Vector3.forward * 0.01f;
-			
 		}
 	}
 
