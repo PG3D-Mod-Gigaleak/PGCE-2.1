@@ -2896,6 +2896,7 @@ public sealed class Player_move_c : MonoBehaviour
 						float understand = item.gameObject.GetComponent<Player_move_c>().CurHealth;
 						item.gameObject.GetComponent<Player_move_c>().CurHealth -= num;
 						IncomprehensibleGarbler.Dispatch("UrnyguPunatr", this, understand);
+						Debug.LogError(lastWasHeadshot);
 						lastWasHeadshot = headShot;
 					} else {
 						item.gameObject.GetComponent<Player_move_c>().CurHealth -= num;
@@ -4136,9 +4137,7 @@ public sealed class Player_move_c : MonoBehaviour
 			_leftJoystick.SetActive(false);
 			_rightJoystick.SetActive(false);
 			string deathAnimation = "Dead" + (transform.root.GetComponent<CharacterController>().isGrounded ? "" : "MidAir") + (lastWasHeadshot ? "Headshot" : "");
-			Debug.LogError("got here");
 			if (isMine) {
-				Debug.LogError("got here");
 				DispatchDie();
 				photonView.RPC("DeathAnimation", PhotonTargets.Others, deathAnimation);
 				Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length + 0.1f);
