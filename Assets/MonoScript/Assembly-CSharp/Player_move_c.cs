@@ -4166,7 +4166,7 @@ public sealed class Player_move_c : MonoBehaviour
 
 	[PunRPC]
 	public void DeathAnimation(string deathAnimation)
-	{try{
+	{
 		WeaponSounds current = GetComponentInChildren<WeaponSounds>();
 		SkinnedMeshRenderer renderer = current.bonusPrefab.GetComponent<SkinnedMeshRenderer>();
 		WeaponSounds original = Resources.Load<GameObject>("weapons/" + current.name.Replace("(Clone)", "")).GetComponent<WeaponSounds>();
@@ -4194,7 +4194,6 @@ public sealed class Player_move_c : MonoBehaviour
 		realWeapon = current.gameObject;
 		fpsPlayer.Stop();
 		fpsPlayer.Play(deathAnimation);
-		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length - (Time.deltaTime * 2f));}catch(Exception e){Debug.LogError(e);}
 	}
 
 	public void DeathParticles()
