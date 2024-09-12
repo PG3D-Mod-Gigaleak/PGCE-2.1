@@ -4123,12 +4123,12 @@ public sealed class Player_move_c : MonoBehaviour
 			StartCoroutine(FlashWhenDead());
 			_leftJoystick.SetActive(false);
 			_rightJoystick.SetActive(false);
-			string deathAnimation = "Dead" + (transform.root.GetComponent<CharacterController>().isGrounded ? "MidAir" : "") + (lastWasHeadshot ? "Headshot" : "");
+			string deathAnimation = "Dead" + (transform.root.GetComponent<CharacterController>().isGrounded ? "" : "MidAir") + (lastWasHeadshot ? "Headshot" : "");
 			if (isMine) {
 				DispatchDie();
 				photonView.RPC("DeathAnimation", PhotonTargets.Others, deathAnimation);
+				Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length);
 			}
-			Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length);
 		}
 		else
 		{
@@ -4144,15 +4144,36 @@ public sealed class Player_move_c : MonoBehaviour
 
 	public Animation fpsPlayer;
 
+	public Transform weaponPoint;
+
 	[PunRPC]
 	public void DeathAnimation(string deathAnimation)
 	{
+		SkinnedMeshRenderer renderer = _weaponManager.currentWeaponSounds.bonusPrefab.GetComponent<SkinnedMeshRenderer>();
+		WeaponSounds original = Resources.Load<GameObject>("weapons/" + _weaponManager.currentWeaponSounds.bonusPrefab.name.Replace("(Clone)", "")).GetComponent<WeaponSounds>();
+		SkinnedMeshRenderer originalRenderer = _weaponManager.currentWeaponSounds.bonusPrefab.GetComponent<SkinnedMeshRenderer>();
+		if (renderer == null)
+		{
+			_weaponManager.currentWeaponSounds.bonusPrefab.transform.parent = weaponPoint.transform;
+			_weaponManager.currentWeaponSounds.bonusPrefab.transform.localPosition = original.transform.localPosition;
+			_weaponManager.currentWeaponSounds.bonusPrefab.transform.localRotation = original.transform.localRotation;
+		}
+		else
+		{
+			renderer.rootBone.transform.parent = weaponPoint.transform;
+			renderer.rootBone.transform.localPosition = originalRenderer.rootBone.transform.localPosition;
+			renderer.rootBone.transform.localRotation = originalRenderer.rootBone.transform.localRotation;
+		}
+		Destroy(_weaponManager.currentWeaponSounds);
+		fpsPlayer.Stop();
 		fpsPlayer.Play(deathAnimation);
+		Debug.LogError(fpsPlayer[deathAnimation].length);
 		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length);
 	}
 
 	public void DeathParticles()
 	{
+		Debug.LogError("??");
 		Instantiate(Resources.Load<GameObject>("DeathParticles"), transform.parent.position, Quaternion.identity);
 	}
 

@@ -62,6 +62,7 @@ public class SkinName : MonoBehaviour
 							text = "Dead";
 							break;
 						}
+						Debug.LogError(text);
 						item.GetComponent<Animation>().Play(text);
 						break;
 					}
