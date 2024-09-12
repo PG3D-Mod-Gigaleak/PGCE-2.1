@@ -4141,7 +4141,7 @@ public sealed class Player_move_c : MonoBehaviour
 				Debug.LogError("got here");
 				DispatchDie();
 				photonView.RPC("DeathAnimation", PhotonTargets.Others, deathAnimation);
-				Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length);
+				Invoke(nameof(KillFinished), fpsPlayer[deathAnimation].length + 0.1f);
 			}
 		}
 		else
@@ -4198,7 +4198,6 @@ public sealed class Player_move_c : MonoBehaviour
 
 	public void DeathParticles()
 	{
-		Debug.LogError("??");
 		Instantiate(Resources.Load<GameObject>("DeathParticles"), transform.parent.position, Quaternion.identity);
 	}
 
