@@ -4186,6 +4186,11 @@ public sealed class Player_move_c : MonoBehaviour
 			fakeWeapon.transform.localPosition = originalRenderer.rootBone.transform.localPosition;
 			fakeWeapon.transform.localRotation = originalRenderer.rootBone.transform.localRotation;
 		}
+		fakeWeapon.tag = "donotchange";
+		foreach (Transform transform in fakeWeapon.GetComponentsInChildren<Transform>())
+		{
+			transform.tag = "donotchange";
+		}
 		current.gameObject.SetActive(false);
 		realWeapon = current.gameObject;
 		fpsPlayer.Stop();
