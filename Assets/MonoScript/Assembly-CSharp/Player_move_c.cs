@@ -3542,6 +3542,19 @@ public sealed class Player_move_c : MonoBehaviour
 	[PunRPC]
 	private void ImRespawn(int index)
 	{
+		if (!isMine)
+		{
+			leftArm.SetActive(false);
+			rightArm.SetActive(false);
+			if (fakeWeapon != null)
+			{
+				Destroy(fakeWeapon);
+			}
+			if (_weaponManager.currentWeaponSounds != null)
+			{
+				_weaponManager.currentWeaponSounds.gameObject.SetActive(true);
+			}
+		}
 		base.gameObject.GetComponent<AudioSource>().PlayOneShot(respawnPlayerSounds[index]);
 	}
 
@@ -4148,6 +4161,10 @@ public sealed class Player_move_c : MonoBehaviour
 
 	public Transform weaponPoint;
 
+	private GameObject fakeWeapon;
+
+	public GameObject leftArm, rightArm;
+
 	[PunRPC]
 	public void DeathAnimation(string deathAnimation)
 	{try{
@@ -4157,20 +4174,21 @@ public sealed class Player_move_c : MonoBehaviour
 		SkinnedMeshRenderer originalRenderer = current.bonusPrefab.GetComponent<SkinnedMeshRenderer>();
 		if (renderer == null)
 		{
-			current.bonusPrefab.transform.parent = weaponPoint.transform;
-			current.bonusPrefab.transform.localPosition = original.transform.localPosition;
-			current.bonusPrefab.transform.localRotation = original.transform.localRotation;
+			fakeWeapon = Instantiate(current.bonusPrefab);
+			fakeWeapon.transform.parent = weaponPoint.transform;
+			fakeWeapon.transform.localPosition = original.transform.localPosition;
+			fakeWeapon.transform.localRotation = original.transform.localRotation;
 		}
 		else
 		{
-			renderer.rootBone.transform.parent = weaponPoint.transform;
-			renderer.rootBone.transform.localPosition = originalRenderer.rootBone.transform.localPosition;
-			renderer.rootBone.transform.localRotation = originalRenderer.rootBone.transform.localRotation;
+			fakeWeapon = Instantiate(renderer.rootBone.gameObject);
+			fakeWeapon.transform.parent = weaponPoint.transform;
+			fakeWeapon.transform.localPosition = originalRenderer.rootBone.transform.localPosition;
+			fakeWeapon.transform.localRotation = originalRenderer.rootBone.transform.localRotation;
 		}
-		Destroy(current.gameObject);
+		current.gameObject.SetActive(false);
 		fpsPlayer.Stop();
 		fpsPlayer.Play(deathAnimation);
-		Debug.LogError(fpsPlayer[deathAnimation].length + " " + isMine);
 		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length);}catch(Exception e){Debug.LogError(e);}
 	}
 
