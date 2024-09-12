@@ -59,12 +59,6 @@ public class ThirdPersonNetwork : Photon.MonoBehaviour
 				base.transform.rotation = Quaternion.Lerp(base.transform.rotation, correctPlayerRot, Time.deltaTime * 5f);
 				base.transform.localScale = Vector3.Lerp(base.transform.localScale, correctPlayerScale, Time.deltaTime * 5f);
 			}
-			else
-			{
-				base.transform.position = correctPlayerPos;
-				base.transform.rotation = correctPlayerRot;
-				base.transform.localScale = correctPlayerScale;
-			}
 		}
 	}
 }
