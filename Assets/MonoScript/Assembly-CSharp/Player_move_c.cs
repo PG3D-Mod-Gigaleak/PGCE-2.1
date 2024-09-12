@@ -3550,9 +3550,9 @@ public sealed class Player_move_c : MonoBehaviour
 			{
 				Destroy(fakeWeapon);
 			}
-			if (_weaponManager.currentWeaponSounds != null)
+			if (realWeapon != null)
 			{
-				_weaponManager.currentWeaponSounds.gameObject.SetActive(true);
+				realWeapon.SetActive(true);
 			}
 		}
 		base.gameObject.GetComponent<AudioSource>().PlayOneShot(respawnPlayerSounds[index]);
@@ -4161,7 +4161,7 @@ public sealed class Player_move_c : MonoBehaviour
 
 	public Transform weaponPoint;
 
-	private GameObject fakeWeapon;
+	private GameObject fakeWeapon, realWeapon;
 
 	public GameObject leftArm, rightArm;
 
@@ -4187,6 +4187,7 @@ public sealed class Player_move_c : MonoBehaviour
 			fakeWeapon.transform.localRotation = originalRenderer.rootBone.transform.localRotation;
 		}
 		current.gameObject.SetActive(false);
+		realWeapon = current.gameObject;
 		fpsPlayer.Stop();
 		fpsPlayer.Play(deathAnimation);
 		Invoke(nameof(DeathParticles), fpsPlayer[deathAnimation].length);}catch(Exception e){Debug.LogError(e);}
