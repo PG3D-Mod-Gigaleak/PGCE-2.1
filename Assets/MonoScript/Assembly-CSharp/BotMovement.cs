@@ -233,6 +233,7 @@ public class BotMovement : MonoBehaviour
 
 	private void DestroySelf()
 	{
+		Instantiate(Resources.Load<GameObject>("DeathParticles"), transform.position, Quaternion.identity);
 		UnityEngine.Object.Destroy(base.gameObject);
 	}
 

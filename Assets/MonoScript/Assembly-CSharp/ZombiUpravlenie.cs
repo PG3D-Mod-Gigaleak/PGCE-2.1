@@ -325,6 +325,7 @@ public sealed class ZombiUpravlenie : MonoBehaviour
 
 	private void DestroySelf()
 	{
+		Instantiate(Resources.Load<GameObject>("DeathParticles"), transform.position, Quaternion.identity);
 		Object.Destroy(base.gameObject);
 	}
 

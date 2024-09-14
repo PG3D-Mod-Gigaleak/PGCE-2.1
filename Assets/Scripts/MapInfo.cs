@@ -1,6 +1,200 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+
+
+
+#if UNITY_EDITOR
+using UnityEditor;
+
+[CustomEditor(typeof(MapInfo))]
+public class MapInfoInspector : Editor
+{
+	private static bool inMenu;
+
+	private static bool inDeathmatch;
+
+	private static MapInfo.Map current;
+
+	public override void OnInspectorGUI()
+	{
+		MapInfo thisClass = (MapInfo)target;
+
+		if (current != null)
+		{
+			if (GUILayout.Button("Back"))
+			{
+				current = null;
+				return;
+			}
+
+			GUILayout.Space(20);
+			
+			Font font = Resources.Load<Font>("Ponderosa");
+			Texture2D bg = Resources.Load<Texture2D>("editor bg");
+
+			//TODO: maybe dont make 500 guistyles at runtime later
+			GUIStyle defaultStyle = new GUIStyle()
+			{
+				fontSize = 24,
+				font = font,
+
+				normal = new GUIStyleState
+				{
+					textColor = Color.white
+				}
+			};
+
+			GUIStyle importantStyle = new GUIStyle()
+			{
+				fontSize = 60,
+				font = font,
+
+				normal = new GUIStyleState
+				{
+					textColor = Color.red
+				}
+			};
+
+			GUIStyle specialStyle = new GUIStyle()
+			{
+				fontSize = 40,
+				font = font,
+
+				normal = new GUIStyleState
+				{
+					textColor = Color.yellow
+				}
+			};
+
+			GUIStyle defaultStyleBG = new GUIStyle()
+			{
+				fontSize = 24,
+				font = font,
+
+				normal = new GUIStyleState
+				{
+					textColor = Color.white,
+					background = bg
+				}
+			};
+
+			GUIStyle importantStyleBG = new GUIStyle()
+			{
+				fontSize = 60,
+				font = font,
+
+				normal = new GUIStyleState
+				{
+					textColor = Color.red,
+					background = bg
+				}
+			};
+
+			GUIStyle specialStyleBG = new GUIStyle()
+			{
+				fontSize = 40,
+				font = font,
+
+				normal = new GUIStyleState
+				{
+					textColor = Color.yellow,
+					background = bg
+				}
+			};
+
+			GUILayout.Label("Scene Name", defaultStyle);
+			current.sceneName = GUILayout.TextField(current.sceneName, defaultStyleBG);
+
+			GUILayout.Space(30);
+
+			GUILayout.Label("Map Name", defaultStyle);
+			current.mapName = GUILayout.TextField(current.mapName, defaultStyleBG);
+
+			GUILayout.Space(30);
+
+			GUILayout.Label("Icon", defaultStyle);
+			GUILayout.Button(current.icon, GUILayout.MaxWidth(current.icon.width / 4), GUILayout.MaxHeight(current.icon.height / 4));
+			
+			current.icon = (Texture2D)EditorGUILayout.ObjectField(current.icon, typeof(Texture2D), current.icon);
+
+			GUILayout.Space(30);
+
+			GUILayout.Label("BGM Index", defaultStyle);
+			current.backgroundMusic = int.Parse(GUILayout.TextField(current.backgroundMusic.ToString(), defaultStyleBG));
+			
+			GUILayout.Space(40);
+
+			GUILayout.Label("OBSOLETE", importantStyle);
+
+			current.rotation = Quaternion.Euler(EditorGUILayout.Vector3Field("USE InitCam - obsolete rotation", new Vector4(current.rotation.eulerAngles.x, current.rotation.eulerAngles.y, current.rotation.eulerAngles.z)));
+			current.position = EditorGUILayout.Vector3Field("USE InitCam - obsolete position", new Vector4(current.position.x, current.position.y, current.position.z));
+			
+			current.hasVarY = GUILayout.Toggle(current.hasVarY, "REMOVED (hasVarY)");
+
+			GUILayout.Space(40);
+			
+			GUILayout.Label("Special", specialStyle);
+
+			GUILayout.Space(20);
+
+			current.negateAbominatorDamage = GUILayout.Toggle(current.negateAbominatorDamage, "Negate Abominator Damage");
+
+			GUILayout.Space(50);
+
+			if (GUILayout.Button("REMOVE", importantStyleBG))
+			{
+				if (inDeathmatch)
+				{
+					thisClass.deathmatchMaps.Remove(current);
+				}
+				else
+				{
+					thisClass.coopMaps.Remove(current);
+				}
+
+				current = null;
+			}
+		}
+		else if (inMenu)
+		{
+			if (GUILayout.Button("Back"))
+			{
+				inMenu = false;
+			}
+
+			foreach (MapInfo.Map map in inDeathmatch ? thisClass.deathmatchMaps : thisClass.coopMaps)
+			{
+				if (!map.icon.isReadable)
+				{
+					File.WriteAllText(AssetDatabase.GetAssetPath(map.icon) + ".meta", File.ReadAllText(AssetDatabase.GetAssetPath(map.icon) + ".meta").Replace("isReadable: 0", "isReadable: 1"));
+					continue;
+				}
+
+				if (GUILayout.Button(map.icon, GUILayout.MinWidth(512), GUILayout.MaxHeight(288)))
+				{
+					current = map;
+				}
+			}
+		}
+		else
+		{
+			if (GUILayout.Button("Deathmatch"))
+			{
+				inMenu = true;
+				inDeathmatch = true;
+			}
+
+			if (GUILayout.Button("COOP"))
+			{
+				inMenu = true;
+				inDeathmatch = false;
+			}
+		}
+	}
+}
+#endif
 
 public class MapInfo : MonoBehaviour
 {
@@ -18,6 +212,7 @@ public class MapInfo : MonoBehaviour
 		public Vector3 position;
 
 		public bool hasVarY;
+
 		public bool negateAbominatorDamage;
 	}
 
