@@ -69,7 +69,7 @@ public class MapInfoInspector : Editor
 
             if (importantStyle == null)
             {
-                GUIStyle importantStyle = new GUIStyle()
+                importantStyle = new GUIStyle()
                 {
                     fontSize = 60,
                     font = font,
@@ -85,7 +85,7 @@ public class MapInfoInspector : Editor
 
             if (specialStyle == null)
             {
-                GUIStyle specialStyle = new GUIStyle()
+                specialStyle = new GUIStyle()
                 {
                     fontSize = 40,
                     font = font,
@@ -101,7 +101,7 @@ public class MapInfoInspector : Editor
 
             if (defaultStyleBG == null)
             {
-                GUIStyle defaultStyleBG = new GUIStyle()
+                defaultStyleBG = new GUIStyle()
                 {
                     fontSize = 24,
                     font = font,
@@ -116,7 +116,7 @@ public class MapInfoInspector : Editor
 
             if (importantStyleBG == null)
             {
-                GUIStyle importantStyleBG = new GUIStyle()
+                importantStyleBG = new GUIStyle()
                 {
                     fontSize = 60,
                     font = font,
