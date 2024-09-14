@@ -20,6 +20,7 @@ public class MapInfoInspector : Editor
 	public override void OnInspectorGUI()
 	{
 		MapInfo thisClass = (MapInfo)target;
+		SerializedObject obj = new SerializedObject(thisClass);
 
 		if (current != null)
 		{
@@ -54,7 +55,9 @@ public class MapInfoInspector : Editor
 				normal = new GUIStyleState
 				{
 					textColor = Color.red
-				}
+				},
+
+				alignment = TextAnchor.MiddleCenter
 			};
 
 			GUIStyle specialStyle = new GUIStyle()
@@ -65,7 +68,9 @@ public class MapInfoInspector : Editor
 				normal = new GUIStyleState
 				{
 					textColor = Color.yellow
-				}
+				},
+
+				alignment = TextAnchor.MiddleCenter
 			};
 
 			GUIStyle defaultStyleBG = new GUIStyle()
@@ -89,19 +94,9 @@ public class MapInfoInspector : Editor
 				{
 					textColor = Color.red,
 					background = bg
-				}
-			};
+				},
 
-			GUIStyle specialStyleBG = new GUIStyle()
-			{
-				fontSize = 40,
-				font = font,
-
-				normal = new GUIStyleState
-				{
-					textColor = Color.yellow,
-					background = bg
-				}
+				alignment = TextAnchor.MiddleCenter
 			};
 
 			GUILayout.Label("Scene Name", defaultStyle);
@@ -192,6 +187,9 @@ public class MapInfoInspector : Editor
 				inDeathmatch = false;
 			}
 		}
+		
+		EditorUtility.SetDirty(thisClass);
+		obj.ApplyModifiedProperties();
 	}
 }
 #endif
