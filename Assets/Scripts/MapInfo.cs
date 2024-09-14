@@ -228,7 +228,7 @@ public class MapInfoInspector : Editor
                 GUILayout.Space(20);
 
                 GUILayout.Label(map.mapName + " (" + map.sceneName + ".unity)", menuDefaultStyle);
-                if (menuBgState == null) menuBgState = new GUIStyleState { background = (Texture2D)map.icon };
+                GUIStyleState menuBgState = new GUIStyleState { background = (Texture2D)map.icon };
 
                 if (GUILayout.Button(new Texture2D(0, 0), new GUIStyle { normal = menuBgState, hover = menuBgState, active = menuBgState }, GUILayout.MaxWidth(256), GUILayout.MaxHeight(144)))
                 {
