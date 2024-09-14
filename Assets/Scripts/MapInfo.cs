@@ -15,6 +15,8 @@ public class MapInfoInspector : Editor
 
 	private static bool inDeathmatch;
 
+	private static string filter;
+
 	private static MapInfo.Map current;
 
 	public override void OnInspectorGUI()
@@ -110,7 +112,9 @@ public class MapInfoInspector : Editor
 			GUILayout.Space(30);
 
 			GUILayout.Label("Icon", defaultStyle);
-			GUILayout.Button(current.icon, GUILayout.MaxWidth(current.icon.width / 4), GUILayout.MaxHeight(current.icon.height / 4));
+
+			GUIStyleState bgState = new GUIStyleState { background = (Texture2D)current.icon };
+			GUILayout.Button(new Texture2D(0, 0), new GUIStyle { normal = bgState, hover = bgState, active = bgState }, GUILayout.MaxWidth(512), GUILayout.MaxHeight(288));
 			
 			current.icon = (Texture2D)EditorGUILayout.ObjectField(current.icon, typeof(Texture2D), current.icon);
 
@@ -154,23 +158,54 @@ public class MapInfoInspector : Editor
 		}
 		else if (inMenu)
 		{
+			GUIStyle defaultStyle = new GUIStyle()
+			{
+				fontSize = 12,
+				font = Resources.Load<Font>("Ponderosa"),
+
+				normal = new GUIStyleState
+				{
+					textColor = Color.white
+				},
+			};
+
 			if (GUILayout.Button("Back"))
 			{
 				inMenu = false;
 			}
 
+			filter = GUILayout.TextField(filter);
+			bool markedReadable = false;
+
 			foreach (MapInfo.Map map in inDeathmatch ? thisClass.deathmatchMaps : thisClass.coopMaps)
 			{
-				if (!map.icon.isReadable)
+				if (!string.IsNullOrEmpty(filter) && !map.mapName.ToLower().Contains(filter.ToLower()) && !map.sceneName.ToLower().Contains(filter.ToLower()))
 				{
-					File.WriteAllText(AssetDatabase.GetAssetPath(map.icon) + ".meta", File.ReadAllText(AssetDatabase.GetAssetPath(map.icon) + ".meta").Replace("isReadable: 0", "isReadable: 1"));
 					continue;
 				}
 
-				if (GUILayout.Button(map.icon, GUILayout.MinWidth(512), GUILayout.MaxHeight(288)))
+				if (!map.icon.isReadable)
+				{
+					File.WriteAllText(AssetDatabase.GetAssetPath(map.icon) + ".meta", File.ReadAllText(AssetDatabase.GetAssetPath(map.icon) + ".meta").Replace("isReadable: 0", "isReadable: 1"));
+					markedReadable = true;
+
+					continue;
+				}
+
+				GUILayout.Space(20);
+
+				GUILayout.Label(map.mapName + " (" + map.sceneName + ".unity)", defaultStyle);
+				GUIStyleState bgState = new GUIStyleState { background = (Texture2D)map.icon };
+
+				if (GUILayout.Button(new Texture2D(0, 0), new GUIStyle { normal = bgState, hover = bgState, active = bgState }, GUILayout.MaxWidth(256), GUILayout.MaxHeight(144)))
 				{
 					current = map;
 				}
+			}
+
+			if (markedReadable)
+			{
+				AssetDatabase.Refresh();
 			}
 		}
 		else
