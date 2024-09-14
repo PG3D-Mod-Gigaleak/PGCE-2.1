@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -11,265 +11,298 @@ using UnityEditor;
 [CustomEditor(typeof(MapInfo))]
 public class MapInfoInspector : Editor
 {
-	private static bool inMenu;
+    private static bool inMenu;
 
-	private static bool inDeathmatch;
+    private static bool inDeathmatch;
 
-	private static string filter;
+    private static string filter;
 
-	private static MapInfo.Map current;
+    private static MapInfo.Map current;
 
-	public override void OnInspectorGUI()
-	{
-		MapInfo thisClass = (MapInfo)target;
-		SerializedObject obj = new SerializedObject(thisClass);
+    private GUIStyle defaultStyle;
 
-		if (current != null)
-		{
-			if (GUILayout.Button("Back"))
-			{
-				current = null;
-				return;
-			}
+    private GUIStyle importantStyle;
 
-			GUILayout.Space(20);
-			
-			Font font = Resources.Load<Font>("Ponderosa");
-			Texture2D bg = Resources.Load<Texture2D>("editor bg");
+    private GUIStyle specialStyle;
 
-			//TODO: maybe dont make 500 guistyles at runtime later
-			GUIStyle defaultStyle = new GUIStyle()
-			{
-				fontSize = 24,
-				font = font,
+    private GUIStyle defaultStyleBG;
 
-				normal = new GUIStyleState
-				{
-					textColor = Color.white
-				}
-			};
+    private GUIStyle importantStyleBG;
 
-			GUIStyle importantStyle = new GUIStyle()
-			{
-				fontSize = 60,
-				font = font,
+    private GUIStyleState bgState;
 
-				normal = new GUIStyleState
-				{
-					textColor = Color.red
-				},
+    private GUIStyleState menuBgState;
 
-				alignment = TextAnchor.MiddleCenter
-			};
+    private GUIStyle menuDefaultStyle;
 
-			GUIStyle specialStyle = new GUIStyle()
-			{
-				fontSize = 40,
-				font = font,
+    public override void OnInspectorGUI()
+    {
+        MapInfo thisClass = (MapInfo)target;
+        SerializedObject obj = new SerializedObject(thisClass);
 
-				normal = new GUIStyleState
-				{
-					textColor = Color.yellow
-				},
+        if (current != null)
+        {
+            if (GUILayout.Button("Back"))
+            {
+                current = null;
+                return;
+            }
 
-				alignment = TextAnchor.MiddleCenter
-			};
+            GUILayout.Space(20);
 
-			GUIStyle defaultStyleBG = new GUIStyle()
-			{
-				fontSize = 24,
-				font = font,
+            Font font = Resources.Load<Font>("Ponderosa");
+            Texture2D bg = Resources.Load<Texture2D>("editor bg");
 
-				normal = new GUIStyleState
-				{
-					textColor = Color.white,
-					background = bg
-				}
-			};
+            if (defaultStyle == null)
+            {
+                defaultStyle = new GUIStyle()
+                {
+                    fontSize = 24,
+                    font = font,
 
-			GUIStyle importantStyleBG = new GUIStyle()
-			{
-				fontSize = 60,
-				font = font,
+                    normal = new GUIStyleState
+                    {
+                        textColor = Color.white
+                    }
+                };
+            }
 
-				normal = new GUIStyleState
-				{
-					textColor = Color.red,
-					background = bg
-				},
+            if (importantStyle == null)
+            {
+                GUIStyle importantStyle = new GUIStyle()
+                {
+                    fontSize = 60,
+                    font = font,
 
-				alignment = TextAnchor.MiddleCenter
-			};
+                    normal = new GUIStyleState
+                    {
+                        textColor = Color.red
+                    },
 
-			GUILayout.Label("Scene Name", defaultStyle);
-			current.sceneName = GUILayout.TextField(current.sceneName, defaultStyleBG);
+                    alignment = TextAnchor.MiddleCenter
+                };
+            }
 
-			GUILayout.Space(30);
+            if (specialStyle == null)
+            {
+                GUIStyle specialStyle = new GUIStyle()
+                {
+                    fontSize = 40,
+                    font = font,
 
-			GUILayout.Label("Map Name", defaultStyle);
-			current.mapName = GUILayout.TextField(current.mapName, defaultStyleBG);
+                    normal = new GUIStyleState
+                    {
+                        textColor = Color.yellow
+                    },
 
-			GUILayout.Space(30);
+                    alignment = TextAnchor.MiddleCenter
+                };
+            }
 
-			GUILayout.Label("Icon", defaultStyle);
+            if (defaultStyleBG == null)
+            {
+                GUIStyle defaultStyleBG = new GUIStyle()
+                {
+                    fontSize = 24,
+                    font = font,
 
-			GUIStyleState bgState = new GUIStyleState { background = (Texture2D)current.icon };
-			GUILayout.Button(new Texture2D(0, 0), new GUIStyle { normal = bgState, hover = bgState, active = bgState }, GUILayout.MaxWidth(512), GUILayout.MaxHeight(288));
-			
-			current.icon = (Texture2D)EditorGUILayout.ObjectField(current.icon, typeof(Texture2D), current.icon);
+                    normal = new GUIStyleState
+                    {
+                        textColor = Color.white,
+                        background = bg
+                    }
+                };
+            }
 
-			GUILayout.Space(30);
+            if (importantStyleBG == null)
+            {
+                GUIStyle importantStyleBG = new GUIStyle()
+                {
+                    fontSize = 60,
+                    font = font,
 
-			GUILayout.Label("BGM Index", defaultStyle);
-			current.backgroundMusic = int.Parse(GUILayout.TextField(current.backgroundMusic.ToString(), defaultStyleBG));
-			
-			GUILayout.Space(40);
+                    normal = new GUIStyleState
+                    {
+                        textColor = Color.red,
+                        background = bg
+                    },
 
-			GUILayout.Label("OBSOLETE", importantStyle);
+                    alignment = TextAnchor.MiddleCenter
+                };
+            }
 
-			current.rotation = Quaternion.Euler(EditorGUILayout.Vector3Field("USE InitCam - obsolete rotation", new Vector4(current.rotation.eulerAngles.x, current.rotation.eulerAngles.y, current.rotation.eulerAngles.z)));
-			current.position = EditorGUILayout.Vector3Field("USE InitCam - obsolete position", new Vector4(current.position.x, current.position.y, current.position.z));
-			
-			current.hasVarY = GUILayout.Toggle(current.hasVarY, "REMOVED (hasVarY)");
+            GUILayout.Label("Scene Name", defaultStyle);
+            current.sceneName = GUILayout.TextField(current.sceneName, defaultStyleBG);
 
-			GUILayout.Space(40);
-			
-			GUILayout.Label("Special", specialStyle);
+            GUILayout.Space(30);
 
-			GUILayout.Space(20);
+            GUILayout.Label("Map Name", defaultStyle);
+            current.mapName = GUILayout.TextField(current.mapName, defaultStyleBG);
 
-			current.negateAbominatorDamage = GUILayout.Toggle(current.negateAbominatorDamage, "Negate Abominator Damage");
+            GUILayout.Space(30);
 
-			GUILayout.Space(50);
+            GUILayout.Label("Icon", defaultStyle);
 
-			if (GUILayout.Button("REMOVE", importantStyleBG))
-			{
-				if (inDeathmatch)
-				{
-					thisClass.deathmatchMaps.Remove(current);
-				}
-				else
-				{
-					thisClass.coopMaps.Remove(current);
-				}
+            if (bgState == null) bgState = new GUIStyleState { background = (Texture2D)current.icon };
+            GUILayout.Button(new Texture2D(0, 0), new GUIStyle { normal = bgState, hover = bgState, active = bgState }, GUILayout.MaxWidth(512), GUILayout.MaxHeight(288));
 
-				current = null;
-			}
-		}
-		else if (inMenu)
-		{
-			GUIStyle defaultStyle = new GUIStyle()
-			{
-				fontSize = 12,
-				font = Resources.Load<Font>("Ponderosa"),
+            current.icon = (Texture2D)EditorGUILayout.ObjectField(current.icon, typeof(Texture2D), current.icon);
 
-				normal = new GUIStyleState
-				{
-					textColor = Color.white
-				},
-			};
+            GUILayout.Space(30);
 
-			if (GUILayout.Button("Back"))
-			{
-				inMenu = false;
-			}
+            GUILayout.Label("BGM Index", defaultStyle);
+            current.backgroundMusic = int.Parse(GUILayout.TextField(current.backgroundMusic.ToString(), defaultStyleBG));
 
-			filter = GUILayout.TextField(filter);
-			bool markedReadable = false;
+            GUILayout.Space(40);
 
-			foreach (MapInfo.Map map in inDeathmatch ? thisClass.deathmatchMaps : thisClass.coopMaps)
-			{
-				if (!string.IsNullOrEmpty(filter) && !map.mapName.ToLower().Contains(filter.ToLower()) && !map.sceneName.ToLower().Contains(filter.ToLower()))
-				{
-					continue;
-				}
+            GUILayout.Label("OBSOLETE", importantStyle);
 
-				if (!map.icon.isReadable)
-				{
-					File.WriteAllText(AssetDatabase.GetAssetPath(map.icon) + ".meta", File.ReadAllText(AssetDatabase.GetAssetPath(map.icon) + ".meta").Replace("isReadable: 0", "isReadable: 1"));
-					markedReadable = true;
+            current.rotation = Quaternion.Euler(EditorGUILayout.Vector3Field("USE InitCam - obsolete rotation", new Vector4(current.rotation.eulerAngles.x, current.rotation.eulerAngles.y, current.rotation.eulerAngles.z)));
+            current.position = EditorGUILayout.Vector3Field("USE InitCam - obsolete position", new Vector4(current.position.x, current.position.y, current.position.z));
 
-					continue;
-				}
+            current.hasVarY = GUILayout.Toggle(current.hasVarY, "REMOVED (hasVarY)");
 
-				GUILayout.Space(20);
+            GUILayout.Space(40);
 
-				GUILayout.Label(map.mapName + " (" + map.sceneName + ".unity)", defaultStyle);
-				GUIStyleState bgState = new GUIStyleState { background = (Texture2D)map.icon };
+            GUILayout.Label("Special", specialStyle);
 
-				if (GUILayout.Button(new Texture2D(0, 0), new GUIStyle { normal = bgState, hover = bgState, active = bgState }, GUILayout.MaxWidth(256), GUILayout.MaxHeight(144)))
-				{
-					current = map;
-				}
-			}
+            GUILayout.Space(20);
 
-			if (markedReadable)
-			{
-				AssetDatabase.Refresh();
-			}
-		}
-		else
-		{
-			if (GUILayout.Button("Deathmatch"))
-			{
-				inMenu = true;
-				inDeathmatch = true;
-			}
+            current.negateAbominatorDamage = GUILayout.Toggle(current.negateAbominatorDamage, "Negate Abominator Damage");
 
-			if (GUILayout.Button("COOP"))
-			{
-				inMenu = true;
-				inDeathmatch = false;
-			}
-		}
-		
-		EditorUtility.SetDirty(thisClass);
-		obj.ApplyModifiedProperties();
-	}
+            GUILayout.Space(50);
+
+            if (GUILayout.Button("REMOVE", importantStyleBG))
+            {
+                if (inDeathmatch)
+                {
+                    thisClass.deathmatchMaps.Remove(current);
+                }
+                else
+                {
+                    thisClass.coopMaps.Remove(current);
+                }
+
+                current = null;
+            }
+        }
+        else if (inMenu)
+        {
+            if (menuDefaultStyle == null)
+            {
+                menuDefaultStyle = new GUIStyle()
+                {
+                    fontSize = 12,
+                    font = Resources.Load<Font>("Ponderosa"),
+
+                    normal = new GUIStyleState
+                    {
+                        textColor = Color.white
+                    },
+                };
+            }
+
+            if (GUILayout.Button("Back"))
+            {
+                inMenu = false;
+            }
+
+            filter = GUILayout.TextField(filter);
+            bool markedReadable = false;
+
+            foreach (MapInfo.Map map in inDeathmatch ? thisClass.deathmatchMaps : thisClass.coopMaps)
+            {
+                if (!string.IsNullOrEmpty(filter) && !map.mapName.ToLower().Contains(filter.ToLower()) && !map.sceneName.ToLower().Contains(filter.ToLower()))
+                {
+                    continue;
+                }
+
+                if (!map.icon.isReadable)
+                {
+                    File.WriteAllText(AssetDatabase.GetAssetPath(map.icon) + ".meta", File.ReadAllText(AssetDatabase.GetAssetPath(map.icon) + ".meta").Replace("isReadable: 0", "isReadable: 1"));
+                    markedReadable = true;
+
+                    continue;
+                }
+
+                GUILayout.Space(20);
+
+                GUILayout.Label(map.mapName + " (" + map.sceneName + ".unity)", menuDefaultStyle);
+                if (menuBgState == null) menuBgState = new GUIStyleState { background = (Texture2D)map.icon };
+
+                if (GUILayout.Button(new Texture2D(0, 0), new GUIStyle { normal = menuBgState, hover = menuBgState, active = menuBgState }, GUILayout.MaxWidth(256), GUILayout.MaxHeight(144)))
+                {
+                    current = map;
+                }
+            }
+
+            if (markedReadable)
+            {
+                AssetDatabase.Refresh();
+            }
+        }
+        else
+        {
+            if (GUILayout.Button("Deathmatch"))
+            {
+                inMenu = true;
+                inDeathmatch = true;
+            }
+
+            if (GUILayout.Button("COOP"))
+            {
+                inMenu = true;
+                inDeathmatch = false;
+            }
+        }
+
+        EditorUtility.SetDirty(thisClass);
+        obj.ApplyModifiedProperties();
+    }
 }
 #endif
 
 public class MapInfo : MonoBehaviour
 {
-	[System.Serializable]
-	public class Map
-	{
-		public string sceneName, mapName;
+    [System.Serializable]
+    public class Map
+    {
+        public string sceneName, mapName;
 
-		public Texture icon;
+        public Texture icon;
 
-		public int backgroundMusic;
+        public int backgroundMusic;
 
-		public Quaternion rotation;
+        public Quaternion rotation;
 
-		public Vector3 position;
+        public Vector3 position;
 
-		public bool hasVarY;
+        public bool hasVarY;
 
-		public bool negateAbominatorDamage;
-	}
+        public bool negateAbominatorDamage;
+    }
 
-	public static MapInfo Instance
-	{
-		get
-		{
-			if (instance == null)
-			{
-				instance = Resources.Load<GameObject>("MapInfo").GetComponent<MapInfo>();
-			}
-			return instance;
-		}
-	}
+    public static MapInfo Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = Resources.Load<GameObject>("MapInfo").GetComponent<MapInfo>();
+            }
+            return instance;
+        }
+    }
 
-	public List<Map> CurrentMapsList
-	{
-		get
-		{
-			return (PlayerPrefs.GetInt("COOP", 0) == 1 ? coopMaps : deathmatchMaps);
-		}
-	}
+    public List<Map> CurrentMapsList
+    {
+        get
+        {
+            return (PlayerPrefs.GetInt("COOP", 0) == 1 ? coopMaps : deathmatchMaps);
+        }
+    }
 
-	private static MapInfo instance;
+    private static MapInfo instance;
 
-	public List<Map> deathmatchMaps, coopMaps;
+    public List<Map> deathmatchMaps, coopMaps;
 }
