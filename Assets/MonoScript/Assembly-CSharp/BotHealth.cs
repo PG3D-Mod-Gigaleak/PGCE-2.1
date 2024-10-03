@@ -129,6 +129,7 @@ public class BotHealth : MonoBehaviour
 
 	public void adjustHealth(float _health, Transform target)
 	{
+		Debug.LogError("??");
 		if (_health < 0f && !_flashing)
 		{
 			StartCoroutine(Flash());
@@ -151,6 +152,7 @@ public class BotHealth : MonoBehaviour
 		{
 			GlobalGameController.Score += 5;
 		}
+		Debug.LogError(PlayerPrefsX.GetBool(PlayerPrefsX.SndSetting, true));
 		if (PlayerPrefsX.GetBool(PlayerPrefsX.SndSetting, true))
 		{
 			base.GetComponent<AudioSource>().PlayOneShot(_soundClips.hurt);

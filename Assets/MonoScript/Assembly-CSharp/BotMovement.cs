@@ -259,7 +259,7 @@ public class BotMovement : MonoBehaviour
 	{
 		if ((bool)base.GetComponent<Rigidbody>())
 		{
-			base.GetComponent<Rigidbody>().velocity = Vector3.zero;
+			base.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
 			base.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 		}
 	}

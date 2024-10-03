@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
+using System.Linq;
+
+
+
 
 
 
@@ -29,10 +35,6 @@ public class MapInfoInspector : Editor
 
     private GUIStyle importantStyleBG;
 
-    private GUIStyleState bgState;
-
-    private GUIStyleState menuBgState;
-
     private GUIStyle menuDefaultStyle;
 
     public override void OnInspectorGUI()
@@ -48,9 +50,13 @@ public class MapInfoInspector : Editor
                 return;
             }
 
+			if (GUILayout.Button("Load"))
+			{
+				EditorSceneManager.OpenScene(AssetDatabase.FindAssets("t:Scene " + current.sceneName).Select(x => AssetDatabase.GUIDToAssetPath(x)).ToList().Find(x => Path.GetFileNameWithoutExtension(x) == current.sceneName));
+			}
+
             GUILayout.Space(20);
 
-            Font font = Resources.Load<Font>("Ponderosa");
             Texture2D bg = Resources.Load<Texture2D>("editor bg");
 
             if (defaultStyle == null)
@@ -58,7 +64,6 @@ public class MapInfoInspector : Editor
                 defaultStyle = new GUIStyle()
                 {
                     fontSize = 24,
-                    font = font,
 
                     normal = new GUIStyleState
                     {
@@ -72,7 +77,6 @@ public class MapInfoInspector : Editor
                 importantStyle = new GUIStyle()
                 {
                     fontSize = 60,
-                    font = font,
 
                     normal = new GUIStyleState
                     {
@@ -88,7 +92,6 @@ public class MapInfoInspector : Editor
                 specialStyle = new GUIStyle()
                 {
                     fontSize = 40,
-                    font = font,
 
                     normal = new GUIStyleState
                     {
@@ -104,7 +107,6 @@ public class MapInfoInspector : Editor
                 defaultStyleBG = new GUIStyle()
                 {
                     fontSize = 24,
-                    font = font,
 
                     normal = new GUIStyleState
                     {
@@ -119,7 +121,6 @@ public class MapInfoInspector : Editor
                 importantStyleBG = new GUIStyle()
                 {
                     fontSize = 60,
-                    font = font,
 
                     normal = new GUIStyleState
                     {
@@ -143,7 +144,7 @@ public class MapInfoInspector : Editor
 
             GUILayout.Label("Icon", defaultStyle);
 
-            if (bgState == null) bgState = new GUIStyleState { background = (Texture2D)current.icon };
+            GUIStyleState bgState = new GUIStyleState { background = (Texture2D)current.icon };
             GUILayout.Button(new Texture2D(0, 0), new GUIStyle { normal = bgState, hover = bgState, active = bgState }, GUILayout.MaxWidth(512), GUILayout.MaxHeight(288));
 
             current.icon = (Texture2D)EditorGUILayout.ObjectField(current.icon, typeof(Texture2D), current.icon);
@@ -151,7 +152,11 @@ public class MapInfoInspector : Editor
             GUILayout.Space(30);
 
             GUILayout.Label("BGM Index", defaultStyle);
-            current.backgroundMusic = int.Parse(GUILayout.TextField(current.backgroundMusic.ToString(), defaultStyleBG));
+
+			if (int.TryParse(GUILayout.TextField(current.backgroundMusic.ToString(), defaultStyleBG), out int bgm))
+			{
+				current.backgroundMusic = bgm;
+			}
 
             GUILayout.Space(40);
 
@@ -192,8 +197,7 @@ public class MapInfoInspector : Editor
             {
                 menuDefaultStyle = new GUIStyle()
                 {
-                    fontSize = 12,
-                    font = Resources.Load<Font>("Ponderosa"),
+                    fontSize = 16,
 
                     normal = new GUIStyleState
                     {
@@ -209,6 +213,29 @@ public class MapInfoInspector : Editor
 
             filter = GUILayout.TextField(filter);
             bool markedReadable = false;
+
+			GUILayout.Space(30);
+
+			if (GUILayout.Button("Create"))
+			{
+				MapInfo.Map map = new MapInfo.Map
+				{
+					mapName = "the map name",
+					sceneName = "the scene name",
+					icon = Resources.Load<Texture2D>("default mapicon")
+				};
+
+				if (inDeathmatch)
+				{
+					thisClass.deathmatchMaps.Add(map);
+				}
+				else
+				{
+					thisClass.coopMaps.Add(map);
+				}
+
+				current = map;
+			}
 
             foreach (MapInfo.Map map in inDeathmatch ? thisClass.deathmatchMaps : thisClass.coopMaps)
             {

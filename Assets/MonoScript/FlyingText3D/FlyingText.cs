@@ -56,7 +56,7 @@ public class FlyingText : MonoBehaviour
 
 	public bool m_addRigidbodies = false;
 
-	public PhysicMaterial m_physicsMaterial;
+	public PhysicsMaterial m_physicsMaterial;
 
 	public float m_smoothingAngle = 50f;
 
@@ -102,7 +102,7 @@ public class FlyingText : MonoBehaviour
 
 	public static bool addRigidbodies;
 
-	public static PhysicMaterial physicsMaterial;
+	public static PhysicsMaterial physicsMaterial;
 
 	public static float smoothingAngle;
 
