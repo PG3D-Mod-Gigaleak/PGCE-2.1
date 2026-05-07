@@ -37,7 +37,13 @@ public class AutoFade : MonoBehaviour
 	{
 		Object.DontDestroyOnLoad(this);
 		m_Instance = this;
-		m_Material = new Material("Shader \"Plane/No zTest\" { SubShader { Pass { Blend SrcAlpha OneMinusSrcAlpha ZWrite Off Cull Off Fog { Mode Off } BindChannels { Bind \"Color\",color } } } }");
+		//m_Material = new Material("Shader \"Plane/No zTest\" { SubShader { Pass { Blend SrcAlpha OneMinusSrcAlpha ZWrite Off Cull Off Fog { Mode Off } BindChannels { Bind \"Color\",color } } } }");
+		// Above is old code and says that material.Material(String) is obsolete. So new code below
+		m_Material = new Material(Shader.Find("Plane/No zTest"));
+		m_Material.SetColor("_Color", Color.black);
+		m_Material.SetPass(0);
+
+
 	}
 
 	private void DrawQuad(Color aColor, float aAlpha)
